@@ -1,3 +1,5 @@
+package main.java.org.boardgame.group37.backend.objects;
+
 public class Dice {
   int value;
   public Dice() {

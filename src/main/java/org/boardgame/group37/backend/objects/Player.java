@@ -1,6 +1,6 @@
-package main.java.org.boardgame.group37.game.objects;
-import main.java.org.boardgame.group37.game.objects.Tile;
-import main.java.org.boardgame.group37.game.objects.Color;
+package main.java.org.boardgame.group37.backend.objects;
+import main.java.org.boardgame.group37.backend.objects.Tile;
+import main.java.org.boardgame.group37.backend.objects.Color;
 
 public class Player {
   private int tileIndex = 0;
