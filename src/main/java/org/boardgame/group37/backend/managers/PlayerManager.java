@@ -3,11 +3,17 @@ import org.boardgame.group37.backend.objects.Player;
 import java.util.ArrayList;
 import java.awt.Color;
 
-
 public class PlayerManager {
+
+  // Player list
   private ArrayList<Player> players = new ArrayList<Player>();
 
-  // Get free player index
+  // Constructor
+  public PlayerManager() {
+  }
+
+  // Methods
+  // Get the first empty player index
   public int playerGetFreeIndex() {
     for (int i = 0; i < players.size(); i++) {
       if (players.get(i) == null) {
@@ -35,26 +41,26 @@ public class PlayerManager {
   }
 
   // Get player color based on index
-  public Color playerGetColor(int index) {
-    switch (index) {
+  public Color playerGetColor(int playerIndex) {
+    switch (playerIndex) {
       case 0:
-        return Color.RED;
+      return Color.RED;
       case 1:
-        return Color.BLUE;
+      return Color.BLUE;
       case 2:
-        return Color.GREEN;
+      return Color.GREEN;
       case 3:
-        return Color.YELLOW;
+      return Color.YELLOW;
       case 4:
-        return Color.ORANGE;
+      return Color.ORANGE;
       case 5:
-        return Color.PINK;
+      return Color.PINK;
       case 6:
-        return Color.CYAN;
+      return Color.CYAN;
       case 7:
-        return Color.MAGENTA;
+      return Color.MAGENTA;
       default:
-        return Color.BLACK;
+      return Color.BLACK;
     }
   }
 
@@ -69,6 +75,7 @@ public class PlayerManager {
     return playersAtTile;
   }
 
+  // Getters
   public ArrayList<Player> getPlayers() {
     return players;
   }

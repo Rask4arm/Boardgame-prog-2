@@ -5,14 +5,17 @@ import java.lang.Math;
 
 public class TileManager {
   
-  private ArrayList<Tile> board = new ArrayList<Tile>();
-  int tileCount, boardWidth;
+  // Variables
+  private ArrayList<Tile> board = new ArrayList<Tile>(); // Board of tiles
+  private int tileCount, boardWidth; // Number of tiles and width of board
 
+  // Constructor
   public TileManager(int tileCount, int boardWidth) {
     this.tileCount = tileCount;
     this.boardWidth = boardWidth;
   }
 
+  // Methods
   // Generates the board
   public void boardGenerate() {
     board.clear();
@@ -39,6 +42,19 @@ public class TileManager {
     int randomIndex = originalIndex + (int)(Math.random() * 21) - 10;
     randomIndex = Math.max(0, Math.min(randomIndex, tileCount - 1));
     return randomIndex;
+  }
+
+  // Getters
+  public ArrayList<Tile> getBoard() {
+    return board;
+  }
+
+  public int getBoardWidth() {
+    return boardWidth;
+  }
+
+  public int getTileCount() {
+    return tileCount;
   }
   
 }
