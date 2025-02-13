@@ -1,5 +1,5 @@
-package main.java.org.boardgame.group37.backend.managers;
-import main.java.org.boardgame.group37.game.objects.Player;
+package org.boardgame.group37.backend.managers;
+import org.boardgame.group37.backend.objects.Player;
 import java.util.ArrayList;
 import java.awt.Color;
 
@@ -19,8 +19,8 @@ public class PlayerManager {
 
   // Add player to player list
   public void playerAdd(Player player) {
-    Player playerNew = new Player();
-    playerNew.setPlayerIndex(playerGetFreeIndex());
+    int indexSet = playerGetFreeIndex();
+    Player playerNew = new Player(indexSet, playerGetColor(indexSet));
     players.add(playerNew);
   }
 

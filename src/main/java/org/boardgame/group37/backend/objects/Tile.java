@@ -1,4 +1,4 @@
-package main.java.org.boardgame.group37.backend.objects;
+package org.boardgame.group37.backend.objects;
 
 public class Tile {
 
@@ -23,5 +23,9 @@ public class Tile {
 
   public int getTileTarget() {
     return tileTarget;
+  }
+
+  public boolean isTeleport() {
+    return isTeleport;
   }
 }
