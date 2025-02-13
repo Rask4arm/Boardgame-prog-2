@@ -1,5 +1,5 @@
-package main.java.org.boardgame.group37.backend.managers;
-import main.java.org.boardgame.group37.game.objects.Tile;
+package org.boardgame.group37.backend.managers;
+import org.boardgame.group37.backend.objects.Tile;
 import java.util.ArrayList;
 import java.lang.Math;
 

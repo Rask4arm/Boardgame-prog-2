@@ -1,6 +1,6 @@
-package main.java.org.boardgame.group37.backend.managers;
+package org.boardgame.group37.backend.managers;
 import java.util.ArrayList;
-import main.java.org.boardgame.group37.game.objects.Dice;
+import org.boardgame.group37.backend.objects.Dice;
 
 public class DiceManager {
   private ArrayList<Dice> dices = new ArrayList<Dice>();
