@@ -37,10 +37,10 @@ public class TileManager {
     }
   }
 
-  // Selects a random tile with a gap +- 10 from original index
+  // Selects a random tile with a gap
   private int tileGetRandomTarget(int originalIndex) {
-    int randomIndex = originalIndex + (int)(Math.random() * 21) - 10;
-    randomIndex = Math.max(0, Math.min(randomIndex, tileCount - 1));
+    int randomIndex = originalIndex + (int)(Math.random() * 21) - 10; // Random index +- 10
+    randomIndex = Math.max(1, Math.min(randomIndex, tileCount - 2)); // Clamp to board
     return randomIndex;
   }
 
