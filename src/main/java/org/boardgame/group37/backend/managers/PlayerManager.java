@@ -1,4 +1,4 @@
-package main.java.org.boardgame.group37.game.managers;
+package main.java.org.boardgame.group37.backend.managers;
 import main.java.org.boardgame.group37.game.objects.Player;
 import java.util.ArrayList;
 import java.awt.Color;

@@ -1,4 +1,4 @@
-package main.java.org.boardgame.group37.game.managers;
+package main.java.org.boardgame.group37.backend.managers;
 import java.util.ArrayList;
 import main.java.org.boardgame.group37.game.objects.Dice;
 
