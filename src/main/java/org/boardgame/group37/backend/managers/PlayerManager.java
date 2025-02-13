@@ -13,6 +13,11 @@ public class PlayerManager {
   }
 
   // Methods
+  // Get player count
+  public int playerGetCount() {
+    return players.size();
+  }
+
   // Get the first empty player index
   public int playerGetFreeIndex() {
     for (int i = 0; i < players.size(); i++) {
