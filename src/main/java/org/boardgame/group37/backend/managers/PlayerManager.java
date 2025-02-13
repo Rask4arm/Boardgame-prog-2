@@ -28,11 +28,13 @@ public class PlayerManager {
     return players.size();
   }
 
-  // Add player to player list
+  // Add player to player list, max 5 players
   public void playerAdd(Player player) {
-    int indexSet = playerGetFreeIndex();
-    Player playerNew = new Player(indexSet, playerGetColor(indexSet));
-    players.add(playerNew);
+    if (playerGetCount() < 5) {
+      int indexSet = playerGetFreeIndex();
+      Player playerNew = new Player(indexSet, playerGetColor(indexSet));
+      players.add(playerNew);
+    }
   }
 
   // Remove player based on index
