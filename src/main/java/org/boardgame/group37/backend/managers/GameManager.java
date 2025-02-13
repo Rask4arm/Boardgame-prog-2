@@ -1,6 +1,4 @@
 package org.boardgame.group37.backend.managers;
-Playe playernow = playernow
-TIle tilenow = tileNOw
 
 
 
@@ -22,7 +20,7 @@ public class GameManager {
   public GameManager() {
   }
 
-  // Methods
+  // Method game
   // Game start
   public void gameStart() {
     gameStart = true;
@@ -52,35 +50,43 @@ public class GameManager {
     }
   }
 
-  /*
+  /* Method round
+
    * round order:
-   * 
    * 1. Start turn
    * 2. Roll dice
    * 3. Move player
+   * 4. End turn
    * 
   */
 
+  // Round start
   public void roundStart() {
     gameState = "Start";
   }
 
+  // Round roll
   public void roundRoll() {
     diceManager.diceRollAll();
     moveCount = diceManager.diceGetSumAll();
     gameState = "Roll";
   }
 
+  // Round move
   public void roundMove() {
-    while(moveCount > 0) {
-      playerManager.getPlayers().get(playerTurnIndex).tileMove(
-        tileManager.getBoard().get(
-          playerManager.getPlayers().get(playerTurnIndex).getTileIndex()
-        )
-      );
-      moveCount--;
-    }
-    gameState = "Move";
+    playerManager.getPlayers().get(playerTurnIndex).tileMove( // execute tileMove method from Player class
+      tileManager.getBoard().get(
+        playerManager.getPlayers().get(playerTurnIndex).getTileIndex() // get tileindex from player
+      )
+    );
+    moveCount--;
+    gameState = (moveCount > 0) ? "Move" : "Turn";
+  }
+
+  // Round end
+  public void roundEnd() {
+    gameNextTurn();
+    roundStart();
   }
 
 }
