@@ -43,24 +43,15 @@ public class PlayerManager {
   // Get player color based on index
   public Color playerGetColor(int playerIndex) {
     switch (playerIndex) {
-      case 0:
-      return Color.RED;
-      case 1:
-      return Color.BLUE;
-      case 2:
-      return Color.GREEN;
-      case 3:
-      return Color.YELLOW;
-      case 4:
-      return Color.ORANGE;
-      case 5:
-      return Color.PINK;
-      case 6:
-      return Color.CYAN;
-      case 7:
-      return Color.MAGENTA;
-      default:
-      return Color.BLACK;
+      case 0: return Color.RED;
+      case 1: return Color.BLUE;
+      case 2: return Color.GREEN;
+      case 3: return Color.YELLOW;
+      case 4: return Color.ORANGE;
+      case 5: return Color.PINK;
+      case 6: return Color.CYAN;
+      case 7: return Color.MAGENTA;
+      default: return Color.BLACK;
     }
   }
 
@@ -74,7 +65,7 @@ public class PlayerManager {
     }
     return playersAtTile;
   }
-
+  
   // Getters
   public ArrayList<Player> getPlayers() {
     return players;
