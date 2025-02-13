@@ -100,4 +100,16 @@ public class GameManager {
     return playerTurnIndex;
   }
 
+  public boolean getGameStart() {
+    return gameStart;
+  }
+
+  public boolean getGameEnd() {
+    return gameEnd;
+  }
+
+  public String getGameState() {
+    return gameState;
+  }
+
 }
