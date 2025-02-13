@@ -24,7 +24,7 @@ public class GameManager {
   // Game start
   public void gameStart() {
     gameStart = true;
-    gameState = "Turn";
+    roundStart();
   }
 
   // Game end
@@ -87,6 +87,17 @@ public class GameManager {
   public void roundEnd() {
     gameNextTurn();
     roundStart();
+  }
+
+  // Getters
+  // Index of player index whose turn it is
+  public int getPlayerCurrentIndex() {
+    return playerManager.getPlayers().get(playerTurnIndex).getPlayerIndex();
+  }
+
+  // List index of player whose turn it is
+  public int getPlayerTurnIndex() {
+    return playerTurnIndex;
   }
 
 }
