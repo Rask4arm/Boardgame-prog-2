@@ -1,0 +1,5 @@
+package main.java.org.boardgame.group37;
+
+public class GameManager {
+
+}
