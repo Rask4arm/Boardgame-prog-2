@@ -16,8 +16,8 @@ public class Player {
 
   // Methods
   // Move player forward one tile
-  public void tileMove(Tile tile) {
-    tileIndex = tile.getTileTarget();
+  public void tileMove(Tile tile, boolean executeTeleport) {
+    tileIndex = (executeTeleport) ? tile.getTileTarget() : tileIndex + 1;
   }
 
   // Getters

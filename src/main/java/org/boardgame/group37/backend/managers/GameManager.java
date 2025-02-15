@@ -74,10 +74,12 @@ public class GameManager {
 
   // Round move
   public void roundMove() {
+    boolean executeAction = (moveCount == 1) ? true : false;
     playerManager.getPlayers().get(playerTurnIndex).tileMove( // execute tileMove method from Player class
       tileManager.getBoard().get(
         playerManager.getPlayers().get(playerTurnIndex).getTileIndex() // get tileindex from player
       )
+    , executeAction
     );
     moveCount--;
     gameState = (moveCount > 0) ? "Move" : "Turn";
