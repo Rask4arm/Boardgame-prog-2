@@ -7,11 +7,13 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class HelloFX extends Application {
+    BoardGraphic boardGraphic;
 
     @Override
     public void start(Stage stage) {
+        boardGraphic = new BoardGraphic(10,10);
         Label l = new Label("Welcome to our snakes and ladders game");
-        Scene scene = new Scene(new StackPane(l), 640, 480);
+        Scene scene = new Scene(new StackPane(boardGraphic), 800, 600);
         stage.setScene(scene);
         stage.show();
     }
