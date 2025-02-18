@@ -48,8 +48,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <!-- TODO: Replace with your own main-class -->
-                    <mainClass>org.openjfx.Main</mainClass>
+                    <mainClass>org.boardgame.group37.frontend.HelloFX</mainClass>
                 </configuration>
             </plugin>
         </plugins>
