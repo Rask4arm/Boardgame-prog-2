@@ -42,4 +42,12 @@ public class BoardGraphic extends GridPane {
             }
         }
     }
+
+    public void updatePlayerPosition(PlayerToken playertoken, int newPosition) {
+        int row = (heigth*width - newPosition) / width;
+        int col = (heigth*width) % width;
+
+        getChildren().remove(playertoken);
+        add(playertoken, col, row);
+    }
 }
