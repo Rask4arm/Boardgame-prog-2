@@ -1,18 +1,21 @@
-package main.java.org.boardgame.group37;
-import main.java.org.boardgame.group37.game.objects.Tile;
+package org.boardgame.group37.backend.managers;
+import org.boardgame.group37.backend.objects.Tile;
 import java.util.ArrayList;
 import java.lang.Math;
 
 public class TileManager {
   
-  private ArrayList<Tile> board = new ArrayList<Tile>();
-  int tileCount, boardWidth;
+  // Variables
+  private ArrayList<Tile> board = new ArrayList<Tile>(); // Board of tiles
+  private int tileCount, boardWidth; // Number of tiles and width of board
 
+  // Constructor
   public TileManager(int tileCount, int boardWidth) {
     this.tileCount = tileCount;
     this.boardWidth = boardWidth;
   }
 
+  // Methods
   // Generates the board
   public void boardGenerate() {
     board.clear();
@@ -34,11 +37,24 @@ public class TileManager {
     }
   }
 
-  // Selects a random tile with a gap +- 10 from original index
+  // Selects a random tile with a gap
   private int tileGetRandomTarget(int originalIndex) {
-    int randomIndex = originalIndex + (int)(Math.random() * 21) - 10;
-    randomIndex = Math.max(0, Math.min(randomIndex, tileCount - 1));
+    int randomIndex = originalIndex + (int)(Math.random() * 21) - 10; // Random index +- 10
+    randomIndex = Math.max(1, Math.min(randomIndex, tileCount - 2)); // Clamp to board
     return randomIndex;
+  }
+
+  // Getters
+  public ArrayList<Tile> getBoard() {
+    return board;
+  }
+
+  public int getBoardWidth() {
+    return boardWidth;
+  }
+
+  public int getTileCount() {
+    return tileCount;
   }
   
 }

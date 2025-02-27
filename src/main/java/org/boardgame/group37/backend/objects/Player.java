@@ -1,40 +1,38 @@
-package main.java.org.boardgame.group37.backend.objects;
-import main.java.org.boardgame.group37.backend.objects.Tile;
-import main.java.org.boardgame.group37.backend.objects.Color;
+package org.boardgame.group37.backend.objects;
+import java.awt.Color;
 
 public class Player {
+
+  // Player attributes
   private int tileIndex = 0;
-  private int tileTarget = 0;
   private int playerIndex = -1;
   private Color playerColor = Color.BLACK;
   
-  public Player() {
+  // Constructor
+  public Player(int playerIndex, Color playerColor) {
+    this.playerIndex = playerIndex;
+    this.playerColor = playerColor;
   }
 
+  // Methods
   // Move player forward one tile
-  void tileMove(Tile tile) {
-    tileIndex = tile.getTileTarget();
+  public void tileMove(Tile tile, boolean executeTeleport) {
+    tileIndex = (executeTeleport) ? tile.getTileTarget() : tileIndex + 1;
   }
 
+  // Getters
   public int getTileIndex() {
     return tileIndex;
-  }
-
-  public int getTileTarget() {
-    return tileTarget;
-  }
-
-  public void setTileTarget(int target) {
-    tileTarget = target;
   }
 
   public int getPlayerIndex() {
     return playerIndex;
   }
 
-  public void setPlayerIndex(int index) {
-    playerIndex = index;
-    playerColor = playerGetColor(index);
+  public Color getPlayerColor() {
+    return playerColor;
   }
+
+
 
 }

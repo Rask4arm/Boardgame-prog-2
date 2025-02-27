@@ -1,0 +1,10 @@
+package org.boardgame.group37.frontend;
+
+import javafx.scene.shape.Circle;
+import javafx.scene.paint.Color;
+
+public class PlayerToken extends Circle {
+    public PlayerToken(Color color) {
+        super(20,color);
+    }
+}
