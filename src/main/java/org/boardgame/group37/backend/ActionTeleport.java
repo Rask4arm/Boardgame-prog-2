@@ -12,7 +12,8 @@ public class ActionTeleport implements Action {
 
     // Methods
     public void execute(Player player) {
-        // Do nothing
+        System.out.println("Debug: Executing teleport action");
+        player.setPosition(target);
     };
 
     public int getTarget() {

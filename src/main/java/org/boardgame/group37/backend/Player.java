@@ -42,4 +42,8 @@ public class Player {
         position = 0;
         System.out.println(String.format("Debug: Player %s reset position to %d", name, position));
     }
+    public void setPosition(int position) {
+        this.position = position;
+        System.out.println(String.format("Debug: Player %s set position to %d", name, position));
+    }
 }
