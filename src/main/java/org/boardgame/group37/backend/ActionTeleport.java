@@ -1,8 +1,8 @@
 package org.boardgame.group37.backend;
 
-public class ActionTeleport implements TileAction {
+public class ActionTeleport implements Action {
 
-    public void execute() {
+    public void execute(Player player) {
 
     };
 }

@@ -1,8 +1,8 @@
 package org.boardgame.group37.backend;
 
-public class ActionDefault implements TileAction{
+public class ActionDefault implements Action{
 
-    public void execute() {
+    public void execute(Player player) {
 
     };
 }
