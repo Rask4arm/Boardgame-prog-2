@@ -3,7 +3,7 @@ package org.boardgame.group37.backend;
 public class Tile {
 
     // Properties
-    private Action action; // The action that will be executed when a player lands on this tile
+    protected Action action; // The action that will be executed when a player lands on this tile
 
     // Constructor
     public Tile() {
