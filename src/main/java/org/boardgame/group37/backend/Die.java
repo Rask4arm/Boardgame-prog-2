@@ -18,5 +18,6 @@ public class Die {
     }
     public void executeThrow() {
         value = (int) (Math.random() * 6) + 1;
+        System.out.println(String.format("Debug: Die thrown. Value: %d", value));
     }
 }

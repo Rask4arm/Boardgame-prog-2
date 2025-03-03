@@ -8,7 +8,7 @@ public class PlayerManager {
 
     // Constructor
     public PlayerManager() {
-
+        System.out.println("Debug: PlayerManager created.");
     }
 
     // Methods
@@ -18,9 +18,11 @@ public class PlayerManager {
 
     public void playerAdd() {
         players.add(new Player());
+        System.out.println(String.format("Debug: Player added. Current number of players: %d", players.size()));
     }
 
     public void playerRemove() {
         players.remove(players.size() - 1);
+        System.out.println(String.format("Debug: Player removed. Current number of players: %d", players.size()));
     }
 }
