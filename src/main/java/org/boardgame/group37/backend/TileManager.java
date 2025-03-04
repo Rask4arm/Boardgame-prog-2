@@ -27,13 +27,27 @@ public class TileManager {
     }
     public void tilesGenerate() {
         for(int i = 0; i < size; i++) {
-            tileAdd(// FIX RANDOMGENERATOR
-                    new Tile(new ActionDefault())
-            );
+
+            // Initialize random properties
+            int rand = (int) Math.random();
+            Action action = null;
+
+            // Set action based on random properties
+            if (rand < .1) action = new ActionTeleport(rand);
+            else action = new ActionDefault();
+
+            // Add tile to tiles
+            tileAdd(new Tile(new ActionDefault()));
         }
         System.out.println(String.format("Debug: Tiles generated. Number of tiles: %d", tiles.size()));
     }
     public ArrayList<Tile> getTiles() {
         return tiles;
+    }
+    public int getWidth() {
+        return width;
+    }
+    public int getSize() {
+        return size;
     }
 }

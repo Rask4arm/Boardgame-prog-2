@@ -6,7 +6,11 @@ public class ActionTeleport implements Action {
     private int target = 0;
 
     // Constructor
-    public ActionTeleport(int target) {
+    public ActionTeleport(int currentIndex) {
+        this.target = currentIndex;
+    }
+
+    public ActionTeleport(int currentIndex, int target) {
         this.target = target;
     }
 
