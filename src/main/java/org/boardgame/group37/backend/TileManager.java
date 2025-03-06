@@ -29,7 +29,7 @@ public class TileManager {
         for(int i = 0; i < size; i++) {
 
             // Initialize random properties
-            int rand = (int) Math.random();
+            double rand = Math.random();
             Action action = null;
 
             // Set action based on random properties
