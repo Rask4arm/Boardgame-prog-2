@@ -23,7 +23,7 @@ public class TileManager {
     // Methods
     public void tileAdd(Tile tile) {
         tiles.add(tile);
-        System.out.println(String.format("Debug: Tile added. Tile: %s, Current number of tiles: %d", tile.toString(), tiles.size()));
+        System.out.println(String.format("Debug: Tile added. Current number of tiles: %d", tiles.size()));
     }
     public void tilesGenerate() {
         for(int i = 0; i < size; i++) {
