@@ -1,5 +1,6 @@
 package org.boardgame.group37.backend;
 import java.util.ArrayList;
+import java.awt.Color;
 
 public class PlayerManager {
 
@@ -18,6 +19,11 @@ public class PlayerManager {
 
     public void playerAdd() {
         players.add(new Player());
+        System.out.println(String.format("Debug: Player added. Current number of players: %d", players.size()));
+    }
+
+    public void playerAdd(Color color, String name) {
+        players.add(new Player(color, name));
         System.out.println(String.format("Debug: Player added. Current number of players: %d", players.size()));
     }
 

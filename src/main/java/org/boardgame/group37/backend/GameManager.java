@@ -23,7 +23,7 @@ public class GameManager {
     }
 
     public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie) {
-        if (resetTiles) tileManager = new TileManager(10, 10);
+        if (resetTiles) tileManager = new TileManager(10, 50);
         if (resetPlayers) playerManager = new PlayerManager();
         if (resetDie) dieManager = new DieManager();
         currentPlayerIndex = 0;

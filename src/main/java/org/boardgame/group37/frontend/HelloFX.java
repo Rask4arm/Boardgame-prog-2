@@ -1,4 +1,4 @@
-package org.boardgame.group37.frontend;
+/*package org.boardgame.group37.frontend;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -55,3 +55,4 @@ public class HelloFX extends Application {
     }
 
 }
+*/
