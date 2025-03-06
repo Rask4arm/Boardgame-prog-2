@@ -1,7 +1,7 @@
 package org.boardgame.group37.backend;
 
-import org.boardgame.group37.backend.*;
-import java.util.ArrayList;
+// import org.boardgame.group37.backend.*; // For remembering to import all classes when folders are used in the future
+// import java.util.ArrayList; // not used yet but will probably be used in the future.
 
 public class GameManager {
     private TileManager tileManager;
