@@ -78,11 +78,38 @@ public class GameManager {
         System.out.println("Debug: roundEnd();");
     }
 
-    public void gameEnd(Player player) {
+    private void gameEnd(Player player) {
         state = "end";
         playerWinner = player.getName();
         System.out.println("Debug: Game ended.");
     }
 
+    public TileManager getTileManager() {
+        return tileManager;
+    }
 
+    public PlayerManager getPlayerManager() {
+        return playerManager;
+    }
+
+    public DieManager getDieManager() {
+        return dieManager;
+    }
+
+    public int getCurrentPlayerIndex() {
+        return currentPlayerIndex;
+    }
+
+    public int getCurrentPlayerRolls() {
+        return currentPlayerRolls;
+    }
+
+    public String getPlayerWinner() {
+        return playerWinner;
+    }
+
+    public String getState() {
+        return state;
+    }
 }
+
