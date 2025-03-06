@@ -37,7 +37,7 @@ public class TileManager {
             else action = new ActionDefault();
 
             // Add tile to tiles
-            tileAdd(new Tile(new ActionDefault()));
+            tileAdd(new Tile(action));
         }
         System.out.println(String.format("Debug: Tiles generated. Number of tiles: %d", tiles.size()));
     }
