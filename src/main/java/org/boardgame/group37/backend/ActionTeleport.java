@@ -8,6 +8,7 @@ public class ActionTeleport implements Action {
     // Constructor
     public ActionTeleport(int currentIndex) {
         this.target = currentIndex;
+        System.err.println("Warning: Teleport action created with same target as current index.");
     }
 
     public ActionTeleport(int currentIndex, int target) {
