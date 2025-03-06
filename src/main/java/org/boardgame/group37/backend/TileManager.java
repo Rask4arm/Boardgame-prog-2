@@ -33,7 +33,7 @@ public class TileManager {
             Action action = null;
 
             // Set action based on random properties
-            if (rand < .1) action = new ActionTeleport(rand);
+            if (rand < .1) action = new ActionTeleport(i);
             else action = new ActionDefault();
 
             // Add tile to tiles
