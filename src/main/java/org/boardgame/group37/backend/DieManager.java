@@ -8,7 +8,7 @@ public class DieManager {
 
     // Constructor
     public DieManager() {
-        
+        System.out.println("\nDebug: DieManager created.");
     }
 
     // Methods
@@ -32,5 +32,9 @@ public class DieManager {
 
     public int diceValue() {
         return dice.stream().mapToInt((x) -> x.getValue()).sum();
+    }
+
+    public int diceCount() {
+        return dice.size();
     }
 }

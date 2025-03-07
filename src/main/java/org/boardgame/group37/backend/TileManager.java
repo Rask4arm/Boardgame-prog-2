@@ -14,18 +14,19 @@ public class TileManager {
         System.out.println("Debug: empty TileManager created.");
     }
     TileManager(int width, int size) {
+        System.out.println(String.format("Debug: TileManager created with width: %d, size: %d", width, size));
         this.width = width;
         this.size = size;
         tilesGenerate();
-        System.out.println(String.format("Debug: TileManager created with width: %d, size: %d", width, size));
     }
 
     // Methods
     public void tileAdd(Tile tile) {
         tiles.add(tile);
-        System.out.println(String.format("Debug: Tile added. Current number of tiles: %d", tiles.size()));
+        System.out.println(String.format("\nDebug: Tile added. Current number of tiles: %d", tiles.size()));
     }
     public void tilesGenerate() {
+        System.out.println("Debug: Generating tiles.");
         for(int i = 0; i < size; i++) {
 
             // Initialize random properties
@@ -39,7 +40,7 @@ public class TileManager {
             // Add tile to tiles
             tileAdd(new Tile(action));
         }
-        System.out.println(String.format("Debug: Tiles generated. Number of tiles: %d", tiles.size()));
+        System.out.println(String.format("Debug: Tiles generated successfully. Number of tiles: %d", tiles.size()));
     }
     public ArrayList<Tile> getTiles() {
         return tiles;

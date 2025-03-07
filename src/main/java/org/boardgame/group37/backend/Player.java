@@ -15,13 +15,12 @@ public class Player {
     public Player(Color color, String name) {
         this.color = color;
         this.name = name;
-        System.out.println(String.format("Debug: Player with Color: %s, Name: %s", color.toString(), name));
+        System.out.println(String.format("Debug: Player with Color: %s, Name: %s created", color.toString(), name));
     }
 
     // Methods
     public void executeMove() {
         position ++;
-        System.out.println(String.format("Debug: Player %s moved to position %d", name, position));
     }
     public void executeTile(TileManager TM, int tileIndex) {
         TM.getTiles().get(tileIndex).getAction().execute(this);

@@ -8,10 +8,16 @@ public class App {
         gameManager.getDieManager().dieAdd();
         gameManager.getDieManager().dieAdd();
         gameManager.gameStart();
-        gameManager.roundDie();
-        while (gameManager.getCurrentPlayerRolls() > 0) {
-            gameManager.roundMove();
-        }   gameManager.roundEnd();
+        while (!gameManager.getState().equals("end")) {
+            System.out.println("Current game state: " + gameManager.getState());
+            System.out.println("\nDebug: New round, current player: " + gameManager.getCurrentPlayerIndex());
+            gameManager.roundDie();
+            while (gameManager.getCurrentPlayerRolls() > 0) {
+                if (gameManager.getState().equals("end")) break;
+                gameManager.roundMove();
+            }   
+            gameManager.roundEnd();
+        }
     }
 }
 

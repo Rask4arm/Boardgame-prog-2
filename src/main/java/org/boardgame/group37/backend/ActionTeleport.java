@@ -24,4 +24,9 @@ public class ActionTeleport implements Action {
     public int getTarget() {
         return target;
     }
+
+    @Override
+    public String toString() {
+        return "ActionTeleport";
+    }
 }

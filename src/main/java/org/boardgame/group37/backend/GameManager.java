@@ -9,7 +9,7 @@ public class GameManager {
     private DieManager dieManager;
     private int currentPlayerIndex;
     private int currentPlayerRolls;
-    private String playerWinner;
+    private Player playerWinner;
     private String state;
 
     /*
@@ -19,6 +19,7 @@ public class GameManager {
     */
 
     public GameManager() {
+        System.out.println("\nDebug: GameManager created.");
         gameReset(true, true, true);
     }
 
@@ -28,25 +29,26 @@ public class GameManager {
         if (resetDie) dieManager = new DieManager();
         currentPlayerIndex = 0;
         currentPlayerRolls = 0;
+        playerWinner = null;
         state = "menu";
     }
 
     public void gameStart() {
     
         // Check if game can start
-        if (state != "menu" || playerManager.getPlayers().size() < 2) {
+        if (state != "menu" || playerManager.getPlayers().size() < 2 || dieManager.diceCount() < 1) {
             throw new IllegalArgumentException("Game cannot start.");
         }
     
         // Set state to game
         state = "game";
-        System.out.println("Debug: Game started.");
+        System.out.println("\nDebug: Game started.");
     }
 
     public void roundDie() {
         dieManager.diceThrow();
         currentPlayerRolls = dieManager.diceValue();
-        System.out.println("Debug: Player rolled dice.");
+        System.out.println(String.format("Debug: Player %d rolled dice.", currentPlayerIndex));
     }
 
     public void roundMove() {
@@ -57,18 +59,21 @@ public class GameManager {
         // Execute normal move
         if (currentPlayerRolls > 0) {
             currentPlayer.executeMove();
+            System.out.println(String.format("Debug: roundMove() --> executeMove(); --> playerRolls %d; playerPos %d", currentPlayerRolls, currentPlayer.getPosition()));
 
         // Execute action move
         } else {
             currentPlayer.executeTile(tileManager, currentPlayerIndex);
+            System.out.println(String.format("Debug: roundMove() --> executeTile(); --> playerRolls %d; playerPos %d", currentPlayerRolls, currentPlayer.getPosition()));
         }
 
         // Check if player has won
         if (currentPlayer.getPosition() >= tileManager.getTiles().size()) {
             gameEnd(currentPlayer);
+            System.out.println(String.format("Debug: roundMove() --> gameEnd(player %d) has won.", currentPlayerIndex));
         }
 
-        System.out.println("Debug: roundMove();");
+        
 
     }
 
@@ -80,7 +85,7 @@ public class GameManager {
 
     private void gameEnd(Player player) {
         state = "end";
-        playerWinner = player.getName();
+        playerWinner = player;
         System.out.println("Debug: Game ended.");
     }
 
@@ -104,7 +109,7 @@ public class GameManager {
         return currentPlayerRolls;
     }
 
-    public String getPlayerWinner() {
+    public Player getPlayerWinner() {
         return playerWinner;
     }
 
