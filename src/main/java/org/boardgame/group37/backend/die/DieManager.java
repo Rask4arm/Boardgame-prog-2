@@ -23,7 +23,7 @@ public class DieManager {
     }
 
     public void diceThrow() {
-        System.out.println("Debug: Dice thrown");
+        System.out.println(String.format("Debug: Dice thrown, with number of dice: %d", diceCount()));
         for(Die d : dice) {
             d.executeThrow();
         }
