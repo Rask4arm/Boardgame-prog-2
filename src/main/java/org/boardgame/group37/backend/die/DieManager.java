@@ -1,4 +1,4 @@
-package org.boardgame.group37.backend;
+package org.boardgame.group37.backend.die;
 import java.util.ArrayList;
 
 public class DieManager {

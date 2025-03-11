@@ -1,4 +1,4 @@
-package org.boardgame.group37.backend;
+package org.boardgame.group37.backend.die;
 
 public class Die {
 

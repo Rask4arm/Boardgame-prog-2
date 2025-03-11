@@ -35,6 +35,17 @@ public class GameManager {
         state = "menu";
     }
 
+    public void printProperties() {
+        System.out.println("Debug: GameManager properties:");
+        System.out.println("TileManager: " + tileManager);
+        System.out.println("PlayerManager: " + playerManager);
+        System.out.println("DieManager: " + dieManager);
+        System.out.println("CurrentPlayerIndex: " + currentPlayerIndex);
+        System.out.println("CurrentPlayerRolls: " + currentPlayerRolls);
+        System.out.println("PlayerWinner: " + playerWinner);
+        System.out.println("State: " + state);
+    }
+
     public void gameStart() {
     
         // Check if game can start

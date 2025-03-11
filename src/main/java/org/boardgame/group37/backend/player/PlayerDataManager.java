@@ -1,4 +1,4 @@
-package org.boardgame.group37.backend;
+package org.boardgame.group37.backend.player;
 
 import java.awt.Color;
 import java.nio.file.*;

@@ -1,4 +1,6 @@
-package org.boardgame.group37.backend;
+package org.boardgame.group37.backend.tile.action;
+
+import org.boardgame.group37.backend.player.Player;
 
 public class ActionDefault implements Action{
 
