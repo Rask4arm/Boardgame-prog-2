@@ -31,7 +31,7 @@ public class DieManager {
     }
 
     public int diceValue() {
-        return dice.stream().mapToInt((x) -> x.getValue()).sum();
+        return dice.stream().mapToInt((die) -> die.getValue()).sum();
     }
 
     public int diceCount() {
