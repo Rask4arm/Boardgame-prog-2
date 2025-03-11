@@ -1,5 +1,7 @@
-package org.boardgame.group37.backend;
+package org.boardgame.group37.backend.tile;
 import java.util.ArrayList;
+
+import org.boardgame.group37.backend.tile.action.*;
 
 public class TileManager {
 
@@ -10,10 +12,10 @@ public class TileManager {
     private ArrayList<Tile> tiles = new ArrayList<>();
 
     // Constructor
-    TileManager() {
+    public TileManager() {
         System.out.println("Debug: empty TileManager created.");
     }
-    TileManager(int width, int size) {
+    public TileManager(int width, int size) {
         System.out.println(String.format("Debug: TileManager created with width: %d, size: %d", width, size));
         this.width = width;
         this.size = size;
