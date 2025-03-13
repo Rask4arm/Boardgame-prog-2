@@ -1,7 +1,11 @@
-package org.boardgame.group37.backend;
+package org.boardgame.group37.backend.player;
 import java.util.ArrayList;
 import java.awt.Color;
 
+/*
+ * PlayerManager class is responsible for managing player data.
+ * It stores an ArrayList of Player objects.
+ */
 public class PlayerManager {
 
     // Properties

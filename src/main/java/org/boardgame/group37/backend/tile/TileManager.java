@@ -1,19 +1,35 @@
-package org.boardgame.group37.backend;
+package org.boardgame.group37.backend.tile;
 import java.util.ArrayList;
 
+import org.boardgame.group37.backend.tile.action.*;
+
+/*
+ * TileManager class is responsible for storing and generating tiles.
+ * It is used to store and generate tiles for the board.
+ */
 public class TileManager {
 
+    // Properties
     private int width = 0;
     private int size = 0;
-
-    // Properties
     private ArrayList<Tile> tiles = new ArrayList<>();
 
-    // Constructor
-    TileManager() {
-        System.out.println("Debug: empty TileManager created.");
+    /*
+     * Constructor
+     * Initializes the TileManager with an empty ArrayList of tiles.
+     */
+    public TileManager() {
+        System.out.println("Warning: empty TileManager created.");
     }
-    TileManager(int width, int size) {
+
+    /*
+     * Constructor
+     * Initializes the TileManager with the specified width and size.
+     * @param width: width of the board
+     * @param size: number of tiles
+     * Generates tiles based on the specified size.
+     */
+    public TileManager(int width, int size) {
         System.out.println(String.format("Debug: TileManager created with width: %d, size: %d", width, size));
         this.width = width;
         this.size = size;
@@ -21,10 +37,20 @@ public class TileManager {
     }
 
     // Methods
+
+    /*
+     * tileAdd method adds a new Tile object to the ArrayList.
+     * @param tile: Tile object
+     */
     public void tileAdd(Tile tile) {
         tiles.add(tile);
         System.out.println(String.format("\nDebug: Tile added. Current number of tiles: %d", tiles.size()));
     }
+
+    /*
+     * tilesGenerate method generates tiles based on the specified size.
+     * Tiles are generated with random properties.
+     */
     public void tilesGenerate() {
         System.out.println("Debug: Generating tiles.");
         for(int i = 0; i < size; i++) {
@@ -42,12 +68,27 @@ public class TileManager {
         }
         System.out.println(String.format("Debug: Tiles generated successfully. Number of tiles: %d", tiles.size()));
     }
+
+    /*
+     * getTiles method returns the ArrayList of Tile objects.
+     * @return ArrayList of Tile objects
+     */
     public ArrayList<Tile> getTiles() {
         return tiles;
     }
+
+    /*
+     * getWidth method returns the width of the board.
+     * @return width of the board
+     */
     public int getWidth() {
         return width;
     }
+
+    /*
+     * getSize method returns the number of tiles.
+     * @return number of tiles
+     */
     public int getSize() {
         return size;
     }
