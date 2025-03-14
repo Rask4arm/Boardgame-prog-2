@@ -14,7 +14,7 @@ public class TileDataManager {
         try {
             Gson gson = new Gson();
             String json = gson.toJson(tiles);
-            Files.write(java.nio.file.Paths.get("data/" + fileName), json.getBytes());
+            Files.write(java.nio.file.Paths.get("data/board/" + fileName), json.getBytes());
 
         // Catch exceptions
         } catch (Exception e) {
@@ -28,14 +28,14 @@ public class TileDataManager {
         // Load data from file
         try {
             Gson gson = new Gson();
-            String json = Files.readString(java.nio.file.Paths.get("data/" + fileName));
+            String json = Files.readString(java.nio.file.Paths.get("data/board/" + fileName));
             Type type = new TypeToken<ArrayList<Tile>>(){}.getType();   // Gets the type stored in the json file
             ArrayList<Tile> tiles = gson.fromJson(json, type);
             return tiles;
 
         // Catch no file exception
         } catch (NoSuchFileException e) {
-            System.out.println("File not found: " + fileName);
+            System.out.println("Error: File not found: " + fileName);
             return null;
 
         // Catch other exceptions
