@@ -51,4 +51,6 @@ public class PlayerDataManager {
         return;
     }
 
+    // Add a method to delete player and get all players
+
 }
