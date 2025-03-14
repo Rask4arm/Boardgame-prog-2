@@ -127,42 +127,79 @@ public class GameManager {
 
     }
 
+    /*
+     * Ends the current player's turn.
+     */
     public void roundEnd() {
         currentPlayerIndex++;
         if (currentPlayerIndex >= playerManager.getPlayers().size()) currentPlayerIndex = 0;
         System.out.println("Debug: roundEnd();");
     }
 
+    /*
+     * Ends the game.
+     * @param player: Player that won the game
+     */
     private void gameEnd(Player player) {
         state = "end";
         playerWinner = player;
         System.out.println("Debug: Game ended.");
     }
 
+    // Getters
+
+    /*
+     * getTileManager method returns the TileManager object.
+     * @return TileManager object
+     */
     public TileManager getTileManager() {
         return tileManager;
     }
 
+    /*
+     * getPlayerManager method returns the PlayerManager object.
+     * @return PlayerManager object
+     */
     public PlayerManager getPlayerManager() {
         return playerManager;
     }
 
+    /*
+     * getDieManager method returns the DieManager object.
+     * @return DieManager object
+     */
     public DieManager getDieManager() {
         return dieManager;
     }
 
+    /*
+     * getCurrentPlayerIndex method returns the current player index.
+     * @return current player index
+     */
     public int getCurrentPlayerIndex() {
         return currentPlayerIndex;
     }
 
+    /*
+     * getCurrentPlayerRolls method returns the current player rolls.
+     * @return current player rolls
+     */
     public int getCurrentPlayerRolls() {
         return currentPlayerRolls;
     }
 
+    /*
+     * getPlayerWinner method returns the player that won the game.
+     * @return player that won the game
+     */
     public Player getPlayerWinner() {
         return playerWinner;
     }
 
+    /*
+     * getState method returns the game state.
+     * @return game state
+     */
     public String getState() {
         return state;
     }

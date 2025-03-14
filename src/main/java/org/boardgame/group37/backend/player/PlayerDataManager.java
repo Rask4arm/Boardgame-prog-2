@@ -12,6 +12,11 @@ import com.opencsv.CSVWriter;
  */
 public class PlayerDataManager {
 
+    /*
+     * dataLoad method loads the player data from the file.
+     * @param playerName: Name of the player to load
+     * @return: PlayerDataPackage object loaded from the file OR null
+     */
     public PlayerDataPackage dataLoad(String playerName) {
         try {
             CSVReader reader = new CSVReader(Files.newBufferedReader(Paths.get("data/players.csv")));
@@ -30,6 +35,10 @@ public class PlayerDataManager {
         return null;
     }
 
+    /*
+     * dataSave method saves the player data to the file.
+     * @param playerData: PlayerDataPackage object to save
+     */
     public void dataSave(PlayerDataPackage playerData) {
         try {
             CSVWriter writer = new CSVWriter(Files.newBufferedWriter(Paths.get("data/players.csv"), StandardOpenOption.APPEND));

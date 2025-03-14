@@ -1,6 +1,5 @@
 TODO - backend:
 
-* FILE MANAGEMENT (JSON TILEMANAGER)
 * PRINT PROPERTIES FUNCTION ON ALL OBJECTS
 * MAKE TESTS
-* ADD dataLoadNames on playerDataManager
+* ADD dataLoadNames on playerDataManager and DELETE player method
