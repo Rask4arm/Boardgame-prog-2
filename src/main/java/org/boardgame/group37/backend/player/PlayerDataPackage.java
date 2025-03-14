@@ -13,7 +13,11 @@ public class PlayerDataPackage {
     private Color color;
     private int wins;
 
-    // Constructor
+    /*
+     * Constructor
+     * Initializes the PlayerDataPackage with the specified name, color, and number of wins.
+     * @param name: Player name
+     */
     PlayerDataPackage(String name, Color color, int wins) {
         this.name = name;
         this.color = color;
@@ -21,12 +25,27 @@ public class PlayerDataPackage {
     }
 
     // Getters
+
+    /*
+     * getName method returns the player's name.
+     * @return player's name
+     */
     public String getName() {
         return name;
     }
+
+    /*
+     * getColor method returns the player's color.
+     * @return player's color
+     */
     public Color getColor() {
         return color;
     }
+
+    /*
+     * getWins method returns the number of wins.
+     * @return number of wins
+     */
     public int getWins() {
         return wins;
     }
