@@ -1,6 +1,11 @@
 package org.boardgame.group37.backend.player;
 import java.awt.Color;
 
+/*
+ * PlayerDataPackage class is responsible for storing player data.
+ * It stores the player's name, color, and number of wins.
+ * It is used to pass player data between classes.
+ */
 public class PlayerDataPackage {
 
     // Properties

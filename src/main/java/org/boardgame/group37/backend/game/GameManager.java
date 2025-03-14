@@ -5,6 +5,10 @@ import org.boardgame.group37.backend.player.Player;
 import org.boardgame.group37.backend.player.PlayerManager;
 import org.boardgame.group37.backend.tile.TileManager;
 
+/*
+ * GameManager class is responsible for managing the game.
+ * It controls the game state, player turns, and game end conditions.
+ */
 public class GameManager {
     private TileManager tileManager;
     private PlayerManager playerManager;
@@ -20,11 +24,21 @@ public class GameManager {
     *   STATE = "end" --> Game has ended
     */
 
+    /* 
+     * Constructor for GameManager class.
+     * Initializes the game with default values.
+     */
     public GameManager() {
         System.out.println("\nDebug: GameManager created.");
         gameReset(true, true, true);
     }
 
+    /*
+     * gameReset method resets the game to default values.
+     * @param resetPlayers: Reset players
+     * @param resetTiles: Reset tiles
+     * @param resetDie: Reset die
+     */
     public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie) {
         if (resetTiles) tileManager = new TileManager(10, 50);
         if (resetPlayers) playerManager = new PlayerManager();
@@ -35,6 +49,10 @@ public class GameManager {
         state = "menu";
     }
 
+    /*
+     * printProperties method prints the GameManager properties to the console.
+     * Used for debugging.
+     */
     public void printProperties() {
         System.out.println("Debug: GameManager properties:");
         System.out.println("TileManager: " + tileManager);
@@ -46,6 +64,10 @@ public class GameManager {
         System.out.println("State: " + state);
     }
 
+    /* 
+     * gameStart method starts the game.
+     * Throws an exception if the game cannot start.
+     */
     public void gameStart() {
     
         // Check if game can start
@@ -58,32 +80,47 @@ public class GameManager {
         System.out.println("\nDebug: Game started.");
     }
 
+    /*
+     * Throws all die.
+     */
     public void roundDie() {
         dieManager.diceThrow();
         currentPlayerRolls = dieManager.diceValue();
         System.out.println(String.format("Debug: Player %d rolled dice.", currentPlayerIndex));
     }
 
+    /*
+     * Moves the current player once.
+     */
     public void roundMove() {
 
-        Player currentPlayer = playerManager.getPlayers().get(currentPlayerIndex);
+        Player currentPlayer = playerManager.getPlayers().get(currentPlayerIndex); // 
         currentPlayerRolls --;
 
-        // Execute normal move
+        // Execute normal move if player has rolls left
         if (currentPlayerRolls > 0) {
             currentPlayer.executeMove();
-            System.out.println(String.format("Debug: roundMove() --> executeMove(); --> playerRolls %d; playerPos %d", currentPlayerRolls, currentPlayer.getPosition()));
+            System.out.println(String.format(
+                "Debug: roundMove() --> executeMove(); --> playerRolls %d; playerPos %d", 
+                currentPlayerRolls, currentPlayer.getPosition())
+            );
 
-        // Execute action move
+        // Execute action move if player has no rolls left
         } else {
             currentPlayer.executeTile(tileManager, currentPlayerIndex);
-            System.out.println(String.format("Debug: roundMove() --> executeTile(); --> playerRolls %d; playerPos %d", currentPlayerRolls, currentPlayer.getPosition()));
+            System.out.println(String.format(
+                "Debug: roundMove() --> executeTile(); --> playerRolls %d; playerPos %d", 
+                currentPlayerRolls, currentPlayer.getPosition())
+            );
         }
 
         // Check if player has won
         if (currentPlayer.getPosition() >= tileManager.getTiles().size()) {
             gameEnd(currentPlayer);
-            System.out.println(String.format("Debug: roundMove() --> gameEnd(player %d) has won.", currentPlayerIndex));
+            System.out.println(String.format(
+                "Debug: roundMove() --> gameEnd(player %d) has won.", 
+                currentPlayerIndex)
+            );
         }
 
         

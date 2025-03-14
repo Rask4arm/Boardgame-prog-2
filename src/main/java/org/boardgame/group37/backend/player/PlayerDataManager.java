@@ -5,6 +5,11 @@ import java.nio.file.*;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
+/*
+ * PlayerDataManager class is responsible for saving and loading player data to and from files.
+ * It uses the OpenCSV library to convert the data to and from CSV format.
+ * The data is stored in the data/players.csv file.
+ */
 public class PlayerDataManager {
 
     public PlayerDataPackage dataLoad(String playerName) {

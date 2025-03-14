@@ -1,6 +1,6 @@
 package org.boardgame.group37.backend.player;
-import java.awt.Color;
 
+import java.awt.Color;
 import org.boardgame.group37.backend.tile.Tile;
 import org.boardgame.group37.backend.tile.TileManager;
 
