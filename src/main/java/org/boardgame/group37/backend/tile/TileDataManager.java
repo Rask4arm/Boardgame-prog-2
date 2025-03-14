@@ -45,4 +45,23 @@ public class TileDataManager {
         return null;
     }
 
+    public String[] dataGetFilenames() {
+
+        // Get all filenames in the data/board directory
+        try {
+            String[] filenames = Files.list(java.nio.file.Paths.get("data/board"))
+                .map(path -> path.getFileName())
+                .map(path -> path.toString())
+                .filter(name -> name.endsWith(".json")) // Filter out non-json files just in case
+                .toArray(size -> new String[size]);
+            return filenames;
+
+        // Catch exceptions
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
 }
