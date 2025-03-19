@@ -5,7 +5,7 @@ import org.boardgame.group37.backend.player.Player;
 import org.boardgame.group37.backend.player.PlayerManager;
 import org.boardgame.group37.backend.tile.TileManager;
 
-/*
+/**
  * GameManager class is responsible for managing the game.
  * It controls the game state, player turns, and game end conditions.
  */
@@ -24,7 +24,7 @@ public class GameManager {
     *   STATE = "end" --> Game has ended
     */
 
-    /* 
+    /** 
      * Constructor for GameManager class.
      * Initializes the game with default values.
      */
@@ -33,7 +33,7 @@ public class GameManager {
         gameReset(true, true, true);
     }
 
-    /*
+    /**
      * gameReset method resets the game to default values.
      * @param resetPlayers: Reset players
      * @param resetTiles: Reset tiles
@@ -49,7 +49,7 @@ public class GameManager {
         state = "menu";
     }
 
-    /*
+    /**
      * printProperties method prints the GameManager properties to the console.
      * Used for debugging.
      */
@@ -64,7 +64,7 @@ public class GameManager {
         System.out.println("State: " + state);
     }
 
-    /* 
+    /**
      * gameStart method starts the game.
      * Throws an exception if the game cannot start.
      */
@@ -80,7 +80,7 @@ public class GameManager {
         System.out.println("\nDebug: Game started.");
     }
 
-    /*
+    /**
      * Throws all die.
      */
     public void roundDie() {
@@ -89,7 +89,7 @@ public class GameManager {
         System.out.println(String.format("Debug: Player %d rolled dice.", currentPlayerIndex));
     }
 
-    /*
+    /**
      * Moves the current player once.
      */
     public void roundMove() {
@@ -127,7 +127,7 @@ public class GameManager {
 
     }
 
-    /*
+    /**
      * Ends the current player's turn.
      */
     public void roundEnd() {
@@ -136,7 +136,7 @@ public class GameManager {
         System.out.println("Debug: roundEnd();");
     }
 
-    /*
+    /**
      * Ends the game.
      * @param player: Player that won the game
      */
@@ -148,7 +148,7 @@ public class GameManager {
 
     // Getters
 
-    /*
+    /**
      * getTileManager method returns the TileManager object.
      * @return TileManager object
      */
@@ -156,7 +156,7 @@ public class GameManager {
         return tileManager;
     }
 
-    /*
+    /**
      * getPlayerManager method returns the PlayerManager object.
      * @return PlayerManager object
      */
@@ -164,7 +164,7 @@ public class GameManager {
         return playerManager;
     }
 
-    /*
+    /**
      * getDieManager method returns the DieManager object.
      * @return DieManager object
      */
@@ -172,7 +172,7 @@ public class GameManager {
         return dieManager;
     }
 
-    /*
+    /**
      * getCurrentPlayerIndex method returns the current player index.
      * @return current player index
      */
@@ -180,7 +180,7 @@ public class GameManager {
         return currentPlayerIndex;
     }
 
-    /*
+    /**
      * getCurrentPlayerRolls method returns the current player rolls.
      * @return current player rolls
      */
@@ -188,7 +188,7 @@ public class GameManager {
         return currentPlayerRolls;
     }
 
-    /*
+    /**
      * getPlayerWinner method returns the player that won the game.
      * @return player that won the game
      */
@@ -196,7 +196,7 @@ public class GameManager {
         return playerWinner;
     }
 
-    /*
+    /**
      * getState method returns the game state.
      * @return game state
      */

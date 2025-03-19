@@ -4,7 +4,7 @@ import java.awt.Color;
 import org.boardgame.group37.backend.tile.Tile;
 import org.boardgame.group37.backend.tile.TileManager;
 
-/*
+/**
  * Player class is responsible for managing player data.
  * It stores the player's color, name, and position on the board.
  */
@@ -15,7 +15,7 @@ public class Player {
     private String name = "noname";
     private int position = 0;
 
-    /*
+    /**
      * Constructor
      * Initializes the Player with default values.
      */
@@ -23,7 +23,7 @@ public class Player {
         System.out.println("Debug: Empty player created");
     }
 
-    /*
+    /**
      * Constructor
      * Initializes the Player with the specified color and name.
      * @param color: Player color
@@ -37,7 +37,7 @@ public class Player {
 
     // Methods
 
-    /*
+    /**
      * executeMove method moves the player one step forward.
      * This method is used when NOT activating a tile. (with rolls left from the die)
      */
@@ -45,7 +45,7 @@ public class Player {
         position ++;
     }
 
-    /*
+    /**
      * executeTile method executes the action of the tile the player is on. (when no rolls left from the die)
      * @param TM: TileManager object
      * @param tileIndex: index of the tile the player is on
@@ -54,7 +54,7 @@ public class Player {
         TM.getTiles().get(tileIndex).getAction().execute(this);
     }
 
-    /*
+    /**
      * executeTile method executes the action of the tile the player is on. (when no rolls left from the die)
      * @param tile: Tile object
      */
@@ -64,7 +64,7 @@ public class Player {
 
     // Getters & Setters
 
-    /*
+    /**
      * getPosition method returns the player's position on the board.
      * @return player's position on the board
      */
@@ -72,7 +72,7 @@ public class Player {
         return position;
     }
 
-    /*
+    /**
      * getColor method returns the player's color.
      * @return player's color in Color object
      */
@@ -80,7 +80,7 @@ public class Player {
         return color;
     }
 
-    /*
+    /**
      * getName method returns the player's name.
      * @return player's name
      */
@@ -88,7 +88,7 @@ public class Player {
         return name;
     }
 
-    /*
+    /**
      * resetPosition method resets the player's position to 0.
      */
     public void resetPosition() {
@@ -96,7 +96,8 @@ public class Player {
         System.out.println(String.format("Debug: Player %s reset position to %d", name, position));
     }
 
-    /*
+    
+    /**
      * setPosition method sets the player's position on the board.
      * @param position: player's position on the board
      */
@@ -105,7 +106,7 @@ public class Player {
         System.out.println(String.format("Debug: Player %s set position to %d", name, position));
     }
 
-    /*
+    /**
      * toString method returns the player's name and color, and position as a string.
      * @return player's name, color, and position as a string
      */

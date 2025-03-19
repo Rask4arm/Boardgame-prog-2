@@ -1,7 +1,7 @@
 package org.boardgame.group37.backend.die;
 import java.util.ArrayList;
 
-/*
+/**
  * DieManager class is responsible for managing dice data.
  * It stores an ArrayList of Die objects.
  */
@@ -10,7 +10,7 @@ public class DieManager {
     // Properties
     private ArrayList<Die> dice = new ArrayList<>();
 
-    /*
+    /**
      * Constructor
      * Initializes the DieManager with an empty ArrayList of Die objects.
      */
@@ -20,7 +20,7 @@ public class DieManager {
 
     // Methods
 
-    /*
+    /**
      * dieAdd method adds a new Die object to the ArrayList.
      */
     public void dieAdd() {
@@ -28,7 +28,7 @@ public class DieManager {
         System.out.println(String.format("Debug: Die added. Current number of dice: %d", dice.size()));
     }
 
-    /*
+    /**
      * dieRemove method removes the last Die object from the ArrayList.
      */
     public void dieRemove() {
@@ -36,7 +36,7 @@ public class DieManager {
         System.out.println(String.format("Debug: Die removed. Current number of dice: %d", dice.size()));
     }
 
-    /*
+    /**
      * diceThrow method throws all dice in the ArrayList.
      */
     public void diceThrow() {
@@ -47,7 +47,7 @@ public class DieManager {
         System.out.println(String.format("Debug: Total value of dice: %d", diceValue()));
     }
 
-    /*
+    /**
      * diceValue method returns the total value of all dice in the ArrayList.
      * @return total value of all dice in the ArrayList
      */
@@ -55,7 +55,7 @@ public class DieManager {
         return dice.stream().mapToInt((die) -> die.getValue()).sum();
     }
 
-    /*
+    /**
      * diceCount method returns the number of dice in the ArrayList.
      * @return number of dice in the ArrayList
      */
@@ -63,7 +63,7 @@ public class DieManager {
         return dice.size();
     }
 
-    /*
+    /**
      * toString method returns the name of the DieManager and the number of dice and total value.
      * @return name of the DieManager and the number of dice and total value
      */
