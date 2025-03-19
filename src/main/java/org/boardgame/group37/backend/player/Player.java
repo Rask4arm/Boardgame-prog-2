@@ -104,4 +104,13 @@ public class Player {
         this.position = position;
         System.out.println(String.format("Debug: Player %s set position to %d", name, position));
     }
+
+    /*
+     * toString method returns the player's name and color, and position as a string.
+     * @return player's name, color, and position as a string
+     */
+    @Override
+    public String toString() {
+        return String.format("Player | Name: %s, Color: %s, Position: %d", name, color.toString(), position);
+    }
 }

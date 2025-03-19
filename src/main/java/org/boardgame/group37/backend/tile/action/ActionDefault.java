@@ -18,6 +18,10 @@ public class ActionDefault implements Action{
         System.out.println("Debug: ActionDefault executed");
     };
 
+    /*
+     * toString method returns the name of the action.
+     * @return name of the action
+     */
     @Override
     public String toString() {
         return "ActionDefault";

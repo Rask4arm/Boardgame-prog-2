@@ -40,4 +40,13 @@ public class Tile {
     public Action getAction() {
         return action;
     }
+
+    /*
+     * toString method returns the name of the action.
+     * @return name of the action
+     */
+    @Override
+    public String toString() {
+        return String.format("Tile | Action: %s", action.toString());
+    }
 }

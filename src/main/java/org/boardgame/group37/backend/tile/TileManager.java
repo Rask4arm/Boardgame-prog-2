@@ -92,4 +92,13 @@ public class TileManager {
     public int getSize() {
         return size;
     }
+
+    /*
+     * toString method returns the number of tiles.
+     * @return number of tiles
+     */
+    @Override
+    public String toString() {
+        return String.format("TileManager | %d Tiles", size);
+    }
 }

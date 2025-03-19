@@ -62,4 +62,9 @@ public class DieManager {
     public int diceCount() {
         return dice.size();
     }
+
+    @Override
+    public String toString() {
+        return String.format("DieManager | %d Dice | %d Value", diceCount(), diceValue());
+    }
 }

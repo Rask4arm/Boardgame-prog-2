@@ -43,4 +43,13 @@ public class Die {
         value = (int) (Math.random() * 6) + 1;
         System.out.println(String.format("Debug: Die thrown. Value: %d", value));
     }
+
+    /*
+     * toString method returns the value of the die as a string.
+     * @return value of the die as a string
+     */
+    @Override
+    public String toString() {
+        return String.format("Die | Value: %d", value);
+    }
 }

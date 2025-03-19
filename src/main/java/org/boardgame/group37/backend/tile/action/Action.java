@@ -7,10 +7,6 @@ import org.boardgame.group37.backend.player.Player;
  */
 public interface Action {
 
-    /*
-     * execute method executes the action of the tile.
-     * @param player: Player object
-     */
     public void execute(Player player);
 
 }
