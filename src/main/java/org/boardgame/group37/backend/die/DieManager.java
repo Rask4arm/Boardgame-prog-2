@@ -63,6 +63,10 @@ public class DieManager {
         return dice.size();
     }
 
+    /*
+     * toString method returns the name of the DieManager and the number of dice and total value.
+     * @return name of the DieManager and the number of dice and total value
+     */
     @Override
     public String toString() {
         return String.format("DieManager | %d Dice | %d Value", diceCount(), diceValue());
