@@ -81,7 +81,7 @@ public class GameManager {
     }
 
     /*
-     * Throws all die.
+     * Throws all dice.
      */
     public void roundDie() {
         dieManager.diceThrow();
@@ -202,6 +202,10 @@ public class GameManager {
      */
     public String getState() {
         return state;
+    }
+
+    public int getCurrentPlayerPosition() {
+        return playerManager.getPlayers().get(currentPlayerIndex).getPosition();
     }
 }
 

@@ -1,4 +1,4 @@
-/*package org.boardgame.group37.frontend;
+package org.boardgame.group37.frontend;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -10,7 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.boardgame.group37.backend.managers.GameManager;
+import org.boardgame.group37.backend.game.GameManager;
 
 public class HelloFX extends Application {
     BoardGraphic boardGraphic;
@@ -23,17 +23,26 @@ public class HelloFX extends Application {
         boardGraphic = new BoardGraphic(10,10);
         playerToken = new PlayerToken(Color.RED);
         gameManager = new GameManager();
-        gameManager.gameStart();
 
+
+        gameManager.getPlayerManager().playerAdd();
+        gameManager.getPlayerManager().playerAdd();
+        gameManager.getDieManager().dieAdd();
+        gameManager.getDieManager().dieAdd();
+
+        gameManager.printProperties();
+
+        gameManager.gameStart();
         Button diceButton = new Button("Roll dice?");
 
         diceButton.setOnAction(e ->
-                {gameManager.roundStart();
-                gameManager.roundRoll();
-                gameManager.roundMove();
+                {gameManager.roundDie();
+                    while (gameManager.getCurrentPlayerRolls() > 0) {
+                        if (gameManager.getState().equals("end")) break;
+                        gameManager.roundMove();
+                        boardGraphic.updatePlayerPosition(playerToken, gameManager.getCurrentPlayerPosition());
+                    }
                 gameManager.roundEnd();
-                System.out.println("find this" + gameManager.getPlayerCurrentIndex());
-                boardGraphic.updatePlayerPosition(playerToken, gameManager.getPlayerCurrentIndex());
                 }
         );
 
@@ -55,4 +64,3 @@ public class HelloFX extends Application {
     }
 
 }
-*/
