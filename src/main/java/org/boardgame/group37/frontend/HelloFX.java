@@ -11,17 +11,19 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.boardgame.group37.backend.game.GameManager;
+import java.util.concurrent.TimeUnit;
 
 public class HelloFX extends Application {
     BoardGraphic boardGraphic;
-    PlayerToken playerToken;
+    PlayerToken[] playerToken = new PlayerToken[2];
     GameManager gameManager;
 
 
     @Override
     public void start(Stage stage) {
         boardGraphic = new BoardGraphic(10,10);
-        playerToken = new PlayerToken(Color.RED);
+        playerToken[0] = new PlayerToken(Color.RED);
+        playerToken[1] = new PlayerToken(Color.ORANGE);
         gameManager = new GameManager();
 
 
@@ -40,13 +42,14 @@ public class HelloFX extends Application {
                     while (gameManager.getCurrentPlayerRolls() > 0) {
                         if (gameManager.getState().equals("end")) break;
                         gameManager.roundMove();
-                        boardGraphic.updatePlayerPosition(playerToken, gameManager.getCurrentPlayerPosition());
+                        boardGraphic.updatePlayerPosition(playerToken[gameManager.getCurrentPlayerIndex()], gameManager.getCurrentPlayerPosition());
                     }
                 gameManager.roundEnd();
                 }
         );
 
-        boardGraphic.updatePlayerPosition(playerToken, 1);
+        boardGraphic.updatePlayerPosition(playerToken[0], 1);
+        boardGraphic.updatePlayerPosition(playerToken[1], 1);
 
         VBox root = new VBox();
 
