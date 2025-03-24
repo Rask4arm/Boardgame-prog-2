@@ -13,7 +13,6 @@ public class Tile {
     // Constructor
 
     /**
-     * Constructor
      * Initializes the Tile with the default action.
      */
     public Tile() {
@@ -22,7 +21,6 @@ public class Tile {
     }
 
     /**
-     * Constructor
      * Initializes the Tile with the specified action.
      * @param action: Action object
      */

@@ -12,14 +12,13 @@ public class TileDataPackage {
     private ArrayList<Tile> tiles;
 
     /**
-     * Constructor
      * Initializes the TileDataPackage with the specified ArrayList of Tile objects.
      * @param tiles: ArrayList of Tile objects
      */
     public TileDataPackage(ArrayList<Tile> tiles) {
         this.tiles = tiles;
     }
-
+    
     // Getters
 
     /**

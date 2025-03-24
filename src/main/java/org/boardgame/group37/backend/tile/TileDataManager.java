@@ -4,6 +4,7 @@ import com.google.gson.Gson;                // JSON library
 import com.google.gson.reflect.TypeToken;   // JSON get type
 import java.util.ArrayList;
 import java.nio.file.*;
+import java.io.FileNotFoundException;
 import java.lang.reflect.Type;
 
 /**
@@ -42,15 +43,26 @@ public class TileDataManager {
 
         // Load data from file
         try {
+
+            // Json to object initialization
             Gson gson = new Gson();
-            String json = Files.readString(java.nio.file.Paths.get("data/board/" + fileName));
+
+            // Get file path
+            Path path = java.nio.file.Paths.get("data/board/" + fileName);
+
+            // Read file
+            String json = Files.readString(path);
+
+            // Convert json to object
             Type type = new TypeToken<ArrayList<Tile>>(){}.getType();   // Gets the type stored in the json file
+            
+            // Return the object
             ArrayList<Tile> tiles = gson.fromJson(json, type);
             return tiles;
 
         // Catch no file exception
         } catch (NoSuchFileException e) {
-            throw new Exception("File not found: " + fileName);
+            throw new FileNotFoundException("File not found: " + fileName);
 
         // Catch other exceptions
         } catch (Exception e) {

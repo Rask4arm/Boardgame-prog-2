@@ -15,7 +15,6 @@ public class TileManager {
     private ArrayList<Tile> tiles = new ArrayList<>();
 
     /**
-     * Constructor
      * Initializes the TileManager with an empty ArrayList of tiles.
      */
     public TileManager() {
@@ -23,7 +22,6 @@ public class TileManager {
     }
 
     /**
-     * Constructor
      * Initializes the TileManager with the specified width and size.
      * @param width: width of the board
      * @param size: number of tiles

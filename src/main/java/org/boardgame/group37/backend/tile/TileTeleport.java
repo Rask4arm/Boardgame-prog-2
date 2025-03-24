@@ -8,7 +8,6 @@ import org.boardgame.group37.backend.tile.action.*;
 public class TileTeleport extends Tile {
 
     /**
-     * Constructor
      * Initializes the TileTeleport with the specified target index.
      * @param targetIndex: int
      */
