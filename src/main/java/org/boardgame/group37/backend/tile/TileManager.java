@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 import org.boardgame.group37.backend.tile.action.*;
 
-/*
+/**
  * TileManager class is responsible for storing and generating tiles.
  * It is used to store and generate tiles for the board.
  */
@@ -14,7 +14,7 @@ public class TileManager {
     private int size = 0;
     private ArrayList<Tile> tiles = new ArrayList<>();
 
-    /*
+    /**
      * Constructor
      * Initializes the TileManager with an empty ArrayList of tiles.
      */
@@ -22,7 +22,7 @@ public class TileManager {
         System.out.println("Warning: empty TileManager created.");
     }
 
-    /*
+    /**
      * Constructor
      * Initializes the TileManager with the specified width and size.
      * @param width: width of the board
@@ -38,7 +38,7 @@ public class TileManager {
 
     // Methods
 
-    /*
+    /**
      * tileAdd method adds a new Tile object to the ArrayList.
      * @param tile: Tile object
      */
@@ -47,7 +47,7 @@ public class TileManager {
         System.out.println(String.format("\nDebug: Tile added. Current number of tiles: %d", tiles.size()));
     }
 
-    /*
+    /**
      * tilesGenerate method generates tiles based on the specified size.
      * Tiles are generated with random properties.
      */
@@ -69,7 +69,7 @@ public class TileManager {
         System.out.println(String.format("Debug: Tiles generated successfully. Number of tiles: %d", tiles.size()));
     }
 
-    /*
+    /**
      * getTiles method returns the ArrayList of Tile objects.
      * @return ArrayList of Tile objects
      */
@@ -77,7 +77,7 @@ public class TileManager {
         return tiles;
     }
 
-    /*
+    /**
      * getWidth method returns the width of the board.
      * @return width of the board
      */
@@ -85,7 +85,7 @@ public class TileManager {
         return width;
     }
 
-    /*
+    /**
      * getSize method returns the number of tiles.
      * @return number of tiles
      */
@@ -93,7 +93,7 @@ public class TileManager {
         return size;
     }
 
-    /*
+    /**
      * toString method returns the number of tiles.
      * @return number of tiles
      */

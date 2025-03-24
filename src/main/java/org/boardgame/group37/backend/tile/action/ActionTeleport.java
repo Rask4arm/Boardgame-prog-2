@@ -10,48 +10,38 @@ import org.boardgame.group37.backend.player.Player;
 public class ActionTeleport implements Action {
 
     // Properties
-    private int target = 0;
+    private int targetIndex = 0;
 
-    /*
+    /**
      * Constructor
      * Initializes the ActionTeleport with the specified target tile index.
-     * @param target: target tile index
+     * @param targetIndex: int target tile index
      */
-    public ActionTeleport(int currentIndex) {
-        this.target = currentIndex;
-        System.err.println("Warning: Teleport action created with same target as current index.");
-    }
-
-    /*
-     * Constructor
-     * Initializes the ActionTeleport with the specified target tile index.
-     * @param currentIndex: current tile index
-     */
-    public ActionTeleport(int currentIndex, int target) {
-        this.target = target;
+    public ActionTeleport(int targetIndex) {
+        this.targetIndex = targetIndex;
     }
 
     // Methods
 
-    /*
+    /**
      * execute method moves the player to the target tile.
      * @param player: Player object
      */
     @Override
     public void execute(Player player) {
         System.out.println("Debug: Executing teleport action");
-        player.setPosition(target);
+        player.setPosition(targetIndex);
     };
 
-    /*
+    /**
      * getTarget method returns the target tile index.
      * @return target tile index
      */
     public int getTarget() {
-        return target;
+        return targetIndex;
     }
 
-    /*
+    /**
      * toString method returns the name of the action.
      * @return name of the action
      */

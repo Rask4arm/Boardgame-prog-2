@@ -1,7 +1,7 @@
 package org.boardgame.group37.backend.player;
 import java.awt.Color;
 
-/*
+/**
  * PlayerDataPackage class is responsible for storing player data.
  * It stores the player's name, color, and number of wins.
  * It is used to pass player data between classes.
@@ -13,7 +13,7 @@ public class PlayerDataPackage {
     private Color color;
     private int wins;
 
-    /*
+    /**
      * Constructor
      * Initializes the PlayerDataPackage with the specified name, color, and number of wins.
      * @param name: Player name
@@ -26,7 +26,7 @@ public class PlayerDataPackage {
 
     // Getters
 
-    /*
+    /**
      * getName method returns the player's name.
      * @return player's name
      */
@@ -34,7 +34,7 @@ public class PlayerDataPackage {
         return name;
     }
 
-    /*
+    /**
      * getColor method returns the player's color.
      * @return player's color
      */
@@ -42,7 +42,7 @@ public class PlayerDataPackage {
         return color;
     }
 
-    /*
+    /**
      * getWins method returns the number of wins.
      * @return number of wins
      */

@@ -2,7 +2,7 @@ package org.boardgame.group37.backend.player;
 import java.util.ArrayList;
 import java.awt.Color;
 
-/*
+/**
  * PlayerManager class is responsible for managing player data.
  * It stores an ArrayList of Player objects.
  */
@@ -11,7 +11,7 @@ public class PlayerManager {
     // Properties
     private ArrayList<Player> players = new ArrayList<>();
 
-   /*
+   /**
     * Constructor
     * Initializes the PlayerManager with an empty ArrayList of Player objects.
     */
@@ -21,7 +21,7 @@ public class PlayerManager {
 
     // Methods
 
-    /*
+    /**
      * getPlayers method returns the ArrayList of Player objects.
      * @return ArrayList of Player objects
      */
@@ -29,7 +29,7 @@ public class PlayerManager {
         return players;
     }
 
-    /*
+    /**
      * playerAdd method adds a new Player object to the ArrayList.
      * The player is initialized with default values.
      */
@@ -38,7 +38,7 @@ public class PlayerManager {
         System.out.println(String.format("Debug: Current number of players: %d", players.size()));
     }
 
-    /*
+    /**
      * playerAdd method adds a new Player object to the ArrayList.
      * The player is initialized with the specified color and name.
      * @param color: Player color
@@ -49,7 +49,7 @@ public class PlayerManager {
         System.out.println(String.format("Debug: Current number of players: %d", players.size()));
     }
 
-    /*
+    /**
      * playerRemove method removes the last Player object from the ArrayList.
      */
     public void playerRemove() {

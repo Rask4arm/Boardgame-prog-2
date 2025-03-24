@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.nio.file.*;
 import java.lang.reflect.Type;
 
-/*
+/**
  * TileDataManager class is responsible for saving and loading tile data to and from files.
  * It uses the Gson library to convert the data to and from JSON format.
  * The data is stored in the data/board directory.
  */
 public class TileDataManager {
 
-    /*
+    /**
      * dataSave method saves the tile data to a file.
      * @param tiles: ArrayList of Tile objects to save
      * @param fileName: Name of the file to save to
@@ -33,7 +33,7 @@ public class TileDataManager {
         return;
     }
 
-    /*
+    /**
      * dataLoad method loads the tile data from a file.
      * @param fileName: Name of the file to load from
      * @return: ArrayList of Tile objects loaded from the file OR null
@@ -59,7 +59,7 @@ public class TileDataManager {
         return null;
     }
 
-    /* 
+    /**
      * dataGetFilenames method gets all the filenames in the data/board directory.
      * @return: String array of all filenames in the data/board directory OR null
      */
