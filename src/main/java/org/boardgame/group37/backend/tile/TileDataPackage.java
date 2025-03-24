@@ -3,6 +3,7 @@ package org.boardgame.group37.backend.tile;
 import java.util.ArrayList;
 
 /**
+ * NOT IN USE IN THE CURRENT IMPLEMENTATION
  * TileDataPackage stores an ArrayList of Tile objects.
  * It is used to pass tile data between classes in filehandling.
  */
@@ -18,7 +19,7 @@ public class TileDataPackage {
     public TileDataPackage(ArrayList<Tile> tiles) {
         this.tiles = tiles;
     }
-    
+
     // Getters
 
     /**

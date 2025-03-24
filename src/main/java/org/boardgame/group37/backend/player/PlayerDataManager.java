@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.nio.file.*;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
+import java.util.ArrayList;
 
 /**
  * PlayerDataManager class is responsible for saving and loading player data to and from files.
@@ -17,18 +18,58 @@ public class PlayerDataManager {
      * @param playerName: Name of the player to load
      * @return: PlayerDataPackage object loaded from the file OR null
      */
-    public PlayerDataPackage dataLoad(String playerName) {
+    public static Player dataLoad(String playerName) {
+    
+        // Fetch and return the player data
         try {
-            CSVReader reader = new CSVReader(Files.newBufferedReader(Paths.get("data/players.csv")));
+
+            // Initialize values
+            Path path = Paths.get("data/players.csv");
+            CSVReader reader = new CSVReader(Files.newBufferedReader(path));
             String[] data;
-            PlayerDataPackage dataReturn = null;
+            Player dataReturn = null;
+
+            // Fetch the player data
             while ((data = reader.readNext()) != null) {
                 if (data[0].equals(playerName)) {
-                    dataReturn = new PlayerDataPackage(data[0], Color.decode(data[1]), Integer.parseInt(data[2]));
+                    dataReturn = new Player(Color.decode(data[1]), data[0]);
+                    break;
                 }
             }
+
+            // Close the reader and return the data
+            reader.close();
+            return new Player(dataReturn.getColor(), dataReturn.getName());
+
+        // Catch exceptions
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * dataLoad method loads all player data from the file.
+     * @return: ArrayList of Player objects loaded from the file OR null
+     */
+    public static ArrayList<Player> dataLoad(){
+        try {
+            
+            // Initialize values
+            Path path = Paths.get("data/players.csv");
+            CSVReader reader = new CSVReader(Files.newBufferedReader(path));
+            String[] data;
+            ArrayList<Player> dataReturn = new ArrayList<>();
+
+            // Fetch the player data
+            while ((data = reader.readNext()) != null) {
+                dataReturn.add(new Player(Color.decode(data[1]), data[0]));
+            }
+
+            // Close the reader and return the data
             reader.close();
             return dataReturn;
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,7 +80,7 @@ public class PlayerDataManager {
      * dataSave method saves the player data to the file.
      * @param playerData: PlayerDataPackage object to save
      */
-    public void dataSave(PlayerDataPackage playerData) {
+    public static void dataSave(PlayerDataPackage playerData) {
         try {
             CSVWriter writer = new CSVWriter(Files.newBufferedWriter(Paths.get("data/players.csv"), StandardOpenOption.APPEND));
             String[] data = {playerData.getName(), Integer.toString(playerData.getColor().hashCode()), Integer.toString(playerData.getWins())};
@@ -51,6 +92,22 @@ public class PlayerDataManager {
         return;
     }
 
-    // Add a method to delete player and get all players
+    public static void dataUpdate(PlayerDataPackage playerData) {
+        try {
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void dataDelete(String playerName) {
+        try {
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void dataDelete(){};
 
 }
