@@ -34,6 +34,14 @@ public class TileManager {
         tilesGenerate();
     }
 
+    /**
+     * Initializes the TileManager with the specified ArrayList of Tile objects.
+     * @param tiles
+     */
+    public TileManager(ArrayList<Tile> tiles) {
+        this.tiles = tiles;
+    }
+
     // Methods
 
     /**

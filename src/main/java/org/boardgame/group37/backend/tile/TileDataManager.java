@@ -1,11 +1,13 @@
 package org.boardgame.group37.backend.tile;
 
-import com.google.gson.Gson;                // JSON library
-import com.google.gson.reflect.TypeToken;   // JSON get type
-import java.util.ArrayList;
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 import java.nio.file.*;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import org.boardgame.group37.backend.tile.action.*;
 
 /**
  * TileDataManager class is responsible for saving and loading tile data to and from files.
@@ -14,19 +16,41 @@ import java.lang.reflect.Type;
  */
 public class TileDataManager {
 
+    private static Gson createGson() {
+        return new GsonBuilder().setPrettyPrinting().create();
+    }
+
+    /**
+     * dataInit method creates missing directories.
+     */
+    public static final void dataInit() {
+        // Get the path
+        Path path = java.nio.file.Paths.get("data/board");
+
+        // Create the directory if it does not exist
+        if (!Files.exists(path)) {
+            try {
+                Files.createDirectories(path);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     /**
      * dataSave method saves the tile data to a file.
      * @param tiles: ArrayList of Tile objects to save
      * @param fileName: Name of the file to save to
      */
-    public void dataSave(ArrayList<Tile> tiles, String fileName) {
+    public static final void dataSave(ArrayList<Tile> tiles, String fileName) {
 
         // Save data to file
         try {
             Gson gson = new Gson();
             String json = gson.toJson(tiles);
-            Files.write(java.nio.file.Paths.get("data/board/" + fileName), json.getBytes());
-
+            String fullFileName = fileName.endsWith(".json") ? fileName : fileName + ".json";
+            Files.write(java.nio.file.Paths.get("data/board/" + fullFileName), json.getBytes());
+            
         // Catch exceptions
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,16 +63,22 @@ public class TileDataManager {
      * @param fileName: Name of the file to load from
      * @return: ArrayList of Tile objects loaded from the file OR null
      */
-    public ArrayList<Tile> dataLoad(String fileName) throws Exception {
+    public static final ArrayList<Tile> dataLoad(String fileName) throws Exception {
 
         // Load data from file
         try {
+
+            // Initialize file
+            dataInit();
 
             // Json to object initialization
             Gson gson = new Gson();
 
             // Get file path
-            Path path = java.nio.file.Paths.get("data/board/" + fileName);
+            String fullFileName = fileName.endsWith(".json") ? fileName : fileName + ".json";
+            Path path = java.nio.file.Paths.get("data/board/" + fullFileName);
+
+
 
             // Read file
             String json = Files.readString(path);
@@ -68,17 +98,21 @@ public class TileDataManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+
+        throw new Exception("Error loading file: " + fileName);
     }
 
     /**
      * dataGetFilenames method gets all the filenames in the data/board directory.
      * @return: String array of all filenames in the data/board directory OR null
      */
-    public String[] dataGetFilenames() {
+    public static final String[] dataGetFilenames() {
 
         // Get all filenames in the data/board directory
         try {
+
+            // Initialize file
+            dataInit();
 
             // Get path
             Path path = java.nio.file.Paths.get("data/board");

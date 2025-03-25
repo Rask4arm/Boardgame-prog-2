@@ -21,6 +21,12 @@ target/
 .springBeans
 .sts4-cache
 
+# Game data files
+data/board/*.json
+data/players.csv
+data/board/
+saved-data/
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
