@@ -17,7 +17,13 @@ import org.boardgame.group37.backend.tile.action.*;
 public class TileDataManager {
 
     private static Gson createGson() {
-        return new GsonBuilder().setPrettyPrinting().create();
+        GsonBuilder gson = new GsonBuilder();
+
+        // Adaptation for different types of actions
+        
+
+        return null;
+        
     }
 
     /**

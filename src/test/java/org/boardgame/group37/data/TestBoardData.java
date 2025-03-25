@@ -2,7 +2,6 @@ package org.boardgame.group37.data;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.boardgame.group37.backend.tile.*;
-import java.util.ArrayList;
 
 
 public class TestBoardData {

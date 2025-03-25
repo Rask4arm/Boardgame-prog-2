@@ -44,8 +44,18 @@ public class PlayerManager {
      * @param color: Player color
      * @param name: Player name
      */
-    public void playerAdd(Color color, String name) {
+    public void playerAdd(String name, Color color) {
         players.add(new Player(name, color));
+        System.out.println(String.format("Debug: Current number of players: %d", players.size()));
+    }
+
+    /**
+     * playerAdd method adds a new Player object to the ArrayList.
+     * The player is initialized with the specified Player object.
+     * @param player Player object
+     */
+    public void playerAdd(Player player) {
+        players.add(player);
         System.out.println(String.format("Debug: Current number of players: %d", players.size()));
     }
 

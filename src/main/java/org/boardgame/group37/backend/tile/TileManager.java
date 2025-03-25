@@ -92,11 +92,19 @@ public class TileManager {
     }
 
     /**
-     * getSize method returns the number of tiles.
+     * getSize method returns the number of tiles it is supposed to generate.
      * @return number of tiles
      */
     public int getSize() {
         return size;
+    }
+
+    /**
+     * getSizeRaw method returns the number of tiles in the ArrayList.
+     * @return number of tiles
+     */
+    public int getSizeRaw() {
+        return tiles.size();
     }
 
     /**
