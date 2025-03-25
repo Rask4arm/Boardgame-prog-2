@@ -51,7 +51,7 @@ public class PlayerDataManager {
      * @param playerName: Name of the player to load
      * @return: PlayerDataPackage object loaded from the file OR null
      */
-    public static Player dataLoad(String playerName) {
+    public static final Player dataLoad(String playerName) throws Exception {
     
         // Fetch and return the player data
         try {
@@ -75,6 +75,12 @@ public class PlayerDataManager {
 
             // Close the reader and return the data
             reader.close();
+
+            // Throw exception if player not found
+            if (dataReturn == null) {
+                throw new Exception("Player not found in the file.");
+            }
+
             return new Player(dataReturn.getName(), dataReturn.getColor());
 
         // Catch exceptions
@@ -101,7 +107,7 @@ public class PlayerDataManager {
 
             // Fetch the player data
             while ((data = reader.readNext()) != null) {
-                dataReturn.add(new Player(Color.decode(data[1]), data[0]));
+                dataReturn.add(new Player(data[0], Color.decode(data[1])));
             }
 
             // Close the reader and return the data
@@ -141,12 +147,37 @@ public class PlayerDataManager {
      */
     public static final void dataDelete(String playerName) {
         try {
-            
+            // Initialize file
+            dataInit();
+
+            // Get all playerdata except the one to delete
+            CSVReader reader = new CSVReader(Files.newBufferedReader(getPath()));
+            ArrayList<String[]> dataNew = new ArrayList<>();
+            String[] data;
+            while ((data = reader.readNext()) != null) {
+                if (!data[0].equals(playerName)) {
+                    dataNew.add(data);
+                }
+            }
+            reader.close();
+
+            // Delete the file and create a new empty one
+            Files.delete(getPath());
+            dataInit();
+
+            // Write the new data to the file
+            CSVWriter writer = new CSVWriter(Files.newBufferedWriter(getPath(), StandardOpenOption.WRITE));
+            writer.writeAll(dataNew);
+            writer.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * dataDeleteAll method deletes all player data from the file.
+     */
     public static final void dataDeleteAll(){
         try {
             Files.delete(getPath());
