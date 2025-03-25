@@ -29,7 +29,7 @@ public class Player {
      * @param color: Player color
      * @param name: Player name
      */
-    public Player(Color color, String name) {
+    public Player(String name, Color color) {
         this.color = color;
         this.name = name;
         System.out.println(String.format("Debug: Player with Color: %s, Name: %s created", color.toString(), name));

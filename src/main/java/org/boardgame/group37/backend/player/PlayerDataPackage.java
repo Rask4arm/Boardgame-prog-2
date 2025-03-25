@@ -11,7 +11,6 @@ public class PlayerDataPackage {
     // Properties
     private String name;
     private Color color;
-    private int wins;
 
     /**
      * Constructor
@@ -21,7 +20,6 @@ public class PlayerDataPackage {
     PlayerDataPackage(String name, Color color, int wins) {
         this.name = name;
         this.color = color;
-        this.wins = wins;
     }
 
     // Getters
@@ -40,14 +38,6 @@ public class PlayerDataPackage {
      */
     public Color getColor() {
         return color;
-    }
-
-    /**
-     * getWins method returns the number of wins.
-     * @return number of wins
-     */
-    public int getWins() {
-        return wins;
     }
     
 }

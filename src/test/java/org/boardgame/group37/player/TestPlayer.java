@@ -1,4 +1,4 @@
-package org.boardgame.group37;
+package org.boardgame.group37.player;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.boardgame.group37.backend.player.Player;
@@ -17,7 +17,7 @@ public class TestPlayer {
     }
 
     @Test void testPredefinedPlayer() {
-        Player player = new Player(Color.RED, "test");
+        Player player = new Player("test", Color.RED);
         assertEquals(player.getColor(), Color.RED);
         assertEquals(player.getName(), "test");
     }

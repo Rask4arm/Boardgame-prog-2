@@ -13,6 +13,39 @@ import java.util.ArrayList;
  */
 public class PlayerDataManager {
 
+    //#region Private properties
+    
+    private static final Path path = Paths.get("data/players.csv");
+    
+    /**
+     * returns the path of the data/players.csv file.
+     * @return Path object
+     */
+    private static final Path getPath() {
+        return path;
+    }
+
+    /**
+     * dataInit method creates missing directories and files.
+     */
+    private static final void dataInit() {
+        // Get the path
+        Path path = getPath();
+
+        // Create the file if it does not exist
+        if (!Files.exists(path)) {
+            try {
+                Files.createDirectories(path.getParent());
+                Files.createFile(path);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //#endregion
+    //#region Public methods
+
     /**
      * dataLoad method loads the player data from the file.
      * @param playerName: Name of the player to load
@@ -23,8 +56,11 @@ public class PlayerDataManager {
         // Fetch and return the player data
         try {
 
+            // Initialize file
+            dataInit();
+
             // Initialize values
-            Path path = Paths.get("data/players.csv");
+            Path path = getPath();
             CSVReader reader = new CSVReader(Files.newBufferedReader(path));
             String[] data;
             Player dataReturn = null;
@@ -32,14 +68,14 @@ public class PlayerDataManager {
             // Fetch the player data
             while ((data = reader.readNext()) != null) {
                 if (data[0].equals(playerName)) {
-                    dataReturn = new Player(Color.decode(data[1]), data[0]);
+                    dataReturn = new Player(data[0], Color.decode(data[1]));
                     break;
                 }
             }
 
             // Close the reader and return the data
             reader.close();
-            return new Player(dataReturn.getColor(), dataReturn.getName());
+            return new Player(dataReturn.getName(), dataReturn.getColor());
 
         // Catch exceptions
         } catch (Exception e) {
@@ -52,12 +88,14 @@ public class PlayerDataManager {
      * dataLoad method loads all player data from the file.
      * @return: ArrayList of Player objects loaded from the file OR null
      */
-    public static ArrayList<Player> dataLoad(){
+    public static final ArrayList<Player> dataLoad(){
         try {
             
+            // Initialize file
+            dataInit();
+
             // Initialize values
-            Path path = Paths.get("data/players.csv");
-            CSVReader reader = new CSVReader(Files.newBufferedReader(path));
+            CSVReader reader = new CSVReader(Files.newBufferedReader(getPath()));
             String[] data;
             ArrayList<Player> dataReturn = new ArrayList<>();
 
@@ -77,22 +115,31 @@ public class PlayerDataManager {
     }
 
     /**
-     * dataSave method saves the player data to the file.
+     * dataSave method saves a new player data to the file.
      * @param playerData: PlayerDataPackage object to save
      */
-    public static void dataSave(PlayerDataPackage playerData) {
+    public static final void dataSave(PlayerDataPackage playerData) {
         try {
-            CSVWriter writer = new CSVWriter(Files.newBufferedWriter(Paths.get("data/players.csv"), StandardOpenOption.APPEND));
-            String[] data = {playerData.getName(), Integer.toString(playerData.getColor().hashCode()), Integer.toString(playerData.getWins())};
+
+            // Initialize file
+            dataInit();
+
+            // Write the data on a new line in the file
+            CSVWriter writer = new CSVWriter(Files.newBufferedWriter(getPath(), StandardOpenOption.APPEND));
+            String[] data = {playerData.getName(), Integer.toString(playerData.getColor().hashCode())};
             writer.writeNext(data);
             writer.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return;
     }
 
-    public static void dataUpdate(PlayerDataPackage playerData) {
+    /**
+     * dataDelete method deletes the player data from the file.
+     * @param playerName Name of the player to delete
+     */
+    public static final void dataDelete(String playerName) {
         try {
             
         } catch (Exception e) {
@@ -100,14 +147,13 @@ public class PlayerDataManager {
         }
     }
 
-    public static void dataDelete(String playerName) {
+    public static final void dataDeleteAll(){
         try {
-            
+            Files.delete(getPath());
+            dataInit();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void dataDelete(){};
+    };
 
 }

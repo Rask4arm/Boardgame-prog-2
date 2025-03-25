@@ -45,7 +45,7 @@ public class PlayerManager {
      * @param name: Player name
      */
     public void playerAdd(Color color, String name) {
-        players.add(new Player(color, name));
+        players.add(new Player(name, color));
         System.out.println(String.format("Debug: Current number of players: %d", players.size()));
     }
 

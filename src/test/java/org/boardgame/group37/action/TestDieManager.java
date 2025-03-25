@@ -1,4 +1,4 @@
-package org.boardgame.group37;
+package org.boardgame.group37.action;
 import org.boardgame.group37.backend.die.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
