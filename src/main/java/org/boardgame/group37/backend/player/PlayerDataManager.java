@@ -49,7 +49,7 @@ public class PlayerDataManager {
     /**
      * dataLoad method loads the player data from the file.
      * @param playerName: Name of the player to load
-     * @return: PlayerDataPackage object loaded from the file OR null
+     * @return: Player object loaded from the file OR null
      */
     public static final Player dataLoad(String playerName) throws Exception {
     
@@ -122,9 +122,9 @@ public class PlayerDataManager {
 
     /**
      * dataSave method saves a new player data to the file.
-     * @param playerData: PlayerDataPackage object to save
+     * @param playerData: Player object to save
      */
-    public static final void dataSave(PlayerDataPackage playerData) {
+    public static final void dataSave(Player playerData) {
         try {
 
             // Initialize file
