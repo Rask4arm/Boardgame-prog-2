@@ -203,5 +203,9 @@ public class GameManager {
     public String getState() {
         return state;
     }
+
+    public int getCurrentPlayerPosition() {
+        return playerManager.getPlayers().get(currentPlayerIndex).getPosition();
+    }
 }
 

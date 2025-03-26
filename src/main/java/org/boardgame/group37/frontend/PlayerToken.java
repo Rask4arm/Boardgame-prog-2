@@ -5,6 +5,6 @@ import javafx.scene.paint.Color;
 
 public class PlayerToken extends Circle {
     public PlayerToken(Color color) {
-        super(20,color);
+        super(10,color);
     }
 }

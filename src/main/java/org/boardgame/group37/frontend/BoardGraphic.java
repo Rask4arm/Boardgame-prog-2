@@ -16,9 +16,11 @@ public class BoardGraphic extends GridPane {
         this.width = width;
 
         this.setAlignment(Pos.CENTER);
+        /* setting up the board */
         for (int row = 0; row < heigth; row++) {
             for (int col = 0; col < width; col++) {
 
+                /* creating the tiles and coloring every other tile separate colours*/
                 Rectangle tile = new Rectangle(cellSize, cellSize);
                 if ((row + col) % 2 == 0) {
                     tile.setFill(Color.BLUE);
@@ -27,12 +29,14 @@ public class BoardGraphic extends GridPane {
                     tile.setFill(Color.YELLOW);
                 }
 
+                /* adding the tile number to the tile */
                 int tileNo = 0;
+                /* making the bottom row go from left to right and then the second row alternate */
                 if ((heigth - row - 1) % 2 == 0) {
                     tileNo = (heigth - row - 1) * width + col + 1;
                 }
                 else {
-                    tileNo = ((heigth - row - 1) + 1) * width - (col);
+                    tileNo = (heigth - row) * width - col;
                 }
 
                 Text tileNoText = new Text(String.valueOf(tileNo));
@@ -45,7 +49,14 @@ public class BoardGraphic extends GridPane {
 
     public void updatePlayerPosition(PlayerToken playertoken, int newPosition) {
         int row = (heigth*width - newPosition) / width;
-        int col = (heigth*width) % width;
+        int col = 0;
+        if ((heigth - row - 1) % 2 == 0) {
+            col = width - 1 - ((heigth*width - newPosition) % width);
+        }
+        else {
+            col = (heigth*width - newPosition) % width;
+        }
+
 
         getChildren().remove(playertoken);
         add(playertoken, col, row);
