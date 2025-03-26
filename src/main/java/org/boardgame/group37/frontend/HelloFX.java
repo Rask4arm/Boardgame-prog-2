@@ -21,7 +21,7 @@ public class HelloFX extends Application {
 
     @Override
     public void start(Stage stage) {
-        boardGraphic = new BoardGraphic(10,10);
+        boardGraphic = new BoardGraphic(5,10);
         playerToken[0] = new PlayerToken(Color.RED);
         playerToken[1] = new PlayerToken(Color.ORANGE);
         gameManager = new GameManager();
