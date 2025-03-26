@@ -1,9 +1,13 @@
 package org.boardgame.group37.frontend;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.HBox;
@@ -25,7 +29,6 @@ public class HelloFX extends Application {
         playerToken[0] = new PlayerToken(Color.RED);
         playerToken[1] = new PlayerToken(Color.ORANGE);
         gameManager = new GameManager();
-
 
         gameManager.getPlayerManager().playerAdd();
         gameManager.getPlayerManager().playerAdd();
@@ -52,6 +55,7 @@ public class HelloFX extends Application {
         boardGraphic.updatePlayerPosition(playerToken[1], 1);
 
         VBox root = new VBox();
+        root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
 
         root.getChildren().addAll(boardGraphic, diceButton);
 
