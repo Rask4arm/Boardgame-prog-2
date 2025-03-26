@@ -16,13 +16,34 @@ import org.boardgame.group37.backend.tile.action.*;
  */
 public class TileDataManager {
 
+    /**
+     * createGson method creates a Gson object with custom adapters for action and tile types.
+     * @return: Gson object with custom adapters
+     */
     private static Gson createGson() {
-        GsonBuilder gson = new GsonBuilder();
 
-        // Adaptation for different types of actions
-        
+        // Create adapter for different types of actions
+        RuntimeTypeAdapterFactory<Action> actionAdapter =
+            RuntimeTypeAdapterFactory.of(Action.class, "type")
+                .registerSubtype(ActionDefault.class, "default")
+                .registerSubtype(ActionTeleport.class, "teleport");
 
-        return null;
+        // Create adapter for different types of tiles
+        RuntimeTypeAdapterFactory<Tile> tileAdapter =
+            RuntimeTypeAdapterFactory.of(Tile.class, "type")
+                .registerSubtype(Tile.class, "default")
+                .registerSubtype(TileTeleport.class, "teleport");
+
+        // Create Gson object with custom adapters
+        GsonBuilder gsonBuilder = new GsonBuilder();
+
+        // Register adapters to the Gson object
+        gsonBuilder.registerTypeAdapterFactory(actionAdapter);
+        gsonBuilder.registerTypeAdapterFactory(tileAdapter);
+
+        // Pretty print the JSON for debugging and readability
+        gsonBuilder.setPrettyPrinting();
+        return gsonBuilder.create();
         
     }
 
@@ -52,7 +73,7 @@ public class TileDataManager {
 
         // Save data to file
         try {
-            Gson gson = new Gson();
+            Gson gson = createGson();
             String json = gson.toJson(tiles);
             String fullFileName = fileName.endsWith(".json") ? fileName : fileName + ".json";
             Files.write(java.nio.file.Paths.get("data/board/" + fullFileName), json.getBytes());
@@ -78,7 +99,7 @@ public class TileDataManager {
             dataInit();
 
             // Json to object initialization
-            Gson gson = new Gson();
+            Gson gson = createGson();
 
             // Get file path
             String fullFileName = fileName.endsWith(".json") ? fileName : fileName + ".json";
@@ -103,9 +124,8 @@ public class TileDataManager {
         // Catch other exceptions
         } catch (Exception e) {
             e.printStackTrace();
+            throw new Exception("Error loading file: " + fileName);
         }
-
-        throw new Exception("Error loading file: " + fileName);
     }
 
     /**

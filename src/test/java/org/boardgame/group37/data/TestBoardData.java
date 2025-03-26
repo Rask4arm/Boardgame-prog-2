@@ -21,8 +21,9 @@ public class TestBoardData {
         System.out.println(tileLoad);
 
         // Test board data
-        assertTrue(tileLoad.getTiles().get(0).getAction().toString().equals(
-            tileManager.getTiles().get(0).getAction().toString())
+        assertEquals(
+            tileLoad.getTiles().get(0).getAction().toString(),
+            tileManager.getTiles().get(0).getAction().toString()
         );
         
 
