@@ -38,6 +38,12 @@ public class BoardGraphic extends GridPane {
             tileIndex = (heigth - row) * width - col;
         }
 
+        // Set tile border and padding
+        tile.setArcWidth(10);
+        tile.setArcHeight(10);
+        tile.setStroke(ColorPalette.BOARD_BORDER);
+        tile.setStrokeWidth(1);
+
         // Create text
         Text tileText = new Text(String.valueOf(tileIndex));
 
@@ -54,12 +60,12 @@ public class BoardGraphic extends GridPane {
      * Constructor for the BoardGraphic class
      * @param heigth height
      * @param width width
+     * 
+     * Creates a grid of tiles with alternating colors and numbers
      */
     BoardGraphic(int heigth, int width) {
         this.heigth = heigth;
         this.width = width;
-
-        this.setAlignment(Pos.CENTER);
         
         // Board setup
         int tileIndex = 0;
@@ -69,6 +75,10 @@ public class BoardGraphic extends GridPane {
                 createTile(row, col, tileIndex);
             }
         }
+
+        // Add spacing
+        setHgap(1);
+        setVgap(1);
     }
 
     /**
@@ -77,7 +87,11 @@ public class BoardGraphic extends GridPane {
      * @param newPosition new position
      */
     public void updatePlayerPosition(PlayerToken playertoken, int newPosition) {
+        
+        // Calculate row
         int row = (heigth*width - newPosition) / width;
+
+        // Calculate coloumn
         int col = 0;
         if ((heigth - row - 1) % 2 == 0) {
             col = width - 1 - ((heigth*width - newPosition) % width);
@@ -85,7 +99,7 @@ public class BoardGraphic extends GridPane {
             col = (heigth*width - newPosition) % width;
         }
 
-
+        // Remove player token -> add player token to new position
         getChildren().remove(playertoken);
         add(playertoken, col, row);
     }
