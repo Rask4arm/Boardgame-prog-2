@@ -1,4 +1,3 @@
 TODO - backend:
 
-* MAKE TESTS
-* ADD dataLoadNames on playerDataManager and DELETE player method
+* Fix actual ladder pointers
