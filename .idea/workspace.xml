@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e72b1210-8ec0-48e9-8382-7eafb1cefc95" name="Changes" comment="test commit for push">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/frontend/StartPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/backend/die/Die.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/backend/die/Die.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/frontend/HelloFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/frontend/HelloFX.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaFXApplication" />
         <option value="Class" />
+        <option value="JavaFXApplication" />
       </list>
     </option>
   </component>
@@ -29,18 +31,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Rask4arm"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Rask4arm&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:Rask4arm/Boardgame-prog-2.git",
-    "accountId": "de143012-35a9-4081-9f90-fc31a2f474f5"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Rask4arm/Boardgame-prog-2.git&quot;,
+    &quot;accountId&quot;: &quot;de143012-35a9-4081-9f90-fc31a2f474f5&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -50,28 +52,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloFX.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestRun.executor&quot;: &quot;Run&quot;,
-    &quot;Application.testJavaFX.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.boardgame-engine.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;25-make-a-first-draft-of-the-frontend&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloFX.executor": "Run",
+    "Application.TestRun.executor": "Run",
+    "Application.testJavaFX.executor": "Run",
+    "JUnit.TestBoardData.executor": "Run",
+    "Maven.boardgame-engine.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "32-add-start-scene",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="HelloFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.boardgame.group37.frontend.HelloFX" />
@@ -124,6 +127,11 @@
       <workItem from="1742303614476" duration="1501000" />
       <workItem from="1742654956418" duration="5665000" />
       <workItem from="1742805131505" duration="2925000" />
+      <workItem from="1742983530987" duration="1376000" />
+      <workItem from="1743623220233" duration="2260000" />
+      <workItem from="1743698406084" duration="3537000" />
+      <workItem from="1744457807273" duration="1230000" />
+      <workItem from="1745239464590" duration="3620000" />
     </task>
     <servers />
   </component>

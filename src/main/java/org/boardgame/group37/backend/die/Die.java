@@ -21,7 +21,7 @@ public class Die {
      * Initializes the Die with the specified value.
      * @param value: Die value
      */
-    public Die(int value){
+    public Die(int value) {
         this.value = value;
     }
 
