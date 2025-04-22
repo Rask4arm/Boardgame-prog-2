@@ -1,6 +1,6 @@
 package org.boardgame.group37.frontend;
 
-import javafx.application.Application;
+
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +12,9 @@ import org.boardgame.group37.backend.game.GameManager;
 import org.boardgame.group37.backend.tile.Tile;
 import org.boardgame.group37.backend.tile.TileDataManager;
 import org.boardgame.group37.backend.tile.TileManager;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+
 
 public class StartPage{
     public static void init(Stage stage){
@@ -39,14 +42,15 @@ public class StartPage{
 
             filebutton.setOnAction(e ->
                     {
-                        TileManager tileLoad = null;
-                        Game.init(root);
+                        TileManager tileLoad = tileManager;
+                        Game.init(root, new BoardGraphic(tileLoad));
                         try {
                             tileLoad = new TileManager(TileDataManager.dataLoad("test2_board.json"));
                         } catch (Exception ex) {
                             throw new RuntimeException(ex);
                         }
-                        BoardGraphic boardGraphic = new BoardGraphic(tileLoad.getSize()/tileLoad.getWidth(), tileLoad.getWidth());
+                        BoardGraphic boardGraphic = new BoardGraphic(tileLoad);
+                        Game.init(root, new BoardGraphic(tileLoad));
                         root.getChildren().add(boardGraphic);
                     }
             );

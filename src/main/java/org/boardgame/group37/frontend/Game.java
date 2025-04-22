@@ -14,15 +14,13 @@ import org.boardgame.group37.backend.tile.TileDataManager;
 import org.boardgame.group37.backend.tile.TileManager;
 
 public class Game {
-    public static void init(Pane root){
+    public static void init(Pane root, BoardGraphic boardGraphic){
         root.getChildren().clear();
-        BoardGraphic boardGraphic;
         PlayerToken[] playerToken = new PlayerToken[2];
         GameManager gameManager;
-        boardGraphic = new BoardGraphic(5,10);
         playerToken[0] = new PlayerToken(Color.RED);
         playerToken[1] = new PlayerToken(Color.ORANGE);
-        gameManager = new GameManager();
+        gameManager = new GameManager(boardGraphic.getColumnCount(), boardGraphic.getColumnCount()* boardGraphic.getRowCount());
 
         gameManager.getPlayerManager().playerAdd();
         gameManager.getPlayerManager().playerAdd();

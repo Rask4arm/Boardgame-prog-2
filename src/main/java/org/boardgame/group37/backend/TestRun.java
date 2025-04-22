@@ -4,7 +4,7 @@ import org.boardgame.group37.backend.game.GameManager;
 
 public class TestRun {
     public static void main(String[] args) {
-        GameManager gameManager = new GameManager();
+        GameManager gameManager = new GameManager(10,100);
         gameManager.getPlayerManager().playerAdd();
         gameManager.getPlayerManager().playerAdd();
         gameManager.getDieManager().dieAdd();

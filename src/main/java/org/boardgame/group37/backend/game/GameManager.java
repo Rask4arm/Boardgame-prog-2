@@ -28,9 +28,9 @@ public class GameManager {
      * Constructor for GameManager class.
      * Initializes the game with default values.
      */
-    public GameManager() {
+    public GameManager(int width, int size) {
         System.out.println("\nDebug: GameManager created.");
-        gameReset(true, true, true);
+        gameReset(true, true, true, width, size);
     }
 
     /**
@@ -39,8 +39,8 @@ public class GameManager {
      * @param resetTiles: Reset tiles
      * @param resetDie: Reset die
      */
-    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie) {
-        if (resetTiles) tileManager = new TileManager(10, 50);
+    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, int width, int size) {
+        if (resetTiles) tileManager = new TileManager(width, size);
         if (resetPlayers) playerManager = new PlayerManager();
         if (resetDie) dieManager = new DieManager();
         currentPlayerIndex = 0;
