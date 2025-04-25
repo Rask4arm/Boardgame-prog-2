@@ -107,6 +107,10 @@ public class TileManager {
         return tiles.size();
     }
 
+    public void setTiles(ArrayList<Tile> tiles) {
+        this.tiles = tiles;
+    }
+
     /**
      * toString method returns the number of tiles.
      * @return number of tiles
