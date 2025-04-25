@@ -1,7 +1,7 @@
-package org.boardgame.group37.backend.tile;
+package org.boardgame.group37.model.tile;
 import java.util.ArrayList;
 
-import org.boardgame.group37.backend.tile.action.*;
+import org.boardgame.group37.model.tile.action.*;
 
 /**
  * TileManager class is responsible for storing and generating tiles.
@@ -66,7 +66,7 @@ public class TileManager {
             Action action = null;
 
             // Set action based on random properties
-            if (rand < .1) action = new ActionTeleport(20);
+            if (rand < .1) action = new ActionTeleport(i);
             else action = new ActionDefault();
 
             // Add tile to tiles

@@ -1,8 +1,9 @@
-package org.boardgame.group37.backend.player;
+package org.boardgame.group37.model.player;
 
 import java.awt.Color;
-import org.boardgame.group37.backend.tile.Tile;
-import org.boardgame.group37.backend.tile.TileManager;
+
+import org.boardgame.group37.model.tile.Tile;
+import org.boardgame.group37.model.tile.TileManager;
 
 /**
  * Player class is responsible for managing player data.

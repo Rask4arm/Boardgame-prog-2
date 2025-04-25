@@ -1,9 +1,9 @@
-package org.boardgame.group37.backend.game;
+package org.boardgame.group37.model.game;
 
-import org.boardgame.group37.backend.die.DieManager;
-import org.boardgame.group37.backend.player.Player;
-import org.boardgame.group37.backend.player.PlayerManager;
-import org.boardgame.group37.backend.tile.TileManager;
+import org.boardgame.group37.model.die.DieManager;
+import org.boardgame.group37.model.player.Player;
+import org.boardgame.group37.model.player.PlayerManager;
+import org.boardgame.group37.model.tile.TileManager;
 
 /**
  * GameManager class is responsible for managing the game.
@@ -28,9 +28,9 @@ public class GameManager {
      * Constructor for GameManager class.
      * Initializes the game with default values.
      */
-    public GameManager(int width, int size) {
+    public GameManager() {
         System.out.println("\nDebug: GameManager created.");
-        gameReset(true, true, true, width, size);
+        gameReset(true, true, true);
     }
 
     /**
@@ -39,8 +39,8 @@ public class GameManager {
      * @param resetTiles: Reset tiles
      * @param resetDie: Reset die
      */
-    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, int width, int size) {
-        if (resetTiles) tileManager = new TileManager(width, size);
+    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie) {
+        if (resetTiles) tileManager = new TileManager(10, 50);
         if (resetPlayers) playerManager = new PlayerManager();
         if (resetDie) dieManager = new DieManager();
         currentPlayerIndex = 0;

@@ -1,10 +1,10 @@
 package org.boardgame.group37.action;
 import org.junit.jupiter.api.Test;
-import org.boardgame.group37.backend.tile.action.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.boardgame.group37.backend.player.*;
+import org.boardgame.group37.model.player.*;
+import org.boardgame.group37.model.tile.action.*;
 
 public class TestAction {
 

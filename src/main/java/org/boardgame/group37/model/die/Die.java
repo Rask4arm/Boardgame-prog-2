@@ -1,4 +1,4 @@
-package org.boardgame.group37.backend.die;
+package org.boardgame.group37.model.die;
 
 /**
  * Die class is responsible for managing the die.
@@ -21,7 +21,7 @@ public class Die {
      * Initializes the Die with the specified value.
      * @param value: Die value
      */
-    public Die(int value) {
+    public Die(int value){
         this.value = value;
     }
 

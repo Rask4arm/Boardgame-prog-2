@@ -1,4 +1,4 @@
-package org.boardgame.group37.backend.die;
+package org.boardgame.group37.model.die;
 import java.util.ArrayList;
 
 /**

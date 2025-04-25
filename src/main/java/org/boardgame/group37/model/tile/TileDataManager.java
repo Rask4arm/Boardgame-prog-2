@@ -1,4 +1,4 @@
-package org.boardgame.group37.backend.tile;
+package org.boardgame.group37.model.tile;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
@@ -7,7 +7,8 @@ import java.nio.file.*;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import org.boardgame.group37.backend.tile.action.*;
+
+import org.boardgame.group37.model.tile.action.*;
 
 /**
  * TileDataManager class is responsible for saving and loading tile data to and from files.

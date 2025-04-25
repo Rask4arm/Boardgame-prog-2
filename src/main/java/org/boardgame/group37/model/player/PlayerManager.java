@@ -1,4 +1,4 @@
-package org.boardgame.group37.backend.player;
+package org.boardgame.group37.model.player;
 import java.util.ArrayList;
 import java.awt.Color;
 

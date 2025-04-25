@@ -1,4 +1,4 @@
-package org.boardgame.group37.backend.player;
+package org.boardgame.group37.model.player;
 
 import java.awt.Color;
 import java.nio.file.*;
@@ -126,7 +126,6 @@ public class PlayerDataManager {
      */
     public static final void dataSave(Player playerData) {
         try {
-
             // Initialize file
             dataInit();
 

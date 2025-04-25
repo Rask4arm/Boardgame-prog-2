@@ -1,9 +1,9 @@
 package org.boardgame.group37.player;
+import org.boardgame.group37.model.player.Player;
+import org.boardgame.group37.model.tile.Tile;
+import org.boardgame.group37.model.tile.action.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.boardgame.group37.backend.player.Player;
-import org.boardgame.group37.backend.tile.Tile;
-import org.boardgame.group37.backend.tile.action.*;
 
 import java.awt.Color;
 

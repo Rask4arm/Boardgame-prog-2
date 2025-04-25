@@ -1,4 +1,4 @@
-package org.boardgame.group37.backend.tile;
+package org.boardgame.group37.model.tile;
 
 import java.util.ArrayList;
 

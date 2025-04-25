@@ -1,10 +1,10 @@
-package org.boardgame.group37.backend;
+package org.boardgame.group37.model;
 
-import org.boardgame.group37.backend.game.GameManager;
+import org.boardgame.group37.model.game.GameManager;
 
 public class TestRun {
     public static void main(String[] args) {
-        GameManager gameManager = new GameManager(10,100);
+        GameManager gameManager = new GameManager();
         gameManager.getPlayerManager().playerAdd();
         gameManager.getPlayerManager().playerAdd();
         gameManager.getDieManager().dieAdd();

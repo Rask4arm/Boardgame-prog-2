@@ -1,4 +1,4 @@
-package org.boardgame.group37.frontend;
+package org.boardgame.group37.view;
 import javafx.scene.paint.Color;
 
 /**

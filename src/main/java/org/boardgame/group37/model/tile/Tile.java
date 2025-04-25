@@ -1,6 +1,6 @@
-package org.boardgame.group37.backend.tile;
+package org.boardgame.group37.model.tile;
 
-import org.boardgame.group37.backend.tile.action.*;
+import org.boardgame.group37.model.tile.action.*;
 
 /**
  * Tile class is responsible for storing the action of the tile.

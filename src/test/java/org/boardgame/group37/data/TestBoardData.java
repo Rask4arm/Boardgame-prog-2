@@ -1,7 +1,8 @@
 package org.boardgame.group37.data;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import org.boardgame.group37.backend.tile.*;
+
+import org.boardgame.group37.model.tile.*;
 
 
 public class TestBoardData {

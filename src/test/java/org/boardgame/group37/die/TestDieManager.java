@@ -1,8 +1,9 @@
 package org.boardgame.group37.die;
-import org.boardgame.group37.backend.die.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.boardgame.group37.model.die.*;
 
 public class TestDieManager {
 
