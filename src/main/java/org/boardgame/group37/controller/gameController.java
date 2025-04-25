@@ -3,6 +3,20 @@ import org.boardgame.group37.model.game.GameManager;
 
 public class gameController {
 
-    public 
+    public void gameStart(GameManager gameManager) {
+        gameManager.gameStart();
+    }
+
+    public void roundExecuteDie(GameManager gameManager) {
+        gameManager.roundDie();
+    }
+
+    public void roundExecuteMove(GameManager gameManager) {
+        gameManager.roundMove();
+    }
+
+    public void roundExecuteEnd(GameManager gameManager) {
+        gameManager.roundEnd();
+    }
 
 }
