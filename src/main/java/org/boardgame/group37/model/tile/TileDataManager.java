@@ -73,6 +73,7 @@ public class TileDataManager {
     public static final void dataSave(ArrayList<Tile> tiles, String fileName) {
 
         // Save data to file
+        dataInit(); // Initialize the data directory
         try {
             Gson gson = createGson();
             String json = gson.toJson(tiles);
