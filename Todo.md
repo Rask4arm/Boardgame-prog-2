@@ -1,0 +1,4 @@
+# TODO
+
+- tilesGenerateMonopoly()
+- monopoly system

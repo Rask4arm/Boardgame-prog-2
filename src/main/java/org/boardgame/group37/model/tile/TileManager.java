@@ -27,10 +27,14 @@ public class TileManager {
      * @param size: number of tiles
      * Generates tiles based on the specified size.
      */
-    public TileManager(int width, int size) {
+    public TileManager(int width, int size, BOARDTYPES type) {
         System.out.println(String.format("Debug: TileManager created with width: %d, size: %d", width, size));
         this.width = width;
         this.size = size;
+        switch (type) {
+            case SNAKE_AND_LADDERS -> tilesGenerate();
+            case MONOPOLY -> tilesGenerateMonopoly();
+        }
     }
 
     /**
@@ -73,6 +77,11 @@ public class TileManager {
         }
         System.out.println(String.format("Debug: Tiles generated successfully. Number of tiles: %d", tiles.size()));
     }
+
+    /**
+     * tilesGenerateMonopoly method generates tiles for a Monopoly board.
+     */
+    public void tilesGenerateMonopoly() {}
 
     /**
      * getTiles method returns the ArrayList of Tile objects.
