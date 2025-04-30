@@ -31,7 +31,6 @@ public class TileDataManager {
 
         // Register adapters to the Gson object
         gsonBuilder.registerTypeAdapterFactory(actionAdapter);
-        gsonBuilder.registerTypeAdapterFactory(tileAdapter);
 
         // Pretty print the JSON for debugging and readability
         gsonBuilder.setPrettyPrinting();
