@@ -22,15 +22,10 @@ import org.boardgame.group37.backend.tile.TileManager;
 import java.util.concurrent.TimeUnit;
 
 public class HelloFX extends Application {
-    BoardGraphic boardGraphic;
-    PlayerToken[] playerToken = new PlayerToken[2];
-    GameManager gameManager;
-
     @Override
     public void start(Stage stage) {
         StartPage.init(stage);
     }
-
     public static void main(String[] args) {
         launch();
     }

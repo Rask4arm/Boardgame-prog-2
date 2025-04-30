@@ -20,7 +20,7 @@ public class Game {
         GameManager gameManager;
         playerToken[0] = new PlayerToken(Color.RED);
         playerToken[1] = new PlayerToken(Color.ORANGE);
-        gameManager = new GameManager(boardGraphic.getColumnCount(), boardGraphic.getColumnCount()* boardGraphic.getRowCount());
+        gameManager = new GameManager(boardGraphic.getColumnCount(), boardGraphic.getColumnCount() * boardGraphic.getRowCount());
 
         gameManager.getPlayerManager().playerAdd();
         gameManager.getPlayerManager().playerAdd();
