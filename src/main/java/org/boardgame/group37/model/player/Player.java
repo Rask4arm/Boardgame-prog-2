@@ -51,7 +51,7 @@ public class Player {
      * @param TM: TileManager object
      * @param tileIndex: index of the tile the player is on
      */
-    public void executeTile(TileManager TM, int tileIndex) {
+    public void executeTile(TileManager TM, int tileIndex) throws Exception{
         TM.getTiles().get(tileIndex).getAction().execute(this);
     }
 
@@ -59,7 +59,7 @@ public class Player {
      * executeTile method executes the action of the tile the player is on. (when no rolls left from the die)
      * @param tile: Tile object
      */
-    public void executeTile(Tile tile) {
+    public void executeTile(Tile tile) throws Exception{
         tile.getAction().execute(this);
     }
 

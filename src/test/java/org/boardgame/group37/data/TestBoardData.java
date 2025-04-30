@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.boardgame.group37.model.tile.*;
-import org.boardgame.group37.model.tile.action.ActionTeleport;
 import org.boardgame.group37.model.tile.action.*;
 
 

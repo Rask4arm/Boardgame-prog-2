@@ -18,11 +18,16 @@ public class ActionSwitch implements Action {
     }
 
     @Override
-    public void execute(Player player) {
+    public void execute(Player player) throws Exception {
         // Switch the positions of the two players
-        Player otherPlayer = player;
+        Player otherPlayer = player; int i = 0;
         while (otherPlayer == player) {
             otherPlayer = playerManager.getPlayers().get(new Random().nextInt(playerManager.getPlayers().size()));
+            
+            // Error handling: if we can't find another player after 100 tries, throw an exception
+            i++; if (i > 100) {
+                throw new Exception("Error: Unable to find another player to switch with.");
+            }
         }
         
         System.out.println("Debug: ActionSwitch executed. Players switched positions.");

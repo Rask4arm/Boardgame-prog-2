@@ -42,16 +42,19 @@ public class HelloFX extends Application {
         gameManager.gameStart();
         Button diceButton = new Button("Roll dice?");
 
-        diceButton.setOnAction(e ->
-                {gameManager.roundDie();
-                    while (gameManager.getCurrentPlayerRolls() > 0) {
-                        if (gameManager.getState().equals("end")) break;
-                        gameManager.roundMove();
-                        boardGraphic.updatePlayerPosition(playerToken[gameManager.getCurrentPlayerIndex()], gameManager.getCurrentPlayerPosition());
-                    }
-                gameManager.roundEnd();
+        diceButton.setOnAction(e -> {
+            try {
+                gameManager.roundDie();
+                while (gameManager.getCurrentPlayerRolls() > 0) {
+                    if (gameManager.getState().equals("end")) break;
+                    gameManager.roundMove();
+                    boardGraphic.updatePlayerPosition(playerToken[gameManager.getCurrentPlayerIndex()], gameManager.getCurrentPlayerPosition());
                 }
-        );
+                gameManager.roundEnd();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
 
         boardGraphic.updatePlayerPosition(playerToken[0], 1);
         boardGraphic.updatePlayerPosition(playerToken[1], 1);

@@ -3,7 +3,7 @@ package org.boardgame.group37.model;
 import org.boardgame.group37.model.game.GameManager;
 
 public class TestRun {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         GameManager gameManager = new GameManager();
         gameManager.getPlayerManager().playerAdd();
         gameManager.getPlayerManager().playerAdd();

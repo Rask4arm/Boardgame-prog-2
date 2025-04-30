@@ -11,7 +11,7 @@ public class gameController {
         gameManager.roundDie();
     }
 
-    public void roundExecuteMove(GameManager gameManager) {
+    public void roundExecuteMove(GameManager gameManager) throws Exception {
         gameManager.roundMove();
     }
 

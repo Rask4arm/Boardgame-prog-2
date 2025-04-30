@@ -3,6 +3,7 @@ package org.boardgame.group37.model.game;
 import org.boardgame.group37.model.die.DieManager;
 import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerManager;
+import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.TileManager;
 
 /**
@@ -40,7 +41,7 @@ public class GameManager {
      * @param resetDie: Reset die
      */
     public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie) {
-        if (resetTiles) tileManager = new TileManager(10, 50);
+        if (resetTiles) tileManager = new TileManager(10, 50, BOARDTYPES.SNAKE_AND_LADDERS);
         if (resetPlayers) playerManager = new PlayerManager();
         if (resetDie) dieManager = new DieManager();
         currentPlayerIndex = 0;
@@ -92,7 +93,7 @@ public class GameManager {
     /**
      * Moves the current player once.
      */
-    public void roundMove() {
+    public void roundMove() throws Exception{
 
         Player currentPlayer = playerManager.getPlayers().get(currentPlayerIndex); // 
         currentPlayerRolls --;

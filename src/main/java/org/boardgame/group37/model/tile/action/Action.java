@@ -7,6 +7,6 @@ import org.boardgame.group37.model.player.Player;
  */
 public interface Action {
 
-    public void execute(Player player);
+    public void execute(Player player) throws Exception;
 
 }

@@ -22,7 +22,7 @@ public class TestPlayer {
         assertEquals(player.getName(), "test");
     }
 
-    @Test void testPlayerGeneral() {
+    @Test void testPlayerGeneral() throws Exception {
 
         // Test executeMove method
         Player player = new Player();
