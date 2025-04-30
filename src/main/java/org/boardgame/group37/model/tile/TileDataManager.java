@@ -29,15 +29,6 @@ public class TileDataManager {
                 .registerSubtype(ActionDefault.class, "default")
                 .registerSubtype(ActionTeleport.class, "teleport");
 
-        // Create adapter for different types of tiles
-        RuntimeTypeAdapterFactory<Tile> tileAdapter =
-            RuntimeTypeAdapterFactory.of(Tile.class, "type")
-                .registerSubtype(Tile.class, "default")
-                .registerSubtype(TileTeleport.class, "teleport");
-
-        // Create Gson object with custom adapters
-        GsonBuilder gsonBuilder = new GsonBuilder();
-
         // Register adapters to the Gson object
         gsonBuilder.registerTypeAdapterFactory(actionAdapter);
         gsonBuilder.registerTypeAdapterFactory(tileAdapter);

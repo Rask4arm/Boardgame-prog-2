@@ -31,7 +31,6 @@ public class TileManager {
         System.out.println(String.format("Debug: TileManager created with width: %d, size: %d", width, size));
         this.width = width;
         this.size = size;
-        tilesGenerate();
     }
 
     /**
