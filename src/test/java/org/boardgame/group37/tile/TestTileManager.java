@@ -18,7 +18,7 @@ public class TestTileManager {
 
     @Test
     public void testTileGenerate() {
-        TileManager tileManager = new TileManager(2, 6);
+        TileManager tileManager = new TileManager(2, 6, BOARDTYPES.SNAKE_AND_LADDERS);
         assertEquals(tileManager.getSize(), tileManager.getSizeRaw());
         assertEquals(tileManager.getWidth(), 2);
         assertEquals(tileManager.getTiles().size(), 6);
