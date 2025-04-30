@@ -126,7 +126,7 @@ public class TileDataManager {
         // Catch other exceptions
         } catch (Exception e) {
             e.printStackTrace();
-            throw new Exception("Error loading file: " + fileName);
+            throw new Exception("Error loading file: " + fileName + "\n" + e.getMessage());
         }
     }
 
