@@ -9,7 +9,7 @@ import org.boardgame.group37.model.tile.action.*;
 public class TestAction {
 
     @Test
-    public void testAction() {
+    public void testAction() throws Exception{
         
         // Create player
         Player player = new Player();
