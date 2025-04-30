@@ -29,6 +29,9 @@ public class TileDataManager {
                 .registerSubtype(ActionDefault.class, "default")
                 .registerSubtype(ActionTeleport.class, "teleport");
 
+        // Create a new GsonBuilder instance
+        GsonBuilder gsonBuilder = new GsonBuilder();
+
         // Register adapters to the Gson object
         gsonBuilder.registerTypeAdapterFactory(actionAdapter);
 
@@ -60,13 +63,13 @@ public class TileDataManager {
      * @param tiles: ArrayList of Tile objects to save
      * @param fileName: Name of the file to save to
      */
-    public static final void dataSave(ArrayList<Tile> tiles, String fileName) {
+    public static final void dataSave(TileManager tilemanager, String fileName) {
 
         // Save data to file
         dataInit(); // Initialize the data directory
         try {
             Gson gson = createGson();
-            String json = gson.toJson(tiles);
+            String json = gson.toJson(tilemanager);
             String fullFileName = fileName.endsWith(".json") ? fileName : fileName + ".json";
             Files.write(java.nio.file.Paths.get("data/board/" + fullFileName), json.getBytes());
             
@@ -82,7 +85,7 @@ public class TileDataManager {
      * @param fileName: Name of the file to load from
      * @return: ArrayList of Tile objects loaded from the file OR null
      */
-    public static final ArrayList<Tile> dataLoad(String fileName) throws Exception {
+    public static final TileManager dataLoad(String fileName) throws Exception {
 
         // Load data from file
         try {
@@ -103,11 +106,11 @@ public class TileDataManager {
             String json = Files.readString(path);
 
             // Convert json to object
-            Type type = new TypeToken<ArrayList<Tile>>(){}.getType();   // Gets the type stored in the json file
+            Type type = new TypeToken<TileManager>(){}.getType();   // Gets the type stored in the json file
             
             // Return the object
-            ArrayList<Tile> tiles = gson.fromJson(json, type);
-            return tiles;
+            TileManager tilemanager = gson.fromJson(json, type);
+            return tilemanager;
 
         // Catch no file exception
         } catch (NoSuchFileException e) {

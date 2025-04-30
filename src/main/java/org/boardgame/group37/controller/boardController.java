@@ -19,7 +19,7 @@ public class boardController {
      */
     public void buttonLoad(GameManager gameManager, String fileName) {
         try {
-            gameManager.getTileManager().setTiles(TileDataManager.dataLoad(fileName));
+            gameManager.setTileManager(TileDataManager.dataLoad(fileName));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -32,7 +32,7 @@ public class boardController {
      */
     public void buttonSave(GameManager gameManager, String fileName) {
         try {
-            TileDataManager.dataSave(gameManager.getTileManager().getTiles(), fileName);
+            TileDataManager.dataSave(gameManager.getTileManager(), fileName);
         } catch (Exception e) {
             e.printStackTrace();
         }

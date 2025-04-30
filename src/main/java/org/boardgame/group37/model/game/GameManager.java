@@ -123,9 +123,9 @@ public class GameManager {
             );
         }
 
-        
-
     }
+
+
 
     /**
      * Ends the current player's turn.
@@ -154,6 +154,14 @@ public class GameManager {
      */
     public TileManager getTileManager() {
         return tileManager;
+    }
+
+    /**
+     * setTileManager method sets the TileManager object.
+     * @param tileManager: TileManager object
+     */
+    public void setTileManager(TileManager tileManager) {
+        this.tileManager = tileManager;
     }
 
     /**
