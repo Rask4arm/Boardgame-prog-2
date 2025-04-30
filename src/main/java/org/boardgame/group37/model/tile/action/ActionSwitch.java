@@ -4,6 +4,7 @@ import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerManager;
 
 import java.util.Random;
+import java.awt.Color;
 
 /**
  * This class is responsible for the action of switching the positions of two players on the board.
@@ -33,4 +34,12 @@ public class ActionSwitch implements Action {
         System.out.println("Debug: ActionSwitch executed. Players switched positions.");
     }
 
+    /**
+     * getColor method returns the color of the action.
+     * @return color of the action
+     */
+    @Override
+    public Color getColor() {
+        return Color.LIGHT_GRAY;
+    }
 }

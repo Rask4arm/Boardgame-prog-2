@@ -1,6 +1,7 @@
 package org.boardgame.group37.model.tile.action;
 
 import org.boardgame.group37.model.player.Player;
+import java.awt.Color;
 
 /*
  * ActionTeleport class is responsible for executing the teleport action of the tile.
@@ -48,5 +49,14 @@ public class ActionTeleport implements Action {
     @Override
     public String toString() {
         return "ActionTeleport";
+    }
+
+    /**
+     * getColor method returns the color of the action.
+     * @return color of the action
+     */
+    @Override
+    public Color getColor() {
+        return Color.DARK_GRAY;
     }
 }
