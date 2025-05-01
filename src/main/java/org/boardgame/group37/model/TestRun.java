@@ -4,7 +4,8 @@ import org.boardgame.group37.model.game.GameManager;
 
 public class TestRun {
     public static void main(String[] args) throws Exception {
-        GameManager gameManager = new GameManager();
+        GameManager gameManager = new GameManager(5, 25);
+
         gameManager.getPlayerManager().playerAdd();
         gameManager.getPlayerManager().playerAdd();
         gameManager.getDieManager().dieAdd();

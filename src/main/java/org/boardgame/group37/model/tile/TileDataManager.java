@@ -60,16 +60,19 @@ public class TileDataManager {
 
     /**
      * dataSave method saves the tile data to a file.
-     * @param tiles: ArrayList of Tile objects to save
+
+     * @param tileManager: TileManager to save
      * @param fileName: Name of the file to save to
      */
-    public static final void dataSave(TileManager tilemanager, String fileName) {
+    public static final void dataSave(TileManager tileManager, String fileName) {
+
 
         // Save data to file
         dataInit(); // Initialize the data directory
         try {
             Gson gson = createGson();
-            String json = gson.toJson(tilemanager);
+            String json = gson.toJson(tileManager);
+
             String fullFileName = fileName.endsWith(".json") ? fileName : fileName + ".json";
             Files.write(java.nio.file.Paths.get("data/board/" + fullFileName), json.getBytes());
             
@@ -85,7 +88,7 @@ public class TileDataManager {
      * @param fileName: Name of the file to load from
      * @return: ArrayList of Tile objects loaded from the file OR null
      */
-    public static final TileManager dataLoad(String fileName) throws Exception {
+    public static TileManager dataLoad(String fileName) throws Exception {
 
         // Load data from file
         try {
