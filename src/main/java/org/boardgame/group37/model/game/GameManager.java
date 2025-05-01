@@ -40,8 +40,10 @@ public class GameManager {
      * @param resetTiles: Reset tiles
      * @param resetDie: Reset die
      */
+
     public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, int width, int size) {
         if (resetTiles) tileManager = new TileManager(width, size, BOARDTYPES.SNAKE_AND_LADDERS);
+
         if (resetPlayers) playerManager = new PlayerManager();
         if (resetDie) dieManager = new DieManager();
         currentPlayerIndex = 0;

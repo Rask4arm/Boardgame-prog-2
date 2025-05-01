@@ -25,6 +25,7 @@ public class HelloFX extends Application {
 
         this.stage.setScene(new Scene(root));
         this.stage.show();
+
     }
 
     public static void main(String[] args) {

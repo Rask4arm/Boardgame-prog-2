@@ -17,6 +17,7 @@ import org.boardgame.group37.model.tile.action.ActionTeleport;
 
 import java.util.ArrayList;
 
+
 public class BoardGraphic extends GridPane {
     private int heigth;
     private int width;
@@ -26,12 +27,15 @@ public class BoardGraphic extends GridPane {
             "3A%2F%2Ffavpng.com%2Fpng_view%2Fstep-snakes-and-ladders-game-word-ladd" +
             "er-paper-png%2FGdeaMxvB&psig=AOvVaw1QUsAUV7DEmKnSbkhsSjAM&ust=174543478" +
             "5764000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMCPybep7IwDFQAAAAAdAAAAABAK");
+
     /**
      * Creates a tile with a number on it
      * @param row row of the tile
      * @param col column of the tile
      */
+
     private void createTile(int row, int col, int tileIndex,ArrayList<Tile> tiles) {
+
         // Create rectangle tile with alternating colors
         Rectangle tile = new Rectangle(cellSize, cellSize);
         if ((row + col) % 2 == 0) {
@@ -39,6 +43,7 @@ public class BoardGraphic extends GridPane {
         } else {
             tile.setFill(ColorPalette.BOARD_LIGHT_TILE);
         }
+
 
         if (tileIndex < 100){
             if (tiles.get(tileIndex).getAction() instanceof ActionTeleport){
@@ -67,13 +72,13 @@ public class BoardGraphic extends GridPane {
         stack.getChildren().addAll(tile, tileText);
         stack.setAlignment(Pos.CENTER);
 
-
         // Add tile to the board
         add(stack, col, row);
     }
 
     /**
      * Constructor for the BoardGraphic class
+
      * @param tileManager tileManager
      *
      * Creates a grid of tiles with alternating colors and numbers
@@ -84,11 +89,14 @@ public class BoardGraphic extends GridPane {
 
         // Board setup
         ArrayList<Tile> tiles = tileManager.getTiles();
+
         int tileIndex = 0;
         for (int row = 0; row < heigth; row++) {
             for (int col = 0; col < width; col++) {
                 tileIndex++;
                 createTile(row, col, tileIndex, tiles);
+
+
             }
         }
 

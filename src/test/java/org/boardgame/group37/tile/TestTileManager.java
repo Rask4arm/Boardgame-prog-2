@@ -1,7 +1,8 @@
 package org.boardgame.group37.tile;
-import org.boardgame.group37.backend.tile.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.boardgame.group37.model.tile.*;
 
 public class TestTileManager {
 
@@ -17,7 +18,7 @@ public class TestTileManager {
 
     @Test
     public void testTileGenerate() {
-        TileManager tileManager = new TileManager(2, 6);
+        TileManager tileManager = new TileManager(2, 6, BOARDTYPES.SNAKE_AND_LADDERS);
         assertEquals(tileManager.getSize(), tileManager.getSizeRaw());
         assertEquals(tileManager.getWidth(), 2);
         assertEquals(tileManager.getTiles().size(), 6);
