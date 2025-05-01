@@ -1,4 +1,4 @@
-package org.boardgame.group37.frontend;
+package org.boardgame.group37.view;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -8,10 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.boardgame.group37.backend.game.GameManager;
-import org.boardgame.group37.backend.tile.Tile;
-import org.boardgame.group37.backend.tile.TileDataManager;
-import org.boardgame.group37.backend.tile.TileManager;
+import org.boardgame.group37.model.game.GameManager;
+import org.boardgame.group37.model.tile.Tile;
+import org.boardgame.group37.model.tile.TileDataManager;
+import org.boardgame.group37.model.tile.TileManager;
 
 public class Game {
     public static void init(Pane root, BoardGraphic boardGraphic){
@@ -36,7 +36,11 @@ public class Game {
                 {gameManager.roundDie();
                     while (gameManager.getCurrentPlayerRolls() > 0) {
                         if (gameManager.getState().equals("end")) break;
-                        gameManager.roundMove();
+                        try {
+                            gameManager.roundMove();
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
                         boardGraphic.updatePlayerPosition(playerToken[gameManager.getCurrentPlayerIndex()], gameManager.getCurrentPlayerPosition());
                     }
                     gameManager.roundEnd();
@@ -68,15 +72,15 @@ public class Game {
         tileManager2.tileAdd(new Tile());
 
         // Save and load board data
-        TileDataManager.dataSave(tileManager.getTiles(), "test_board.json");
-        TileDataManager.dataSave(tileManager2.getTiles(), "test2_board.json");
+        TileDataManager.dataSave(tileManager, "test_board.json");
+        TileDataManager.dataSave(tileManager2, "test2_board.json");
 
         try {
-            TileManager tileLoad = new TileManager(TileDataManager.dataLoad("test_board.json"));
+            TileManager tileLoad = TileDataManager.dataLoad("test_board.json");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        String[] test= TileDataManager.dataGetFilenames();
+        String[] test = TileDataManager.dataGetFilenames();
 
         Scene scene = new Scene(root, 800, 600);
     }

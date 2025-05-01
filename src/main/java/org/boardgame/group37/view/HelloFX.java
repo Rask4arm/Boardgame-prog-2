@@ -5,70 +5,26 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.util.concurrent.TimeUnit;
-
-import org.boardgame.group37.model.game.GameManager;
-
 public class HelloFX extends Application {
-    BoardGraphic boardGraphic;
-    PlayerToken[] playerToken = new PlayerToken[2];
-    GameManager gameManager;
-
+    private Stage stage;
+    private Pane root;
 
     @Override
     public void start(Stage stage) {
-        boardGraphic = new BoardGraphic(5,10);
-        playerToken[0] = new PlayerToken(Color.RED);
-        playerToken[1] = new PlayerToken(Color.ORANGE);
-        gameManager = new GameManager();
+        this.stage = stage;
+        this.stage.setTitle("Snakes and Ladders");
+        this.stage.setWidth(800);
+        this.stage.setHeight(600);
 
-        gameManager.getPlayerManager().playerAdd();
-        gameManager.getPlayerManager().playerAdd();
-        gameManager.getDieManager().dieAdd();
-        gameManager.getDieManager().dieAdd();
+        this.root = new Pane();
+        StartPage.init(this.root);
 
-        gameManager.printProperties();
-
-        gameManager.gameStart();
-        Button diceButton = new Button("Roll dice?");
-
-        diceButton.setOnAction(e -> {
-            try {
-                gameManager.roundDie();
-                while (gameManager.getCurrentPlayerRolls() > 0) {
-                    if (gameManager.getState().equals("end")) break;
-                    gameManager.roundMove();
-                    boardGraphic.updatePlayerPosition(playerToken[gameManager.getCurrentPlayerIndex()], gameManager.getCurrentPlayerPosition());
-                }
-                gameManager.roundEnd();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
-
-        boardGraphic.updatePlayerPosition(playerToken[0], 1);
-        boardGraphic.updatePlayerPosition(playerToken[1], 1);
-
-        VBox root = new VBox();
-        root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        root.getChildren().addAll(boardGraphic, diceButton);
-
-
-        Label l = new Label("Welcome to our snakes and ladders game");
-        Scene scene = new Scene(root, 800, 600);
-        stage.setScene(scene);
-        stage.show();
+        this.stage.setScene(new Scene(root));
+        this.stage.show();
     }
 
     public static void main(String[] args) {
