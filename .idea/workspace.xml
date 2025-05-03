@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e72b1210-8ec0-48e9-8382-7eafb1cefc95" name="Changes" comment="test commit for push">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/MonopolyPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/SnakesAndLaddersPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Todo.md" beforeDir="false" afterPath="$PROJECT_DIR$/Todo.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/BoardGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/BoardGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/StartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/StartPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/boardgame/group37/data/TestBoardData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/boardgame/group37/data/TestBoardData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/boardgame/group37/tile/TestTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/boardgame/group37/tile/TestTileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,30 +59,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloFX.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestRun.executor&quot;: &quot;Run&quot;,
-    &quot;Application.testJavaFX.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestBoardData.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.boardgame-engine.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;37-expand-user-interface&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloFX.executor": "Run",
+    "Application.TestRun.executor": "Run",
+    "Application.testJavaFX.executor": "Run",
+    "JUnit.TestBoardData.executor": "Run",
+    "JUnit.TestBoardData.testBoardData.executor": "Debug",
+    "JUnit.TestTileManager.testTileAddAndGet.executor": "Run",
+    "Maven.boardgame-engine.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "37-expand-user-interface",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.5908046",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RunManager" selected="JUnit.TestBoardData.testBoardData">
     <configuration name="HelloFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.boardgame.group37.frontend.HelloFX" />
       <module name="boardgame-engine" />
@@ -87,8 +98,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestBoardData.testBoardData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boardgame-engine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.boardgame.group37.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.boardgame.group37.data" />
+      <option name="MAIN_CLASS_NAME" value="org.boardgame.group37.data.TestBoardData" />
+      <option name="METHOD_NAME" value="testBoardData" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestTileManager.testTileAddAndGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boardgame-engine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.boardgame.group37.tile.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.boardgame.group37.tile" />
+      <option name="MAIN_CLASS_NAME" value="org.boardgame.group37.tile.TestTileManager" />
+      <option name="METHOD_NAME" value="testTileAddAndGet" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestBoardData.testBoardData" />
+        <item itemvalue="JUnit.TestTileManager.testTileAddAndGet" />
         <item itemvalue="Application.HelloFX" />
       </list>
     </recent_temporary>
@@ -130,7 +175,7 @@
       <workItem from="1743698406084" duration="3537000" />
       <workItem from="1744457807273" duration="1230000" />
       <workItem from="1745239464590" duration="21438000" />
-      <workItem from="1746266861716" duration="1582000" />
+      <workItem from="1746266861716" duration="11146000" />
     </task>
     <servers />
   </component>

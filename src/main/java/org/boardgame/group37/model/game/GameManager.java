@@ -34,6 +34,11 @@ public class GameManager {
         gameReset(true, true, true, width, size);
     }
 
+    public GameManager(TileManager tileManager) {
+        System.out.println("\nDebug: GameManager created.");
+        gameReset(true, true, true, tileManager);
+    }
+
     /**
      * gameReset method resets the game to default values.
      * @param resetPlayers: Reset players
@@ -44,6 +49,16 @@ public class GameManager {
     public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, int width, int size) {
         if (resetTiles) tileManager = new TileManager(width, size, BOARDTYPES.SNAKE_AND_LADDERS);
 
+        if (resetPlayers) playerManager = new PlayerManager();
+        if (resetDie) dieManager = new DieManager();
+        currentPlayerIndex = 0;
+        currentPlayerRolls = 0;
+        playerWinner = null;
+        state = "menu";
+    }
+
+    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, TileManager tileManager) {
+        this.tileManager = tileManager;
         if (resetPlayers) playerManager = new PlayerManager();
         if (resetDie) dieManager = new DieManager();
         currentPlayerIndex = 0;

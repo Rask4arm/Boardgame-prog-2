@@ -21,37 +21,24 @@ public class StartPage{
         root.getChildren().clear();
         root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        Label welcome = new Label("Welcome to our snakes and ladders game");
+        Label welcome = new Label("Welcome to our game");
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(welcome);
         borderPane.prefWidthProperty().bind(root.widthProperty());
         borderPane.prefHeightProperty().bind(root.heightProperty());
 
-        TileManager tileManager = new TileManager(10, 50, BOARDTYPES.SNAKE_AND_LADDERS);
+        Button SnakesAndLaddersButton = new Button("Snakes and Ladders");
+        SnakesAndLaddersButton.setOnAction(e -> {
+            SnakesAndLaddersPage.init(root);
+        });
 
-        // Save and load board data
-        TileDataManager.dataSave(tileManager, "test_board.json");
+        Button MonopolyButton = new Button("Monopoly");
+        MonopolyButton.setOnAction(e -> {
+            MonopolyPage.init(root);
+        });
 
-        String[] filenames= TileDataManager.dataGetFilenames();
-        HBox hBox = new HBox();
-        for (int i = 0; i < filenames.length; i++){
-            Button filebutton = new Button(filenames[i]);
-
-            filebutton.setOnAction(e ->
-                    {
-                        TileManager tileLoad = new TileManager(10, 50, BOARDTYPES.SNAKE_AND_LADDERS);
-                        /**try {
-                            tileLoad = new TileManager(TileDataManager.dataLoad("test_board.json").getWidth(),
-                                    TileDataManager.dataLoad("test_board.json").getSize(), BOARDTYPES.SNAKE_AND_LADDERS);
-                        } catch (Exception ex) {
-                            throw new RuntimeException(ex);
-                        }*/
-                        Game.init(root, new BoardGraphic(tileLoad));
-                    }
-            );
-            hBox.getChildren().add(filebutton);
-        }
-        borderPane.setCenter(hBox);
+        borderPane.setLeft(SnakesAndLaddersButton);
+        borderPane.setRight(MonopolyButton);
         root.getChildren().addAll(borderPane);
     }
 }

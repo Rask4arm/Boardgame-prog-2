@@ -17,16 +17,22 @@ import org.boardgame.group37.model.tile.TileManager;
 public class Game {
     public static void init(Pane root, BoardGraphic boardGraphic){
         root.getChildren().clear();
+        root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
+
+
         PlayerToken[] playerToken = new PlayerToken[2];
         GameManager gameManager;
         playerToken[0] = new PlayerToken(Color.RED);
         playerToken[1] = new PlayerToken(Color.ORANGE);
-        gameManager = new GameManager(boardGraphic.getColumnCount(), boardGraphic.getColumnCount() * boardGraphic.getRowCount());
+        gameManager = new GameManager(boardGraphic.getTileManager());
 
         gameManager.getPlayerManager().playerAdd();
         gameManager.getPlayerManager().playerAdd();
         gameManager.getDieManager().dieAdd();
         gameManager.getDieManager().dieAdd();
+
+        boardGraphic.updatePlayerPosition(playerToken[0], 1);
+        boardGraphic.updatePlayerPosition(playerToken[1], 1);
 
         gameManager.printProperties();
 
@@ -48,15 +54,16 @@ public class Game {
                 }
         );
 
-        boardGraphic.updatePlayerPosition(playerToken[0], 1);
-        boardGraphic.updatePlayerPosition(playerToken[1], 1);
-
-        root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
+        Button quitButton = new Button("Quit");
+        quitButton.setOnAction(e -> {
+            SnakesAndLaddersPage.init(root);
+        });
 
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(boardGraphic);
         borderPane.setRight(diceButton);
+        borderPane.setLeft(quitButton);
         borderPane.prefWidthProperty().bind(root.widthProperty());
         borderPane.prefHeightProperty().bind(root.heightProperty());
         root.getChildren().addAll(borderPane);
