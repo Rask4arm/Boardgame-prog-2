@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e72b1210-8ec0-48e9-8382-7eafb1cefc95" name="Changes" comment="test commit for push">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/BoardGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/BoardGraphic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +61,7 @@
     "Maven.boardgame-engine.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "37-expand-user-interface",
+    "git-widget-placeholder": "39-creating-snakes-and-ladders-with-pictures",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -168,7 +166,7 @@
       <workItem from="1743698406084" duration="3537000" />
       <workItem from="1744457807273" duration="1230000" />
       <workItem from="1745239464590" duration="21438000" />
-      <workItem from="1746266861716" duration="13017000" />
+      <workItem from="1746266861716" duration="20132000" />
     </task>
     <servers />
   </component>

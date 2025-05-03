@@ -1,21 +1,18 @@
 package org.boardgame.group37.view;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import org.boardgame.group37.model.tile.Tile;
 import org.boardgame.group37.model.tile.TileManager;
 import org.boardgame.group37.model.tile.action.ActionTeleport;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class BoardGraphic extends GridPane {
@@ -24,28 +21,14 @@ public class BoardGraphic extends GridPane {
     private final int cellSize = 60;
     private TileManager tileManager;
 
-    ImageView ladder = new ImageView("https://www.google.com/url?sa=i&url=https%" +
-            "3A%2F%2Ffavpng.com%2Fpng_view%2Fstep-snakes-and-ladders-game-word-ladd" +
-            "er-paper-png%2FGdeaMxvB&psig=AOvVaw1QUsAUV7DEmKnSbkhsSjAM&ust=174543478" +
-            "5764000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMCPybep7IwDFQAAAAAdAAAAABAK");
 
     /**
      * Creates a tile with a number on it
      * @param row row of the tile
      * @param col column of the tile
      */
-
-    private void createTile(int row, int col, ArrayList<Tile> tiles) {
+    private void createTiles(int row, int col, ArrayList<Tile> tiles) {
         int tileIndex;
-
-        // Create rectangle tile with alternating colors
-        Rectangle tile = new Rectangle(cellSize, cellSize);
-        if ((row + col) % 2 == 0) {
-            tile.setFill(ColorPalette.BOARD_DARK_TILE);
-        } else {
-            tile.setFill(ColorPalette.BOARD_LIGHT_TILE);
-        }
-
         // Calculate correct tile index
         if ((heigth - row - 1) % 2 == 0) {
             tileIndex = (heigth - row - 1) * width + col + 1;
@@ -53,30 +36,59 @@ public class BoardGraphic extends GridPane {
             tileIndex = (heigth - row) * width - col;
         }
 
-        if (tileIndex < heigth * width){
-            if (tiles.get(tileIndex).getAction() instanceof ActionTeleport){
-                System.out.println("Teleport tiletest" + tileIndex);
-                //    int target = ((ActionTeleport) tiles.get(tileIndex).getAction()).getTarget();
-                tile.setFill(ColorPalette.BOARD_TELEPORT_TILE);
-            }}
-
-        // Set tile border and padding
-        tile.setArcWidth(10);
-        tile.setArcHeight(10);
-        tile.setStroke(ColorPalette.BOARD_BORDER);
-        tile.setStrokeWidth(1);
-
-        // Create text
-        Text tileText = new Text(String.valueOf(tileIndex));
-
-        // Stack tile and text together (for alignment)
-        StackPane stack = new StackPane();
-        stack.getChildren().addAll(tile, tileText);
-        stack.setAlignment(Pos.CENTER);
-
-        // Add tile to the board
-        add(stack, col, row);
+        // Create rectangle tile with alternating colors
+        if (tileIndex < heigth * width) {
+            if (tiles.get(tileIndex).getAction() instanceof ActionTeleport) {
+                createTile(ColorPalette.BOARD_TELEPORT_TILE, tileIndex);
+            }
+            else {
+                if ((row + col) % 2 == 0) {
+                    createTile(ColorPalette.BOARD_DARK_TILE, tileIndex);
+                } else {
+                    createTile(ColorPalette.BOARD_LIGHT_TILE, tileIndex);
+                }
+            }
+        }
+        else {
+            if ((row + col) % 2 == 0) {
+                createTile(ColorPalette.BOARD_DARK_TILE, tileIndex);
+            } else {
+                createTile(ColorPalette.BOARD_LIGHT_TILE, tileIndex);
+            }
+        }
     }
+
+
+    private void createLadder(ArrayList<Tile> tiles){
+        AtomicInteger tileIndex = new AtomicInteger();
+        tiles.stream().filter(tile -> tile.getAction() instanceof ActionTeleport).forEach(tile -> {
+            ImageView ladder = new ImageView("https://www.google.com/url?sa=i&url=https%" +
+                    "3A%2F%2Ffavpng.com%2Fpng_view%2Fstep-snakes-and-ladders-game-word-ladd" +
+                    "er-paper-png%2FGdeaMxvB&psig=AOvVaw1QUsAUV7DEmKnSbkhsSjAM&ust=174543478" +
+                    "5764000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMCPybep7IwDFQAAAAAdAAAAABAK");
+
+            tileIndex.set(tiles.indexOf(tile));
+            int row = (heigth*width - tileIndex.get()) / width;
+            int col = 0;
+            if ((heigth - row - 1) % 2 == 0) {
+                col = width - 1 - ((heigth*width - tileIndex.get()) % width);
+            } else {
+                col = (heigth*width - tileIndex.get()) % width;
+            }
+
+            ActionTeleport actionTeleport = (ActionTeleport) ((ActionTeleport) tiles.get(tileIndex.get()).getAction());
+            int targetIndex = actionTeleport.getTarget();
+            getChildren().remove(lookup("#" + targetIndex));
+            createTile(ColorPalette.PLAYER_BLUE, targetIndex);
+            //add(ladder, col, row);
+
+            getChildren().remove(lookup("#" + tileIndex.get()));
+            createTile(ColorPalette.BOARD_TELEPORT_TILE, tileIndex.get());
+            //add(ladder, col, row);
+        });
+    }
+
+
 
     /**
      * Constructor for the BoardGraphic class
@@ -95,9 +107,11 @@ public class BoardGraphic extends GridPane {
 
         for (int row = 0; row < heigth; row++) {
             for (int col = 0; col < width; col++) {
-                createTile(row, col, tiles);
+                createTiles(row, col, tiles);
             }
         }
+        createLadder(tiles);
+        //getgetChildren();
 
         // Add spacing
         setHgap(1);
@@ -129,5 +143,49 @@ public class BoardGraphic extends GridPane {
 
     public TileManager getTileManager() {
         return tileManager;
+    }
+
+    public void getgetChildren(){
+        getChildren().remove(lookup("#61"));
+        System.out.println(getChildren());
+    }
+
+    public void createTile(Color color, int tileIndex) {
+
+        Rectangle tile = new Rectangle(cellSize, cellSize);
+        int row = (heigth*width - tileIndex) / width;
+        int col = 0;
+        if ((heigth - row - 1) % 2 == 0) {
+            col = width - 1 - ((heigth*width - tileIndex) % width);
+        } else {
+            col = (heigth*width - tileIndex) % width;
+        }
+
+        // Calculate correct tile index
+        if ((heigth - row - 1) % 2 == 0) {
+            tileIndex = (heigth - row - 1) * width + col + 1;
+        } else {
+            tileIndex = (heigth - row) * width - col;
+        }
+
+        tile.setFill(color);
+
+        // Set tile border and padding
+        tile.setArcWidth(10);
+        tile.setArcHeight(10);
+        tile.setStroke(ColorPalette.BOARD_BORDER);
+        tile.setStrokeWidth(1);
+
+        // Create text
+        Text tileText = new Text(String.valueOf(tileIndex));
+
+        // Stack tile and text together (for alignment)
+        StackPane stack = new StackPane();
+        stack.getChildren().addAll(tile, tileText);
+        stack.setAlignment(Pos.CENTER);
+        stack.setId(String.valueOf(tileIndex));
+
+        // Add tile to the board
+        add(stack, col, row);
     }
 }
