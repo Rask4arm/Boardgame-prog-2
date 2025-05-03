@@ -27,7 +27,7 @@ public class StartPage{
         borderPane.prefWidthProperty().bind(root.widthProperty());
         borderPane.prefHeightProperty().bind(root.heightProperty());
 
-        TileManager tileManager = new TileManager(10, 100, BOARDTYPES.SNAKE_AND_LADDERS);
+        TileManager tileManager = new TileManager(10, 50, BOARDTYPES.SNAKE_AND_LADDERS);
 
         // Save and load board data
         TileDataManager.dataSave(tileManager, "test_board.json");
@@ -39,7 +39,7 @@ public class StartPage{
 
             filebutton.setOnAction(e ->
                     {
-                        TileManager tileLoad = new TileManager(10, 100, BOARDTYPES.SNAKE_AND_LADDERS);
+                        TileManager tileLoad = new TileManager(10, 50, BOARDTYPES.SNAKE_AND_LADDERS);
                         /**try {
                             tileLoad = new TileManager(TileDataManager.dataLoad("test_board.json").getWidth(),
                                     TileDataManager.dataLoad("test_board.json").getSize(), BOARDTYPES.SNAKE_AND_LADDERS);

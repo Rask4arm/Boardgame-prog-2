@@ -45,7 +45,7 @@ public class BoardGraphic extends GridPane {
         }
 
 
-        if (tileIndex < 100){
+        if (tileIndex < row * col){
             if (tiles.get(tileIndex).getAction() instanceof ActionTeleport){
                 //    int target = ((ActionTeleport) tiles.get(tileIndex).getAction()).getTarget();
                 tile.setFill(ColorPalette.PLAYER_GREEN);
