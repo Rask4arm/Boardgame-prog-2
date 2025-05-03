@@ -18,12 +18,13 @@ public class HelloFX extends Application {
         this.stage = stage;
         this.stage.setTitle("Snakes and Ladders");
         this.stage.setWidth(800);
-        this.stage.setHeight(600);
+        this.stage.setHeight(800);
 
         this.root = new Pane();
         StartPage.init(this.root);
 
-        this.stage.setScene(new Scene(root));
+        Scene scene = new Scene(this.root);
+        this.stage.setScene(scene);
         this.stage.show();
 
     }

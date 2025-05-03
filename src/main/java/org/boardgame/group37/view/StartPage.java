@@ -1,8 +1,8 @@
 package org.boardgame.group37.view;
 
+import javafx.geometry.Pos;
 import javafx.scene.layout.Pane;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
@@ -18,44 +18,41 @@ import org.boardgame.group37.model.tile.TileManager;
 
 public class StartPage{
     public static void init(Pane root){
+        root.getChildren().clear();
         root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        Label l = new Label("Welcome to our snakes and ladders game");
-        Label v = new Label("Welcome to our snakes and ladders game");
+        Label welcome = new Label("Welcome to our snakes and ladders game");
+        BorderPane borderPane = new BorderPane();
+        borderPane.setTop(welcome);
+        borderPane.prefWidthProperty().bind(root.widthProperty());
+        borderPane.prefHeightProperty().bind(root.heightProperty());
 
         TileManager tileManager = new TileManager(10, 100, BOARDTYPES.SNAKE_AND_LADDERS);
 
-        TileManager tileManager2 = new TileManager();
-        tileManager2.tileAdd(new Tile());
-        tileManager2.tileAdd(new Tile());
-
         // Save and load board data
         TileDataManager.dataSave(tileManager, "test_board.json");
-        TileDataManager.dataSave(tileManager2, "test2_board.json");
 
         String[] filenames= TileDataManager.dataGetFilenames();
-
-        root.getChildren().addAll(l);
+        HBox hBox = new HBox();
         for (int i = 0; i < filenames.length; i++){
             Button filebutton = new Button(filenames[i]);
 
             filebutton.setOnAction(e ->
                     {
-                        TileManager tileLoad = tileManager;
-                        Game.init(root, new BoardGraphic(tileLoad));
-                        try {
-                            tileLoad = new TileManager(TileDataManager.dataLoad("test2_board.json").getTiles());
+                        TileManager tileLoad = new TileManager(10, 100, BOARDTYPES.SNAKE_AND_LADDERS);
+                        /**try {
+                            tileLoad = new TileManager(TileDataManager.dataLoad("test_board.json").getWidth(),
+                                    TileDataManager.dataLoad("test_board.json").getSize(), BOARDTYPES.SNAKE_AND_LADDERS);
                         } catch (Exception ex) {
                             throw new RuntimeException(ex);
-                        }
-                        org.boardgame.group37.view.BoardGraphic boardGraphic = new org.boardgame.group37.view.BoardGraphic(tileLoad);
+                        }*/
                         Game.init(root, new BoardGraphic(tileLoad));
-                        root.getChildren().add(boardGraphic);
                     }
             );
-
-            root.getChildren().add(filebutton);
+            hBox.getChildren().add(filebutton);
         }
+        borderPane.setCenter(hBox);
+        root.getChildren().addAll(borderPane);
     }
 }
 

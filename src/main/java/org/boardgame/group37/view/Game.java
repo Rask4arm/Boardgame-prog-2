@@ -2,6 +2,7 @@ package org.boardgame.group37.view;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -52,36 +53,12 @@ public class Game {
 
         root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        root.getChildren().addAll(boardGraphic, diceButton);
 
-
-
-        // new thing
-        VBox root1 = new VBox();
-        root1.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        Label l = new Label("Welcome to our snakes and ladders game");
-
-
-        TileManager tileManager = new TileManager();
-        tileManager.tileAdd(new Tile());
-        tileManager.tileAdd(new Tile());
-
-        TileManager tileManager2 = new TileManager();
-        tileManager2.tileAdd(new Tile());
-        tileManager2.tileAdd(new Tile());
-
-        // Save and load board data
-        TileDataManager.dataSave(tileManager, "test_board.json");
-        TileDataManager.dataSave(tileManager2, "test2_board.json");
-
-        try {
-            TileManager tileLoad = TileDataManager.dataLoad("test_board.json");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        String[] test = TileDataManager.dataGetFilenames();
-
-        Scene scene = new Scene(root, 800, 600);
+        BorderPane borderPane = new BorderPane();
+        borderPane.setCenter(boardGraphic);
+        borderPane.setRight(diceButton);
+        borderPane.prefWidthProperty().bind(root.widthProperty());
+        borderPane.prefHeightProperty().bind(root.heightProperty());
+        root.getChildren().addAll(borderPane);
     }
 }
