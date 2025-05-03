@@ -64,7 +64,6 @@ public class TileManager {
      */
     public void tilesGenerate() {
         System.out.println("Debug: Generating tiles.");
-        int test = 0;
         for(int i = 0; i < size; i++) {
 
             // Initialize random properties
@@ -72,8 +71,7 @@ public class TileManager {
             Action action = null;
 
             // Set action based on random properties
-            if (rand < .1) {action = new ActionTeleport(20);
-                test++;
+            if (rand < .2) {action = new ActionTeleport(20);
             }
             else action = new ActionDefault();
 
@@ -81,7 +79,6 @@ public class TileManager {
             tileAdd(new Tile(action));
         }
         System.out.println(String.format("Debug: Tiles generated successfully. Number of tiles: %d", tiles.size()));
-        System.out.println(String.format("Debug: Number of teleport tiles: %d", test));
     }
 
     /**

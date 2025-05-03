@@ -55,6 +55,7 @@ public class BoardGraphic extends GridPane {
 
         if (tileIndex < heigth * width){
             if (tiles.get(tileIndex).getAction() instanceof ActionTeleport){
+                System.out.println("Teleport tiletest" + tileIndex);
                 //    int target = ((ActionTeleport) tiles.get(tileIndex).getAction()).getTarget();
                 tile.setFill(ColorPalette.BOARD_TELEPORT_TILE);
             }}

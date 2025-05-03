@@ -125,7 +125,7 @@ public class GameManager {
 
         // Execute action move if player has no rolls left
         } else {
-            currentPlayer.executeTile(tileManager, currentPlayerIndex);
+            currentPlayer.executeTile(tileManager, currentPlayer.getPosition()+1);
             System.out.println(String.format(
                 "Debug: roundMove() --> executeTile(); --> playerRolls %d; playerPos %d", 
                 currentPlayerRolls, currentPlayer.getPosition())
