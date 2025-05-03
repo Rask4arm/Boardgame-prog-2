@@ -22,6 +22,7 @@ public class BoardGraphic extends GridPane {
     private int heigth;
     private int width;
     private final int cellSize = 60;
+    private TileManager tileManager;
 
     ImageView ladder = new ImageView("https://www.google.com/url?sa=i&url=https%" +
             "3A%2F%2Ffavpng.com%2Fpng_view%2Fstep-snakes-and-ladders-game-word-ladd" +
@@ -34,7 +35,8 @@ public class BoardGraphic extends GridPane {
      * @param col column of the tile
      */
 
-    private void createTile(int row, int col, int tileIndex,ArrayList<Tile> tiles) {
+    private void createTile(int row, int col, ArrayList<Tile> tiles) {
+        int tileIndex;
 
         // Create rectangle tile with alternating colors
         Rectangle tile = new Rectangle(cellSize, cellSize);
@@ -44,19 +46,19 @@ public class BoardGraphic extends GridPane {
             tile.setFill(ColorPalette.BOARD_LIGHT_TILE);
         }
 
-
-        if (tileIndex < 100){
-            if (tiles.get(tileIndex).getAction() instanceof ActionTeleport){
-                //    int target = ((ActionTeleport) tiles.get(tileIndex).getAction()).getTarget();
-                tile.setFill(ColorPalette.PLAYER_GREEN);
-            }}
-
         // Calculate correct tile index
         if ((heigth - row - 1) % 2 == 0) {
             tileIndex = (heigth - row - 1) * width + col + 1;
         } else {
             tileIndex = (heigth - row) * width - col;
         }
+
+        if (tileIndex < heigth * width){
+            if (tiles.get(tileIndex).getAction() instanceof ActionTeleport){
+                System.out.println("Teleport tiletest" + tileIndex);
+                //    int target = ((ActionTeleport) tiles.get(tileIndex).getAction()).getTarget();
+                tile.setFill(ColorPalette.BOARD_TELEPORT_TILE);
+            }}
 
         // Set tile border and padding
         tile.setArcWidth(10);
@@ -84,19 +86,16 @@ public class BoardGraphic extends GridPane {
      * Creates a grid of tiles with alternating colors and numbers
      */
     BoardGraphic(TileManager tileManager) {
+        this.tileManager = tileManager;
         this.heigth = tileManager.getSize()/tileManager.getWidth();
         this.width = tileManager.getWidth();
 
         // Board setup
         ArrayList<Tile> tiles = tileManager.getTiles();
 
-        int tileIndex = 0;
         for (int row = 0; row < heigth; row++) {
             for (int col = 0; col < width; col++) {
-                tileIndex++;
-                createTile(row, col, tileIndex, tiles);
-
-
+                createTile(row, col, tiles);
             }
         }
 
@@ -126,5 +125,9 @@ public class BoardGraphic extends GridPane {
         // Remove player token -> add player token to new position
         getChildren().remove(playertoken);
         add(playertoken, col, row);
+    }
+
+    public TileManager getTileManager() {
+        return tileManager;
     }
 }

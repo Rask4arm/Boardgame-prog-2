@@ -8,12 +8,12 @@ public class TestTileManager {
 
     @Test
     public void testTileAddAndGet() {
-        TileManager tileManager = new TileManager();
+        TileManager tileManager = new TileManager(10, 100, BOARDTYPES.SNAKE_AND_LADDERS);
         tileManager.tileAdd(new Tile());
         tileManager.tileAdd(new Tile());
-        assertEquals(tileManager.getSizeRaw(), 2);
-        assertEquals(tileManager.getSize(), 0);
-        assertEquals(tileManager.getWidth(), 0);
+        assertEquals(tileManager.getSizeRaw(), 102);
+        assertEquals(tileManager.getSize(), 100);
+        assertEquals(tileManager.getWidth(), 10);
     }
 
     @Test

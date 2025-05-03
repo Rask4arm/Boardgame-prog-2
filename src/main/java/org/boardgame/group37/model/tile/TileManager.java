@@ -39,10 +39,12 @@ public class TileManager {
 
     /**
      * Initializes the TileManager with the specified ArrayList of Tile objects.
-     * @param tiles
+     * @param tileManager: TileManager object
      */
-    public TileManager(ArrayList<Tile> tiles) {
-        this.tiles = tiles;
+    public TileManager(TileManager tileManager) {
+        this.tiles = tileManager.getTiles();
+        this.width = tileManager.getWidth();
+        this.size = tileManager.getSize();
     }
 
     // Methods
@@ -69,7 +71,8 @@ public class TileManager {
             Action action = null;
 
             // Set action based on random properties
-            if (rand < .1) action = new ActionTeleport(i);
+            if (rand < .2) {action = new ActionTeleport(20);
+            }
             else action = new ActionDefault();
 
             // Add tile to tiles

@@ -2,6 +2,7 @@ package org.boardgame.group37.view;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,16 +17,22 @@ import org.boardgame.group37.model.tile.TileManager;
 public class Game {
     public static void init(Pane root, BoardGraphic boardGraphic){
         root.getChildren().clear();
+        root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
+
+
         PlayerToken[] playerToken = new PlayerToken[2];
         GameManager gameManager;
         playerToken[0] = new PlayerToken(Color.RED);
         playerToken[1] = new PlayerToken(Color.ORANGE);
-        gameManager = new GameManager(boardGraphic.getColumnCount(), boardGraphic.getColumnCount() * boardGraphic.getRowCount());
+        gameManager = new GameManager(boardGraphic.getTileManager());
 
         gameManager.getPlayerManager().playerAdd();
         gameManager.getPlayerManager().playerAdd();
         gameManager.getDieManager().dieAdd();
         gameManager.getDieManager().dieAdd();
+
+        boardGraphic.updatePlayerPosition(playerToken[0], 1);
+        boardGraphic.updatePlayerPosition(playerToken[1], 1);
 
         gameManager.printProperties();
 
@@ -47,41 +54,18 @@ public class Game {
                 }
         );
 
-        boardGraphic.updatePlayerPosition(playerToken[0], 1);
-        boardGraphic.updatePlayerPosition(playerToken[1], 1);
-
-        root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        root.getChildren().addAll(boardGraphic, diceButton);
+        Button quitButton = new Button("Quit");
+        quitButton.setOnAction(e -> {
+            SnakesAndLaddersPage.init(root);
+        });
 
 
-
-        // new thing
-        VBox root1 = new VBox();
-        root1.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        Label l = new Label("Welcome to our snakes and ladders game");
-
-
-        TileManager tileManager = new TileManager();
-        tileManager.tileAdd(new Tile());
-        tileManager.tileAdd(new Tile());
-
-        TileManager tileManager2 = new TileManager();
-        tileManager2.tileAdd(new Tile());
-        tileManager2.tileAdd(new Tile());
-
-        // Save and load board data
-        TileDataManager.dataSave(tileManager, "test_board.json");
-        TileDataManager.dataSave(tileManager2, "test2_board.json");
-
-        try {
-            TileManager tileLoad = TileDataManager.dataLoad("test_board.json");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        String[] test = TileDataManager.dataGetFilenames();
-
-        Scene scene = new Scene(root, 800, 600);
+        BorderPane borderPane = new BorderPane();
+        borderPane.setCenter(boardGraphic);
+        borderPane.setRight(diceButton);
+        borderPane.setLeft(quitButton);
+        borderPane.prefWidthProperty().bind(root.widthProperty());
+        borderPane.prefHeightProperty().bind(root.heightProperty());
+        root.getChildren().addAll(borderPane);
     }
 }
