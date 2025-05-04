@@ -58,7 +58,7 @@ public class SnakesAndLaddersPage {
         borderPane.setLeft(backButton);
 
 
-        TileManager tileManagerNew = new TileManager(10, 70, BOARDTYPES.SNAKE_AND_LADDERS);
+        TileManager tileManagerNew = new TileManager(10, 20, BOARDTYPES.SNAKE_AND_LADDERS);
         Button newBoardButton = new Button("New Board");
         newBoardButton.setOnAction(e -> {
 

@@ -5,6 +5,7 @@ import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerManager;
 import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.TileManager;
+import org.boardgame.group37.view.VictoryPage;
 
 /**
  * GameManager class is responsible for managing the game.

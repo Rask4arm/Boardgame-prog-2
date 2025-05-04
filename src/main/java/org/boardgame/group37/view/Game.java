@@ -51,6 +51,10 @@ public class Game {
                         boardGraphic.updatePlayerPosition(playerToken[gameManager.getCurrentPlayerIndex()], gameManager.getCurrentPlayerPosition());
                     }
                     gameManager.roundEnd();
+                    if (gameManager.getState().equals("end")) {
+                        String winnerName = gameManager.getPlayerWinner().getName();
+                        VictoryPage.init(root, winnerName);
+                    }
                 }
         );
 

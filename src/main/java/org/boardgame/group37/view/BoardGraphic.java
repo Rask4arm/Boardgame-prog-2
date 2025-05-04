@@ -80,11 +80,6 @@ public class BoardGraphic extends GridPane {
             int targetIndex = actionTeleport.getTarget();
             getChildren().remove(lookup("#" + targetIndex));
             createTile(ColorPalette.PLAYER_BLUE, targetIndex);
-            //add(ladder, col, row);
-
-            getChildren().remove(lookup("#" + tileIndex.get()));
-            createTile(ColorPalette.BOARD_TELEPORT_TILE, tileIndex.get());
-            //add(ladder, col, row);
         });
     }
 
