@@ -144,13 +144,13 @@ public class GameManager {
 
         // Monopoly check if player passed start tile
         if (boardType == BOARDTYPES.MONOPOLY) {
-            if (currentPlayer.getPosition() > tileManager.getTiles().size()) {
+            if (currentPlayer.getPosition() >= tileManager.getTiles().size()) {
                 currentPlayer.setPosition(currentPlayer.getPosition() - tileManager.getTiles().size());
-                currentPlayer.setMoney(currentPlayer.getMoney() + 200);
+                currentPlayer.setMoney(currentPlayer.getMoney() + 200); // Passing start bonus
                 System.out.println(String.format(
-                    "Debug: roundMove() --> player %d passed start tile and received 200.", 
-                    currentPlayerIndex)
-                );
+                    "Debug: Player %d passed start tile and received 200.", 
+                    currentPlayerIndex
+                ));
             }
         }
 

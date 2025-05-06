@@ -22,7 +22,7 @@ public class ActionMonopolyTile implements Action {
      */
     @Override
     public Color getColor() throws Exception {
-        return (playerIndexOwner != null) : playerManager.players.get(playerIndexOwner).getColor() ? Color.LIGHT_GRAY;
+        return (playerIndexOwner != null) ? playerManager.players.get(playerIndexOwner).getColor() : Color.LIGHT_GRAY;
     }
 
     public void purchaseTile(Player player) {
@@ -55,4 +55,5 @@ public class ActionMonopolyTile implements Action {
 
     setPlayerManager(PlayerManager playerManager) {
         this.playerManager = playerManager;
+    }
 }
