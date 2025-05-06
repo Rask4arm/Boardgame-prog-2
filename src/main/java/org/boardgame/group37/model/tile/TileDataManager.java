@@ -156,4 +156,29 @@ public class TileDataManager {
         return null;
 
     }
+
+    public static final boolean dataDelete(String fileName) throws Exception {
+        try {
+            // Initialize file
+            dataInit();
+    
+            // Get path
+            String fullFileName = fileName.endsWith(".json") ? fileName : fileName + ".json";
+            Path path = java.nio.file.Paths.get("data/board/" + fullFileName);
+    
+            // Check if the file exists
+            if (Files.exists(path)) {
+                // Delete the file
+                Files.delete(path);
+                System.out.println("Debug: File deleted successfully: " + fullFileName);
+                return true; // Indicate success
+            } else {
+                throw new FileNotFoundException("File not found: " + fullFileName);
+            }
+        } catch (Exception e) {
+            System.err.println("Error deleting file: " + fileName);
+            e.printStackTrace();
+            return false; // Indicate failure
+        }
+    }
 }

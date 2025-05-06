@@ -2,6 +2,7 @@ package org.boardgame.group37.model.tile;
 import java.util.ArrayList;
 
 import org.boardgame.group37.model.tile.action.*;
+imort org.boardgame.group37.model.player.PlayerManager;
 
 /**
  * TileManager class is responsible for storing and generating tiles.
@@ -13,6 +14,7 @@ public class TileManager {
     private int width = 0;
     private int size = 0;
     private ArrayList<Tile> tiles = new ArrayList<>();
+    private BOARDTYPES boardType;
 
     /**
      * Initializes the TileManager with an empty ArrayList of tiles.
@@ -27,14 +29,12 @@ public class TileManager {
      * @param size: number of tiles
      * Generates tiles based on the specified size.
      */
-    public TileManager(int width, int size, BOARDTYPES type) {
+    public TileManager(int width, int size, BOARDTYPES type, PlayerManager playerManager) {
         System.out.println(String.format("Debug: TileManager created with width: %d, size: %d", width, size));
         this.width = width;
         this.size = size;
-        switch (type) {
-            case SNAKE_AND_LADDERS -> tilesGenerate();
-            case MONOPOLY -> tilesGenerateMonopoly();
-        }
+        this.boardType = type;
+        this.tilesGenerate(type, playerManager);
     }
 
     /**
@@ -62,29 +62,38 @@ public class TileManager {
      * tilesGenerate method generates tiles based on the specified size.
      * Tiles are generated with random properties.
      */
-    public void tilesGenerate() {
-        System.out.println("Debug: Generating tiles.");
-        for(int i = 0; i < size; i++) {
+    public void tilesGenerate(BOARDTYPES type, PlayerManager playerManager) {
+        switch(type) {
+            case SNAKE_AND_LADDERS -> {
+                System.out.println("Debug: Generating tiles.");
+                for(int i = 0; i < size; i++) {
 
-            // Initialize random properties
-            double rand = Math.random();
-            Action action = null;
+                    // Initialize random properties
+                    double rand = Math.random();
+                    Action action = null;
 
-            // Set action based on random properties
-            if (rand < .2) {action = new ActionTeleport(20);
+                    // Set action based on random properties
+                    if (rand < .2) {action = new ActionTeleport(20);
+                    }
+                    else action = new ActionDefault();
+
+                    // Add tile to tiles
+                    tileAdd(new Tile(action));
+                }
+                System.out.println(String.format("Debug: Tiles generated successfully. Number of tiles: %d", tiles.size()));
             }
-            else action = new ActionDefault();
+            case MONOPOLY -> {
+                System.out.println("Debug: Generating tiles.");
+                tileAdd(new Tile(new ActionMonopolyStart()));
+                for(int i = 0; i < size; i++) {
 
-            // Add tile to tiles
-            tileAdd(new Tile(action));
+                    // Add tile to tiles
+                    tileAdd(new Tile(new ActionMonopolyTile((i+4) * 20, null)));
+                }
+                System.out.println(String.format("Debug: Tiles generated successfully. Number of tiles: %d", tiles.size()));
+            }
         }
-        System.out.println(String.format("Debug: Tiles generated successfully. Number of tiles: %d", tiles.size()));
     }
-
-    /**
-     * tilesGenerateMonopoly method generates tiles for a Monopoly board.
-     */
-    public void tilesGenerateMonopoly() {}
 
     /**
      * getTiles method returns the ArrayList of Tile objects.
@@ -120,6 +129,14 @@ public class TileManager {
 
     public void setTiles(ArrayList<Tile> tiles) {
         this.tiles = tiles;
+    }
+
+    /**
+     * getBoardType method returns the type of the board.
+     * @return board type
+     */
+    public BOARDTYPES getBoardType() {
+        return boardType;
     }
 
     /**
