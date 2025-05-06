@@ -34,10 +34,7 @@ public class TileManager {
         this.width = width;
         this.size = size;
         this.boardType = type;
-        switch (type) {
-            case SNAKE_AND_LADDERS -> tilesGenerate();
-            case MONOPOLY -> tilesGenerateMonopoly();
-        }
+        this.tilesGenerate(type, playerManager);
     }
 
     /**
@@ -97,11 +94,6 @@ public class TileManager {
             }
         }
     }
-
-    /**
-     * tilesGenerateMonopoly method generates tiles for a Monopoly board.
-     */
-    public void tilesGenerateMonopoly() {}
 
     /**
      * getTiles method returns the ArrayList of Tile objects.
