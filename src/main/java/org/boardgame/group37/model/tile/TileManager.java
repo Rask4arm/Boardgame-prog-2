@@ -73,9 +73,13 @@ public class TileManager {
                     Action action = null;
 
                     // Set action based on random properties
-                    if (rand < .2) {action = new ActionTeleport(20);
+                    if (rand < .2) {
+                        action = new ActionTeleport(i + (Math.random() * 10));
+                    } else if (rand < .3) {
+                        action = new ActionSwitch();
+                    } else {
+                        action = new ActionDefault();
                     }
-                    else action = new ActionDefault();
 
                     // Add tile to tiles
                     tileAdd(new Tile(action));

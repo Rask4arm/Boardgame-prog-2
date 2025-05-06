@@ -43,6 +43,11 @@ public class ActionMonopolyTile implements Action {
      */
     @Override
     public void execute(Player player) {
+        if (playerManager == null) {
+            System.out.println("Error: PlayerManager is not set. Cannot execute ActionMonopolyTile.");
+            return;
+        }
+
         if (playerIndexOwner != null) {
             player.setMoney(player.getMoney() - rent);
             playerManager.getPlayers().get(playerIndexOwner).setMoney(playerManager.getPlayers().get(playerIndexOwner).getMoney() + rent);

@@ -13,13 +13,14 @@ import javafx.scene.paint.Color;
 public class ActionSwitch implements Action {
 
     // Properties
-    private PlayerManager playerManager;
-    ActionSwitch(PlayerManager playerManager) {
-        this.playerManager = playerManager;
-    }
+    private transient PlayerManager playerManager;
 
     @Override
     public void execute(Player player) throws Exception {
+        if (playerManager == null) {
+            throw new GameException("Error: PlayerManager is not set. Cannot execute ActionSwitch.");
+        }
+
         // Switch the positions of the two players
         Player otherPlayer = player; int i = 0;
         while (otherPlayer == player) {
@@ -32,6 +33,10 @@ public class ActionSwitch implements Action {
         }
         
         System.out.println("Debug: ActionSwitch executed. Players switched positions.");
+    }
+
+    public void setPlayerManager(PlayerManager playerManager) {
+        this.playerManager = playerManager;
     }
 
     /**

@@ -99,6 +99,7 @@ public class GameManager {
             Action action = tileManager.getTiles().get(i).getAction();
             switch (action.getClass().getSimpleName()) {
                 case "ActionMonopolyTile" -> ((ActionMonopolyTile) action).setPlayerManager(playerManager);
+                case "ActionSwitch" -> ((ActionSwitch) action).setPlayerManager(playerManager);
             }
         }
 
