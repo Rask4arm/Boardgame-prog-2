@@ -35,6 +35,7 @@ public class TestPlayerData {
         assertNull(PlayerDataManager.dataLoad(players[1].getName()));
         assertEquals(players[2].getName(), PlayerDataManager.dataLoad(players[2].getName()).getName());
 
+        PlayerDataManager.dataDeleteAll();
     }
 
 }

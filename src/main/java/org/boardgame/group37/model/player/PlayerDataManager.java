@@ -131,7 +131,7 @@ public class PlayerDataManager {
 
             // Write the data on a new line in the file
             CSVWriter writer = new CSVWriter(Files.newBufferedWriter(getPath(), StandardOpenOption.APPEND));
-            String[] data = {playerData.getName(), Integer.toString(playerData.getColor().hashCode())};
+            String[] data = {playerData.getName(), (playerData.getColor().toString())};
             writer.writeNext(data);
             writer.close();
 

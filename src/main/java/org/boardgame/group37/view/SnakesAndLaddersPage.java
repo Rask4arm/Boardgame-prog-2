@@ -18,6 +18,8 @@ import javafx.collections.FXCollections;
 import javafx.scene.paint.Color;
 import org.boardgame.group37.view.ColorPalette;
 
+import java.util.ArrayList;
+
 public class SnakesAndLaddersPage {
     public static void init(Pane root){
         root.getChildren().clear();
@@ -77,6 +79,8 @@ public class SnakesAndLaddersPage {
         playerManager.playerAdd("Player 2", colorP2);
 
         HBox hBoxPlayers = new HBox();
+        VBox vBoxPlayer1 = new VBox();
+        VBox vBoxPlayer2 = new VBox();
 
         TextField textFieldPlayer1 = new TextField();
         textFieldPlayer1.setPromptText("Player 1");
@@ -98,17 +102,28 @@ public class SnakesAndLaddersPage {
             }
         });
 
+        ArrayList<Player> loadedPlayers = PlayerDataManager.dataLoad();
+
         Button savePlayer1Button = new Button("Save Player");
         savePlayer1Button.setOnAction(e -> {
             PlayerDataManager.dataSave(playerManager.getPlayer(0));
+            loadedPlayers.clear();
+            loadedPlayers.addAll(PlayerDataManager.dataLoad());
+
+            ChoiceBox player1ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBoxP1, textFieldPlayer1);
+
+            vBoxPlayer1.getChildren().remove(3);
+            vBoxPlayer1.getChildren().add(player1ChoiceBox);
         });
 
-        VBox vBoxPlayer1 = new VBox();
-        vBoxPlayer1.getChildren().addAll(textFieldPlayer1, colorChoiceBoxP1, savePlayer1Button);
+        ChoiceBox player1ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBoxP1, textFieldPlayer1);
+
+        vBoxPlayer1.getChildren().addAll(textFieldPlayer1, colorChoiceBoxP1, savePlayer1Button, player1ChoiceBox);
         hBoxPlayers.getChildren().add(vBoxPlayer1);
 
         textFieldPlayer1.setOnKeyTyped(e -> {
             String playerName = textFieldPlayer1.getText();
+            player1ChoiceBox.setValue(null);
             if (!playerName.isEmpty()) {
                 playerManager.changePlayerName(0, playerName);
             }
@@ -139,14 +154,23 @@ public class SnakesAndLaddersPage {
         Button savePlayer2Button = new Button("Save Player");
         savePlayer2Button.setOnAction(e -> {
             PlayerDataManager.dataSave(playerManager.getPlayer(1));
+            loadedPlayers.clear();
+            loadedPlayers.addAll(PlayerDataManager.dataLoad());
+
+            ChoiceBox player2ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBoxP2, textFieldPlayer2);
+
+            vBoxPlayer2.getChildren().remove(3);
+            vBoxPlayer2.getChildren().add(player2ChoiceBox);
         });
 
-        VBox vBoxPlayer2 = new VBox();
-        vBoxPlayer2.getChildren().addAll(textFieldPlayer2, colorChoiceBoxP2, savePlayer2Button);
+        ChoiceBox player2ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBoxP2, textFieldPlayer2);
+
+        vBoxPlayer2.getChildren().addAll(textFieldPlayer2, colorChoiceBoxP2, savePlayer2Button, player2ChoiceBox);
         hBoxPlayers.getChildren().add(vBoxPlayer2);
 
         textFieldPlayer2.setOnKeyTyped(e -> {
             String playerName = textFieldPlayer2.getText();
+            player2ChoiceBox.setValue(null);
             if (!playerName.isEmpty()) {
                 playerManager.changePlayerName(1, playerName);
             }
@@ -182,15 +206,7 @@ public class SnakesAndLaddersPage {
                     textField.setPromptText("Player " + (i + 1));
 
                     int finalI = i;
-                    textField.setOnKeyTyped(e -> {
-                        String playerName = textField.getText();
-                        if (!playerName.isEmpty()) {
-                            playerManager.changePlayerName(finalI, playerName);
-                        }
-                        else {
-                            playerManager.changePlayerName(finalI, "Player " + (finalI + 1));
-                        }
-                    });
+                    VBox vBoxPlayers = new VBox();
 
                     ChoiceBox colorChoiceBox = new ChoiceBox(FXCollections.observableArrayList(colors));
                     colorChoiceBox.setValue(colors[finalI]);
@@ -212,10 +228,29 @@ public class SnakesAndLaddersPage {
                     Button savePlayerButton = new Button("Save Player");
                     savePlayerButton.setOnAction(e -> {
                         PlayerDataManager.dataSave(playerManager.getPlayer(finalI));
+                        loadedPlayers.clear();
+                        loadedPlayers.addAll(PlayerDataManager.dataLoad());
+
+                        ChoiceBox playerChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBox, textField);
+
+                        vBoxPlayers.getChildren().remove(3);
+                        vBoxPlayers.getChildren().add(playerChoiceBox);
                     });
 
-                    VBox vBoxPlayers = new VBox();
-                    vBoxPlayers.getChildren().addAll(textField, colorChoiceBox, savePlayerButton);
+                    ChoiceBox playerChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBox, textField);
+
+                    textField.setOnKeyTyped(e -> {
+                        String playerName = textField.getText();
+                        playerChoiceBox.setValue(null);
+                        if (!playerName.isEmpty()) {
+                            playerManager.changePlayerName(finalI, playerName);
+                        }
+                        else {
+                            playerManager.changePlayerName(finalI, "Player " + (finalI + 1));
+                        }
+                    });
+
+                    vBoxPlayers.getChildren().addAll(textField, colorChoiceBox, savePlayerButton, playerChoiceBox);
                     hBoxPlayers.getChildren().add(vBoxPlayers);
 
                     playerManager.playerAdd("Player " + (i + 1), ColorPalette.getPlayerColors()[i]);
