@@ -1,6 +1,7 @@
 package org.boardgame.group37.model;
 
 import org.boardgame.group37.model.game.GameManager;
+import org.boardgame.group37.model.tile.BOARDTYPES;
 
 public class TestRun {
     public static void main(String[] args) throws Exception {

@@ -1,7 +1,7 @@
 package org.boardgame.group37.model.tile.action;
 
+import javafx.scene.paint.Color;
 import org.boardgame.group37.model.player.Player;
-import java.awt.Color;
 
 
 /**

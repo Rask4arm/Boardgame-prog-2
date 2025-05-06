@@ -116,4 +116,21 @@ public class Player {
     public String toString() {
         return String.format("Player | Name: %s, Color: %s, Position: %d", name, color.toString(), position);
     }
+
+    /**
+     * getMoney method returns the player's money.
+     * @return player's money
+     */
+    public int getMoney() {
+        return money;
+    }
+
+    /**
+     * setMoney method sets the player's money.
+     * @param money: player's money
+     */
+    public void setMoney(int money) {
+        this.money = money;
+        System.out.println(String.format("Debug: Player %s set money to %d", name, money));
+    }
 }

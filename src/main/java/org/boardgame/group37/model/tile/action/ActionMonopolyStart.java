@@ -1,10 +1,12 @@
 package org.boardgame.group37.model.tile.action;
 
 import javafx.scene.paint.Color;
+import org.boardgame.group37.model.player.Player;
 
 public class ActionMonopolyStart implements Action {
     /**
      * getColor method returns the color of the action.
+     *
      * @return color of the action
      */
     @Override

@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.boardgame.group37.model.game.GameManager;
 import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerManager;
+import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.Tile;
 import org.boardgame.group37.model.tile.TileDataManager;
 import org.boardgame.group37.model.tile.TileManager;
@@ -31,7 +32,7 @@ public class Game {
         }
 
         GameManager gameManager;
-        gameManager = new GameManager(boardGraphic.getTileManager(), playerManager);
+        gameManager = new GameManager(boardGraphic.getTileManager(), playerManager, BOARDTYPES.SNAKE_AND_LADDERS);
 
         gameManager.getDieManager().dieAdd();
         gameManager.getDieManager().dieAdd();
