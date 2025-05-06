@@ -97,6 +97,23 @@ public class Player {
         position = 0;
         System.out.println(String.format("Debug: Player %s reset position to %d", name, position));
     }
+    /**
+     * setColor method sets the player's color.
+     * @param color: player's color
+     */
+    public void setColor(Color color) {
+        this.color = color;
+        System.out.println(String.format("Debug: Player %s set color to %s", name, color.toString()));
+    }
+
+    /**
+     * setName method sets the player's name.
+     * @param name: player's name
+     */
+    public void setName(String name) {
+        this.name = name;
+        System.out.println(String.format("Debug: Player %s set name to %s", name, name));
+    }
 
     
     /**

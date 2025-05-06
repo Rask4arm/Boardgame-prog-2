@@ -68,9 +68,43 @@ public class SnakesAndLaddersPage {
 
         TileManager tileManagerNew = new TileManager(10, 70, BOARDTYPES.SNAKE_AND_LADDERS);
         Button newBoardButton = new Button("New Board");
+
         PlayerManager playerManager = new PlayerManager();
         playerManager.playerAdd("Player 1", ColorPalette.PLAYER_RED);
         playerManager.playerAdd("Player 2", ColorPalette.PLAYER_BLUE);
+
+        HBox hBoxPlayers = new HBox();
+
+        TextField textFieldPlayer1 = new TextField();
+        textFieldPlayer1.setPromptText("Player 1");
+        hBoxPlayers.getChildren().add(textFieldPlayer1);
+
+        textFieldPlayer1.setOnKeyTyped(e -> {
+            String playerName = textFieldPlayer1.getText();
+            if (!playerName.isEmpty()) {
+                playerManager.changePlayerName(0, playerName);
+            }
+            else {
+                playerManager.changePlayerName(1, "Player 1");
+            }
+        });
+
+
+        TextField textFieldPlayer2 = new TextField();
+        textFieldPlayer2.setPromptText("Player 2");
+        hBoxPlayers.getChildren().add(textFieldPlayer2);
+
+        textFieldPlayer2.setOnKeyTyped(e -> {
+            String playerName = textFieldPlayer2.getText();
+            if (!playerName.isEmpty()) {
+                Player player = new Player(playerName, ColorPalette.PLAYER_BLUE);
+                playerManager.changePlayerName(1, playerName);
+            }
+            else {
+                playerManager.changePlayerName(1, "Player 2");
+            }
+
+        });
 
         newBoardButton.setOnAction(e -> {
 
@@ -78,15 +112,7 @@ public class SnakesAndLaddersPage {
         });
         borderPane.setBottom(newBoardButton);
 
-        HBox hBoxPlayers = new HBox();
 
-        TextField textField = new TextField();
-        textField.setPromptText("Enter player name");
-        hBoxPlayers.getChildren().add(textField);
-
-        TextField textField2 = new TextField();
-        textField2.setPromptText("Enter player name");
-        hBoxPlayers.getChildren().add(textField2);
 
         Label l = new Label("how many players?");
         Label l1 = new Label("nothing selected");
@@ -103,29 +129,31 @@ public class SnakesAndLaddersPage {
 
                 for (int i = playerManager.getPlayers().size(); i < (new_value.intValue() + 2); i++) {
                     TextField textField = new TextField();
-                    textField.setPromptText("Enter player name");
-                    hBoxPlayers.getChildren().add(textField);
-
-                    Button submitButton = new Button("Submit");
+                    textField.setPromptText("Player " + (i + 1));
 
                     int finalI = i;
-                    submitButton.setOnAction(e -> {
+                    textField.setOnKeyTyped(e -> {
                         String playerName = textField.getText();
                         if (!playerName.isEmpty()) {
                             Player player = new Player(playerName, ColorPalette.PLAYER_PURPLE);
-                            playerManager.playerAdd(player);
+                            playerManager.changePlayerName(finalI, playerName);
                         }
                         else {
-                            playerManager.playerAdd("Player " + (finalI + 1), ColorPalette.PLAYER_PURPLE);
+                            playerManager.changePlayerName(finalI, "Player " + (finalI + 1));
                         }
                     });
+
+                    hBoxPlayers.getChildren().add(textField);
+
+                    playerManager.playerAdd("Player " + (i + 1), ColorPalette.PLAYER_PURPLE);
                 }
                 for (int i = playerManager.getPlayers().size(); i > (new_value.intValue() + 2); i--) {
-                    playerManager.playerRemove();
-                    hBoxPlayers.getChildren().remove(hBoxPlayers.getChildren().size() - 1);
+                    playerManager.playerRemove((i));
+                    hBoxPlayers.getChildren().removeLast();
                 }
             }
         });
+
 
         TilePane tilePane = new TilePane();
         tilePane.getChildren().addAll(hBox, l, choiceBox, l1, hBoxPlayers);

@@ -25,5 +25,10 @@ public class TestBoardData {
             tileManager.getTiles().size(), tileLoad.getTiles().size(), 
             "The number of tiles should be the same after loading."
         );
+
+        assertEquals(
+            tileManager.getTiles().get(0).getAction().getClass(),
+            tileLoad.getTiles().get(0).getAction().getClass()
+        );
     }
 }

@@ -17,7 +17,7 @@ public class TestPlayerManager {
         assertEquals(playerManager.getPlayers().size(), 2);
         playerManager.playerAdd("test2", Color.BLUE);
         assertEquals(playerManager.getPlayers().size(), 3);
-        playerManager.playerRemove();
+        playerManager.playerRemove(0);
         assertEquals(playerManager.getPlayers().size(), 2);
         assertEquals(playerManager.getPlayers().get(1).getName(), "test1");
     }
