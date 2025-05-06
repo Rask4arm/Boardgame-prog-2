@@ -115,7 +115,7 @@ public class SnakesAndLaddersPage {
 
 
         Label l = new Label("how many players?");
-        Label l1 = new Label("nothing selected");
+        Label l1 = new Label("2 selected");
         ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableArrayList(2,3,4,5));
         choiceBox.setValue(2);
 
@@ -135,7 +135,6 @@ public class SnakesAndLaddersPage {
                     textField.setOnKeyTyped(e -> {
                         String playerName = textField.getText();
                         if (!playerName.isEmpty()) {
-                            Player player = new Player(playerName, ColorPalette.PLAYER_PURPLE);
                             playerManager.changePlayerName(finalI, playerName);
                         }
                         else {
@@ -145,10 +144,10 @@ public class SnakesAndLaddersPage {
 
                     hBoxPlayers.getChildren().add(textField);
 
-                    playerManager.playerAdd("Player " + (i + 1), ColorPalette.PLAYER_PURPLE);
+                    playerManager.playerAdd("Player " + (i + 1), ColorPalette.getPlayerColors()[i]);
                 }
                 for (int i = playerManager.getPlayers().size(); i > (new_value.intValue() + 2); i--) {
-                    playerManager.playerRemove((i));
+                    playerManager.playerRemove((i-1));
                     hBoxPlayers.getChildren().removeLast();
                 }
             }
