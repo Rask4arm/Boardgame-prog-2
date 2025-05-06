@@ -15,6 +15,7 @@ public class Player {
     private Color color = Color.BLACK;
     private String name = "noname";
     private int position = 0;
+    private int money = 0;
 
     /**
      * Constructor

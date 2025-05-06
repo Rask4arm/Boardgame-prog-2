@@ -18,6 +18,7 @@ public class GameManager {
     private int currentPlayerRolls;
     private Player playerWinner;
     private String state;
+    private BOARDTYPES boardType;
 
     /*
     *   STATE = "menu" --> Menu screen
@@ -29,15 +30,17 @@ public class GameManager {
      * Constructor for GameManager class.
      * Initializes the game with default values.
      */
-    public GameManager(int width, int size) {
+    public GameManager(int width, int size, BOARDTYPES boardType) {
         System.out.println("\nDebug: GameManager created.");
         gameReset(true, true, true, width, size);
+        this.boardType = boardType;
     }
 
-    public GameManager(TileManager tileManager) {
+    public GameManager(TileManager tileManager, BOARDTYPES boardType) {
         System.out.println("\nDebug: GameManager created.");
         gameReset(true, true, true, tileManager);
-    }
+        this.tileManager = tileManager;
+    }   
 
     /**
      * gameReset method resets the game to default values.
@@ -46,9 +49,8 @@ public class GameManager {
      * @param resetDie: Reset die
      */
 
-    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, int width, int size) {
-        if (resetTiles) tileManager = new TileManager(width, size, BOARDTYPES.SNAKE_AND_LADDERS);
-
+    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, int width, int size, BOARDTYPES boardType) {
+        if (resetTiles) tileManager = new TileManager(width, size, boardType);
         if (resetPlayers) playerManager = new PlayerManager();
         if (resetDie) dieManager = new DieManager();
         currentPlayerIndex = 0;
@@ -87,7 +89,15 @@ public class GameManager {
      * Throws an exception if the game cannot start.
      */
     public void gameStart() {
-    
+        
+        // Set player manager to actions needed in trasient variables
+        for (int i = 0; i < tileManager.getTiles().size(); i++) {
+            Action action = tileManager.getTiles().get(i).getAction();
+            switch action.getClass().getSimpleName() {
+                case "ActionMonopolyTile" -> ((ActionMonopolyTile) action).setPlayerManager(playerManager);
+            }
+        }
+
         // Check if game can start
         if (state != "menu" || playerManager.getPlayers().size() < 2 || dieManager.diceCount() < 1) {
             throw new IllegalArgumentException("Game cannot start.");
@@ -132,14 +142,49 @@ public class GameManager {
             );
         }
 
-        // Check if player has won
-        if (currentPlayer.getPosition() >= tileManager.getTiles().size()) {
-            gameEnd(currentPlayer);
-            System.out.println(String.format(
-                "Debug: roundMove() --> gameEnd(player %d) has won.", 
-                currentPlayerIndex)
-            );
+        // Monopoly check if player passed start tile
+        if (boardType == BOARDTYPES.MONOPOLY) {
+            if (currentPlayer.getPosition() > tileManager.getTiles().size()) {
+                currentPlayer.setPosition(currentPlayer.getPosition() - tileManager.getTiles().size());
+                currentPlayer.setMoney(currentPlayer.getMoney() + 200);
+                System.out.println(String.format(
+                    "Debug: roundMove() --> player %d passed start tile and received 200.", 
+                    currentPlayerIndex)
+                );
+            }
         }
+
+        // Check if player has won
+        switch(boardType) {
+            case BOARDTYPES.SNAKES_AND_LADDERS -> {
+                if (currentPlayer.getPosition() >= tileManager.getTiles().size()) {
+                    gameEnd(currentPlayer);
+                    System.out.println(String.format(
+                        "Debug: roundMove() --> gameEnd(player %d) has won.", 
+                        currentPlayerIndex)
+                    );
+                }
+            }
+            case BOARDTYPES.MONOPOLY -> {
+                if (currentPlayer.getMoney() <= 0) {
+
+                    Player richestPlayer = playerManager.getPlayers().stream()
+                        .max((p1, p2) -> Integer.compare(p1.getMoney(), p2.getMoney()))
+                        .orElse(null);
+
+                    if (richestPlayer == null) {
+                        throw new Exception("No winning players found.");
+                    }
+
+                    gameEnd(richestPlayer);
+                    System.out.println(String.format(
+                        "Debug: roundMove() --> gameEnd(player %d) has won.", 
+                        richestPlayer)
+                    );
+                }
+            }
+        }
+
 
     }
 
