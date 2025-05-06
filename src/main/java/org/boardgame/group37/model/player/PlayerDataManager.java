@@ -1,6 +1,6 @@
 package org.boardgame.group37.model.player;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.nio.file.*;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
@@ -68,7 +68,7 @@ public class PlayerDataManager {
             // Fetch the player data
             while ((data = reader.readNext()) != null) {
                 if (data[0].equals(playerName)) {
-                    dataReturn = new Player(data[0], Color.decode(data[1]));
+                    dataReturn = new Player(data[0], Color.web(data[1]));
                     break;
                 }
             }
@@ -107,7 +107,7 @@ public class PlayerDataManager {
 
             // Fetch the player data
             while ((data = reader.readNext()) != null) {
-                dataReturn.add(new Player(data[0], Color.decode(data[1])));
+                dataReturn.add(new Player(data[0], Color.web(data[1])));
             }
 
             // Close the reader and return the data

@@ -5,6 +5,7 @@ import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerManager;
 import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.TileManager;
+import org.boardgame.group37.view.VictoryPage;
 
 /**
  * GameManager class is responsible for managing the game.
@@ -36,11 +37,11 @@ public class GameManager {
         this.boardType = boardType;
     }
 
-    public GameManager(TileManager tileManager, BOARDTYPES boardType) {
+    public GameManager(TileManager tileManager, PlayerManager playerManager) {
         System.out.println("\nDebug: GameManager created.");
-        gameReset(true, true, true, tileManager);
-        this.tileManager = tileManager;
-    }   
+        gameReset(true, true, true, tileManager, playerManager);
+    }
+
 
     /**
      * gameReset method resets the game to default values.
@@ -59,9 +60,9 @@ public class GameManager {
         state = "menu";
     }
 
-    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, TileManager tileManager) {
-        this.tileManager = tileManager;
-        if (resetPlayers) playerManager = new PlayerManager();
+    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, TileManager tileManager, PlayerManager playerManager) {
+        if (resetTiles) this.tileManager = tileManager;
+        if (resetPlayers) this.playerManager = playerManager;
         if (resetDie) dieManager = new DieManager();
         currentPlayerIndex = 0;
         currentPlayerRolls = 0;

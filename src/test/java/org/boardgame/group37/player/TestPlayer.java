@@ -5,7 +5,7 @@ import org.boardgame.group37.model.tile.action.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
 
 public class TestPlayer {
 
