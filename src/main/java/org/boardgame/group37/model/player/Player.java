@@ -15,6 +15,7 @@ public class Player {
     private Color color = Color.BLACK;
     private String name = "noname";
     private int position = 0;
+    private int money = 0;
 
     /**
      * Constructor
@@ -51,7 +52,7 @@ public class Player {
      * @param TM: TileManager object
      * @param tileIndex: index of the tile the player is on
      */
-    public void executeTile(TileManager TM, int tileIndex) throws Exception{
+    public void executeTile(TileManager TM, int tileIndex) throws Exception {
         TM.getTiles().get(tileIndex).getAction().execute(this);
     }
 
