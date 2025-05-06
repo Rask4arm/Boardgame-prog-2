@@ -140,6 +140,14 @@ public class TileManager {
     }
 
     /**
+     * getBoardType method returns the type of the board.
+     * @return board type
+     */
+    public BOARDTYPES getBoardType() {
+        return boardType;
+    }
+
+    /**
      * toString method returns the number of tiles.
      * @return number of tiles
      */
