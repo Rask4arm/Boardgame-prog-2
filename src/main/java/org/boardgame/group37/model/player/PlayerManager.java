@@ -30,6 +30,16 @@ public class PlayerManager {
     }
 
     /**
+     * getPlayer method returns the Player object at the specified index.
+     * @param index index of the player
+     * @return Player object
+     */
+
+    public Player getPlayer(int index) {
+        return players.get(index);
+    }
+
+    /**
      * playerAdd method adds a new Player object to the ArrayList.
      * The player is initialized with default values.
      */

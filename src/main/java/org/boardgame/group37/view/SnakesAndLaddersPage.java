@@ -9,6 +9,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import org.boardgame.group37.model.player.Player;
+import org.boardgame.group37.model.player.PlayerDataManager;
 import org.boardgame.group37.model.player.PlayerManager;
 import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.TileDataManager;
@@ -97,8 +98,13 @@ public class SnakesAndLaddersPage {
             }
         });
 
+        Button savePlayer1Button = new Button("Save Player");
+        savePlayer1Button.setOnAction(e -> {
+            PlayerDataManager.dataSave(playerManager.getPlayer(0));
+        });
+
         VBox vBoxPlayer1 = new VBox();
-        vBoxPlayer1.getChildren().addAll(textFieldPlayer1, colorChoiceBoxP1);
+        vBoxPlayer1.getChildren().addAll(textFieldPlayer1, colorChoiceBoxP1, savePlayer1Button);
         hBoxPlayers.getChildren().add(vBoxPlayer1);
 
         textFieldPlayer1.setOnKeyTyped(e -> {
@@ -130,14 +136,18 @@ public class SnakesAndLaddersPage {
             }
         });
 
+        Button savePlayer2Button = new Button("Save Player");
+        savePlayer2Button.setOnAction(e -> {
+            PlayerDataManager.dataSave(playerManager.getPlayer(1));
+        });
+
         VBox vBoxPlayer2 = new VBox();
-        vBoxPlayer2.getChildren().addAll(textFieldPlayer2, colorChoiceBoxP2);
+        vBoxPlayer2.getChildren().addAll(textFieldPlayer2, colorChoiceBoxP2, savePlayer2Button);
         hBoxPlayers.getChildren().add(vBoxPlayer2);
 
         textFieldPlayer2.setOnKeyTyped(e -> {
             String playerName = textFieldPlayer2.getText();
             if (!playerName.isEmpty()) {
-                Player player = new Player(playerName, ColorPalette.PLAYER_BLUE);
                 playerManager.changePlayerName(1, playerName);
             }
             else {
@@ -199,8 +209,13 @@ public class SnakesAndLaddersPage {
                         }
                     });
 
+                    Button savePlayerButton = new Button("Save Player");
+                    savePlayerButton.setOnAction(e -> {
+                        PlayerDataManager.dataSave(playerManager.getPlayer(finalI));
+                    });
+
                     VBox vBoxPlayers = new VBox();
-                    vBoxPlayers.getChildren().addAll(textField, colorChoiceBox);
+                    vBoxPlayers.getChildren().addAll(textField, colorChoiceBox, savePlayerButton);
                     hBoxPlayers.getChildren().add(vBoxPlayers);
 
                     playerManager.playerAdd("Player " + (i + 1), ColorPalette.getPlayerColors()[i]);
