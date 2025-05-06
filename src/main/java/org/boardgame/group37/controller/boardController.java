@@ -1,5 +1,6 @@
 package org.boardgame.group37.controller;
 import org.boardgame.group37.model.game.GameManager;
+import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.TileDataManager;
 
 public class boardController {
@@ -9,7 +10,7 @@ public class boardController {
      * @param gameManager: GameManager
      */
     public void buttonGenerateLadders(GameManager gameManager) {
-        gameManager.getTileManager().tilesGenerate();
+        gameManager.getTileManager().tilesGenerate(BOARDTYPES.SNAKE_AND_LADDERS);
     }
 
     /**

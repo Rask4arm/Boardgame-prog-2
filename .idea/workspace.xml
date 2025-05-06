@@ -6,16 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="e72b1210-8ec0-48e9-8382-7eafb1cefc95" name="Changes" comment="test commit for push">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/boardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/boardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/TestRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/TestRun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/player/PlayerDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/player/PlayerDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/player/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/player/PlayerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/BoardGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/BoardGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionDefault.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionDefault.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionMonopolyStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionMonopolyStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionMonopolyTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionMonopolyTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionSwitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionSwitch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionTeleport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionTeleport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/SnakesAndLaddersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/SnakesAndLaddersPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/boardgame/group37/data/TestPlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/boardgame/group37/data/TestPlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/boardgame/group37/player/TestPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/boardgame/group37/player/TestPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/boardgame/group37/player/TestPlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/boardgame/group37/player/TestPlayerManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="52ebb9ee75cc35af59bc52cef9e3aa9991a6c4e6" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -59,31 +61,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloFX.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestRun.executor&quot;: &quot;Run&quot;,
-    &quot;Application.testJavaFX.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestBoardData.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestBoardData.testBoardData.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.TestTileManager.testTileAddAndGet.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.boardgame-engine.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;39-creating-snakes-and-ladders-with-pictures&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.5908046&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloFX.executor": "Run",
+    "Application.TestRun.executor": "Run",
+    "Application.testJavaFX.executor": "Run",
+    "JUnit.TestBoardData.executor": "Run",
+    "JUnit.TestBoardData.testBoardData.executor": "Debug",
+    "JUnit.TestTileManager.testTileAddAndGet.executor": "Run",
+    "Maven.boardgame-engine.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "39-creating-snakes-and-ladders-with-pictures",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.5908046",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="org.boardgame.group37.model.tile" />
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager" selected="JUnit.TestTileManager.testTileAddAndGet">
     <configuration name="HelloFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.boardgame.group37.frontend.HelloFX" />

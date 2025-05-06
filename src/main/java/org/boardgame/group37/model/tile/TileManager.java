@@ -2,7 +2,7 @@ package org.boardgame.group37.model.tile;
 import java.util.ArrayList;
 
 import org.boardgame.group37.model.tile.action.*;
-imort org.boardgame.group37.model.player.PlayerManager;
+import org.boardgame.group37.model.player.PlayerManager;
 
 /**
  * TileManager class is responsible for storing and generating tiles.
@@ -29,12 +29,12 @@ public class TileManager {
      * @param size: number of tiles
      * Generates tiles based on the specified size.
      */
-    public TileManager(int width, int size, BOARDTYPES type, PlayerManager playerManager) {
+    public TileManager(int width, int size, BOARDTYPES type) {
         System.out.println(String.format("Debug: TileManager created with width: %d, size: %d", width, size));
         this.width = width;
         this.size = size;
         this.boardType = type;
-        this.tilesGenerate(type, playerManager);
+        this.tilesGenerate(type);
     }
 
     /**
@@ -62,7 +62,7 @@ public class TileManager {
      * tilesGenerate method generates tiles based on the specified size.
      * Tiles are generated with random properties.
      */
-    public void tilesGenerate(BOARDTYPES type, PlayerManager playerManager) {
+    public void tilesGenerate(BOARDTYPES type) {
         switch(type) {
             case SNAKE_AND_LADDERS -> {
                 System.out.println("Debug: Generating tiles.");

@@ -5,6 +5,8 @@ import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerManager;
 import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.TileManager;
+import org.boardgame.group37.model.tile.action.Action;
+import org.boardgame.group37.model.tile.action.ActionMonopolyTile;
 import org.boardgame.group37.view.VictoryPage;
 
 /**
@@ -33,13 +35,14 @@ public class GameManager {
      */
     public GameManager(int width, int size, BOARDTYPES boardType) {
         System.out.println("\nDebug: GameManager created.");
-        gameReset(true, true, true, width, size);
+        gameReset(true, true, true, width, size, boardType);
         this.boardType = boardType;
     }
 
-    public GameManager(TileManager tileManager, PlayerManager playerManager) {
+    public GameManager(TileManager tileManager, PlayerManager playerManager, BOARDTYPES boardType) {
         System.out.println("\nDebug: GameManager created.");
-        gameReset(true, true, true, tileManager, playerManager);
+        gameReset(true, true, true, tileManager, playerManager, boardType);
+        this.boardType = boardType;
     }
 
 
@@ -60,7 +63,7 @@ public class GameManager {
         state = "menu";
     }
 
-    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, TileManager tileManager, PlayerManager playerManager) {
+    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, TileManager tileManager, PlayerManager playerManager, BOARDTYPES boardType) {
         if (resetTiles) this.tileManager = tileManager;
         if (resetPlayers) this.playerManager = playerManager;
         if (resetDie) dieManager = new DieManager();
@@ -94,7 +97,7 @@ public class GameManager {
         // Set player manager to actions needed in trasient variables
         for (int i = 0; i < tileManager.getTiles().size(); i++) {
             Action action = tileManager.getTiles().get(i).getAction();
-            switch action.getClass().getSimpleName() {
+            switch (action.getClass().getSimpleName()) {
                 case "ActionMonopolyTile" -> ((ActionMonopolyTile) action).setPlayerManager(playerManager);
             }
         }
@@ -157,7 +160,7 @@ public class GameManager {
 
         // Check if player has won
         switch(boardType) {
-            case BOARDTYPES.SNAKES_AND_LADDERS -> {
+            case BOARDTYPES.SNAKE_AND_LADDERS -> {
                 if (currentPlayer.getPosition() >= tileManager.getTiles().size()) {
                     gameEnd(currentPlayer);
                     System.out.println(String.format(
