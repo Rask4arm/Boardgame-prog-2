@@ -1,12 +1,21 @@
 package org.boardgame.group37.view;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import org.boardgame.group37.model.player.Player;
+import org.boardgame.group37.model.player.PlayerManager;
 import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.TileDataManager;
 import org.boardgame.group37.model.tile.TileManager;
+import javafx.collections.FXCollections;
+import javafx.scene.paint.Color;
+import org.boardgame.group37.view.ColorPalette;
 
 public class SnakesAndLaddersPage {
     public static void init(Pane root){
@@ -43,13 +52,12 @@ public class SnakesAndLaddersPage {
                         } catch (Exception ex) {
                             throw new RuntimeException(ex);
                         }
-                        Game.init(root, new BoardGraphic(tileLoad));
+                        Game.init(root, new BoardGraphic(tileLoad), new PlayerManager());
                         System.out.println("test4");
                     }
             );
             hBox.getChildren().add(filebutton);
         }
-        borderPane.setCenter(hBox);
 
         Button backButton = new Button("Back");
         backButton.setOnAction(e -> {
@@ -58,15 +66,70 @@ public class SnakesAndLaddersPage {
         borderPane.setLeft(backButton);
 
 
-        TileManager tileManagerNew = new TileManager(10, 20, BOARDTYPES.SNAKE_AND_LADDERS);
+        TileManager tileManagerNew = new TileManager(10, 70, BOARDTYPES.SNAKE_AND_LADDERS);
         Button newBoardButton = new Button("New Board");
+        PlayerManager playerManager = new PlayerManager();
+        playerManager.playerAdd("Player 1", ColorPalette.PLAYER_RED);
+        playerManager.playerAdd("Player 2", ColorPalette.PLAYER_BLUE);
+
         newBoardButton.setOnAction(e -> {
 
-            Game.init(root, new BoardGraphic(tileManagerNew));
+            Game.init(root, new BoardGraphic(tileManagerNew), playerManager);
         });
         borderPane.setBottom(newBoardButton);
 
+        HBox hBoxPlayers = new HBox();
 
+        TextField textField = new TextField();
+        textField.setPromptText("Enter player name");
+        hBoxPlayers.getChildren().add(textField);
+
+        TextField textField2 = new TextField();
+        textField2.setPromptText("Enter player name");
+        hBoxPlayers.getChildren().add(textField2);
+
+        Label l = new Label("how many players?");
+        Label l1 = new Label("nothing selected");
+        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableArrayList(2,3,4,5));
+        choiceBox.setValue(2);
+
+        choiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+            // if the item of the list is changed
+            public void changed(ObservableValue ov, Number value, Number new_value)
+            {
+                // set the text for the label to the selected item
+                l1.setText((new_value.intValue() + 2) + " selected");
+
+                for (int i = playerManager.getPlayers().size(); i < (new_value.intValue() + 2); i++) {
+                    TextField textField = new TextField();
+                    textField.setPromptText("Enter player name");
+                    hBoxPlayers.getChildren().add(textField);
+
+                    Button submitButton = new Button("Submit");
+
+                    int finalI = i;
+                    submitButton.setOnAction(e -> {
+                        String playerName = textField.getText();
+                        if (!playerName.isEmpty()) {
+                            Player player = new Player(playerName, ColorPalette.PLAYER_PURPLE);
+                            playerManager.playerAdd(player);
+                        }
+                        else {
+                            playerManager.playerAdd("Player " + (finalI + 1), ColorPalette.PLAYER_PURPLE);
+                        }
+                    });
+                }
+                for (int i = playerManager.getPlayers().size(); i > (new_value.intValue() + 2); i--) {
+                    playerManager.playerRemove();
+                    hBoxPlayers.getChildren().remove(hBoxPlayers.getChildren().size() - 1);
+                }
+            }
+        });
+
+        TilePane tilePane = new TilePane();
+        tilePane.getChildren().addAll(hBox, l, choiceBox, l1, hBoxPlayers);
+        borderPane.setCenter(tilePane);
         root.getChildren().addAll(borderPane);
     }
 }

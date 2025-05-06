@@ -1,6 +1,6 @@
 package org.boardgame.group37.model.player;
 import java.util.ArrayList;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 
 /**
  * PlayerManager class is responsible for managing player data.

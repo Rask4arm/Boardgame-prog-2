@@ -1,6 +1,6 @@
 package org.boardgame.group37.model.player;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
 
 import org.boardgame.group37.model.tile.Tile;
 import org.boardgame.group37.model.tile.TileManager;

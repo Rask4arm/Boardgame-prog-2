@@ -79,7 +79,7 @@ public class BoardGraphic extends GridPane {
             ActionTeleport actionTeleport = (ActionTeleport) ((ActionTeleport) tiles.get(tileIndex.get()).getAction());
             int targetIndex = actionTeleport.getTarget();
             getChildren().remove(lookup("#" + targetIndex));
-            createTile(ColorPalette.PLAYER_BLUE, targetIndex);
+            createTile(ColorPalette.UI_SUCCESS, targetIndex);
         });
     }
 

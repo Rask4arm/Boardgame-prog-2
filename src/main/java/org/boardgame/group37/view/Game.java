@@ -10,24 +10,29 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.boardgame.group37.model.game.GameManager;
+import org.boardgame.group37.model.player.Player;
+import org.boardgame.group37.model.player.PlayerManager;
 import org.boardgame.group37.model.tile.Tile;
 import org.boardgame.group37.model.tile.TileDataManager;
 import org.boardgame.group37.model.tile.TileManager;
 
+import java.util.ArrayList;
+
 public class Game {
-    public static void init(Pane root, BoardGraphic boardGraphic){
+    public static void init(Pane root, BoardGraphic boardGraphic, PlayerManager playerManager) {
         root.getChildren().clear();
         root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
 
+        ArrayList<Player> players = playerManager.getPlayers();
+        int numberOfPlayers = players.size();
+        PlayerToken[] playerToken = new PlayerToken[numberOfPlayers];
+        for (int i = 0; i < numberOfPlayers; i++) {
+            playerToken[i] = new PlayerToken(players.get(i).getColor());
+        }
 
-        PlayerToken[] playerToken = new PlayerToken[2];
         GameManager gameManager;
-        playerToken[0] = new PlayerToken(Color.RED);
-        playerToken[1] = new PlayerToken(Color.ORANGE);
-        gameManager = new GameManager(boardGraphic.getTileManager());
+        gameManager = new GameManager(boardGraphic.getTileManager(), playerManager);
 
-        gameManager.getPlayerManager().playerAdd();
-        gameManager.getPlayerManager().playerAdd();
         gameManager.getDieManager().dieAdd();
         gameManager.getDieManager().dieAdd();
 

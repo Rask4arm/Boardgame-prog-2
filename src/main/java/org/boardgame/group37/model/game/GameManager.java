@@ -35,9 +35,9 @@ public class GameManager {
         gameReset(true, true, true, width, size);
     }
 
-    public GameManager(TileManager tileManager) {
+    public GameManager(TileManager tileManager, PlayerManager playerManager) {
         System.out.println("\nDebug: GameManager created.");
-        gameReset(true, true, true, tileManager);
+        gameReset(true, true, true, tileManager, playerManager);
     }
 
     /**
@@ -58,9 +58,9 @@ public class GameManager {
         state = "menu";
     }
 
-    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, TileManager tileManager) {
-        this.tileManager = tileManager;
-        if (resetPlayers) playerManager = new PlayerManager();
+    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, TileManager tileManager, PlayerManager playerManager) {
+        if (resetTiles) this.tileManager = tileManager;
+        if (resetPlayers) this.playerManager = playerManager;
         if (resetDie) dieManager = new DieManager();
         currentPlayerIndex = 0;
         currentPlayerRolls = 0;
