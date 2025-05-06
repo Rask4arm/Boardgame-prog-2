@@ -70,14 +70,36 @@ public class SnakesAndLaddersPage {
         Button newBoardButton = new Button("New Board");
 
         PlayerManager playerManager = new PlayerManager();
-        playerManager.playerAdd("Player 1", ColorPalette.PLAYER_RED);
-        playerManager.playerAdd("Player 2", ColorPalette.PLAYER_BLUE);
+        Color colorP1 = ColorPalette.PLAYER_RED;
+        Color colorP2 = ColorPalette.PLAYER_BLUE;
+        playerManager.playerAdd("Player 1", colorP1);
+        playerManager.playerAdd("Player 2", colorP2);
 
         HBox hBoxPlayers = new HBox();
 
         TextField textFieldPlayer1 = new TextField();
         textFieldPlayer1.setPromptText("Player 1");
-        hBoxPlayers.getChildren().add(textFieldPlayer1);
+
+        Color[] colors = ColorPalette.getPlayerColors();
+        ChoiceBox colorChoiceBoxP1 = new ChoiceBox(FXCollections.observableArrayList(colors));
+        colorChoiceBoxP1.setValue(colorP1);
+        colorChoiceBoxP1.setStyle("-fx-background-color: #" + colorP1.toString().substring(2) + ";");
+
+        colorChoiceBoxP1.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+            // if the item of the list is changed
+            public void changed(ObservableValue ov, Number value, Number new_value)
+            {
+                // set the text for the label to the selected color
+                Color color = colors[new_value.intValue()];
+                playerManager.changePlayerColor(0, color);
+                colorChoiceBoxP1.setStyle("-fx-background-color: #" + colors[new_value.intValue()].toString().substring(2) + ";");
+            }
+        });
+
+        VBox vBoxPlayer1 = new VBox();
+        vBoxPlayer1.getChildren().addAll(textFieldPlayer1, colorChoiceBoxP1);
+        hBoxPlayers.getChildren().add(vBoxPlayer1);
 
         textFieldPlayer1.setOnKeyTyped(e -> {
             String playerName = textFieldPlayer1.getText();
@@ -92,7 +114,25 @@ public class SnakesAndLaddersPage {
 
         TextField textFieldPlayer2 = new TextField();
         textFieldPlayer2.setPromptText("Player 2");
-        hBoxPlayers.getChildren().add(textFieldPlayer2);
+        ChoiceBox colorChoiceBoxP2 = new ChoiceBox(FXCollections.observableArrayList(colors));
+        colorChoiceBoxP2.setValue(colorP2);
+        colorChoiceBoxP2.setStyle("-fx-background-color: #" + colorP2.toString().substring(2) + ";");
+
+        colorChoiceBoxP2.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+            // if the item of the list is changed
+            public void changed(ObservableValue ov, Number value, Number new_value)
+            {
+                // set the text for the label to the selected color
+                Color color = colors[new_value.intValue()];
+                playerManager.changePlayerColor(1, color);
+                colorChoiceBoxP2.setStyle("-fx-background-color: #" + colors[new_value.intValue()].toString().substring(2) + ";");
+            }
+        });
+
+        VBox vBoxPlayer2 = new VBox();
+        vBoxPlayer2.getChildren().addAll(textFieldPlayer2, colorChoiceBoxP2);
+        hBoxPlayers.getChildren().add(vBoxPlayer2);
 
         textFieldPlayer2.setOnKeyTyped(e -> {
             String playerName = textFieldPlayer2.getText();
@@ -142,7 +182,26 @@ public class SnakesAndLaddersPage {
                         }
                     });
 
-                    hBoxPlayers.getChildren().add(textField);
+                    ChoiceBox colorChoiceBox = new ChoiceBox(FXCollections.observableArrayList(colors));
+                    colorChoiceBox.setValue(colors[finalI]);
+
+                    colorChoiceBox.setStyle("-fx-background-color: #" + colors[finalI].toString().substring(2) + ";");
+
+                    colorChoiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+                        // if the item of the list is changed
+                        public void changed(ObservableValue ov, Number value, Number new_value)
+                        {
+                            // set the text for the label to the selected color
+                            Color color = colors[new_value.intValue()];
+                            playerManager.changePlayerColor(finalI, color);
+                            colorChoiceBox.setStyle("-fx-background-color: #" + colors[new_value.intValue()].toString().substring(2) + ";");
+                        }
+                    });
+
+                    VBox vBoxPlayers = new VBox();
+                    vBoxPlayers.getChildren().addAll(textField, colorChoiceBox);
+                    hBoxPlayers.getChildren().add(vBoxPlayers);
 
                     playerManager.playerAdd("Player " + (i + 1), ColorPalette.getPlayerColors()[i]);
                 }
