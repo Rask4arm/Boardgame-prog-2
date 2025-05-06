@@ -42,10 +42,9 @@ public class ActionMonopolyTile implements Action {
      * @param player: Player object
      */
     @Override
-    public void execute(Player player) {
+    public void execute(Player player) throws Exception {
         if (playerManager == null) {
-            System.out.println("Error: PlayerManager is not set. Cannot execute ActionMonopolyTile.");
-            return;
+            throw new GameException("Error: PlayerManager is not set. Cannot execute ActionMonopolyTile.");
         }
 
         if (playerIndexOwner != null) {

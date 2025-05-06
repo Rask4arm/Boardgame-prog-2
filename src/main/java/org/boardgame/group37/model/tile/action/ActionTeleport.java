@@ -30,6 +30,7 @@ public class ActionTeleport implements Action {
      */
     @Override
     public void execute(Player player) {
+        
         System.out.println("Debug: Executing teleport action");
         player.setPosition(targetIndex);
     };
