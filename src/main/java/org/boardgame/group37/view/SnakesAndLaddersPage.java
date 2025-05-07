@@ -55,7 +55,7 @@ public class SnakesAndLaddersPage {
                     {
                         TileManager tileLoad;
                         try {
-                            tileLoad = new TileManager(TileDataManager.dataLoad(filename));
+                            tileLoad = new TileManager(TileDataManager.dataLoad(filename), BOARDTYPES.SNAKE_AND_LADDERS);
                         } catch (Exception ex) {
                             throw new RuntimeException(ex);
                         }
@@ -72,7 +72,6 @@ public class SnakesAndLaddersPage {
         borderPane.setLeft(backButton);
 
 
-        TileManager tileManagerNew = new TileManager(10, 70, BOARDTYPES.SNAKE_AND_LADDERS);
         Button newBoardButton = new Button("New Board");
 
 
@@ -179,8 +178,7 @@ public class SnakesAndLaddersPage {
         });
 
         newBoardButton.setOnAction(e -> {
-
-            Game.init(root, new BoardGraphic(tileManagerNew), playerManager);
+            CraftingBoardPage.init(root, playerManager);
         });
         borderPane.setBottom(newBoardButton);
 

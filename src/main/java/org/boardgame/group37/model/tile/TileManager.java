@@ -41,10 +41,12 @@ public class TileManager {
      * Initializes the TileManager with the specified ArrayList of Tile objects.
      * @param tileManager: TileManager object
      */
-    public TileManager(TileManager tileManager) {
+    public TileManager(TileManager tileManager, BOARDTYPES type) {
         this.tiles = tileManager.getTiles();
         this.width = tileManager.getWidth();
         this.size = tileManager.getSize();
+        this.boardType = type;
+        this.tilesGenerate(type);
     }
 
     // Methods
