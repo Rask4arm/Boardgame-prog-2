@@ -29,6 +29,7 @@ public class Game {
         PlayerToken[] playerToken = new PlayerToken[numberOfPlayers];
         for (int i = 0; i < numberOfPlayers; i++) {
             playerToken[i] = new PlayerToken(players.get(i).getColor());
+            boardGraphic.updatePlayerPosition(playerToken[i], 1);
         }
 
         GameManager gameManager;
@@ -36,9 +37,6 @@ public class Game {
 
         gameManager.getDieManager().dieAdd();
         gameManager.getDieManager().dieAdd();
-
-        boardGraphic.updatePlayerPosition(playerToken[0], 1);
-        boardGraphic.updatePlayerPosition(playerToken[1], 1);
 
         gameManager.printProperties();
 

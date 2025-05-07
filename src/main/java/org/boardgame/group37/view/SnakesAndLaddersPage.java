@@ -39,27 +39,30 @@ public class SnakesAndLaddersPage {
         TileDataManager.dataSave(tileManager2, "test_board2.json");
 
         String[] filenames= TileDataManager.dataGetFilenames();
-        HBox hBox = new HBox();
+        HBox hBoxFiles = new HBox();
+
+        PlayerManager playerManager = new PlayerManager();
+        Color colorP1 = ColorPalette.PLAYER_RED;
+        Color colorP2 = ColorPalette.PLAYER_BLUE;
+        playerManager.playerAdd("Player 1", colorP1);
+        playerManager.playerAdd("Player 2", colorP2);
+
         for (int i = 0; i < filenames.length; i++){
             String filename = filenames[i];
             Button filebutton = new Button(filename);
 
             filebutton.setOnAction(e ->
                     {
-                        System.out.println("test1");
                         TileManager tileLoad;
-                        System.out.println("test2");
                         try {
                             tileLoad = new TileManager(TileDataManager.dataLoad(filename));
-                            System.out.println("test3");
                         } catch (Exception ex) {
                             throw new RuntimeException(ex);
                         }
-                        Game.init(root, new BoardGraphic(tileLoad), new PlayerManager());
-                        System.out.println("test4");
+                        Game.init(root, new BoardGraphic(tileLoad), playerManager);
                     }
             );
-            hBox.getChildren().add(filebutton);
+            hBoxFiles.getChildren().add(filebutton);
         }
 
         Button backButton = new Button("Back");
@@ -72,11 +75,6 @@ public class SnakesAndLaddersPage {
         TileManager tileManagerNew = new TileManager(10, 70, BOARDTYPES.SNAKE_AND_LADDERS);
         Button newBoardButton = new Button("New Board");
 
-        PlayerManager playerManager = new PlayerManager();
-        Color colorP1 = ColorPalette.PLAYER_RED;
-        Color colorP2 = ColorPalette.PLAYER_BLUE;
-        playerManager.playerAdd("Player 1", colorP1);
-        playerManager.playerAdd("Player 2", colorP2);
 
         HBox hBoxPlayers = new HBox();
         VBox vBoxPlayer1 = new VBox();
@@ -264,7 +262,7 @@ public class SnakesAndLaddersPage {
 
 
         TilePane tilePane = new TilePane();
-        tilePane.getChildren().addAll(hBox, l, choiceBox, l1, hBoxPlayers);
+        tilePane.getChildren().addAll(hBoxFiles, l, choiceBox, l1, hBoxPlayers);
         borderPane.setCenter(tilePane);
         root.getChildren().addAll(borderPane);
     }

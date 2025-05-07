@@ -181,4 +181,30 @@ public class TileDataManager {
             return false; // Indicate failure
         }
     }
+
+    /**
+     * dataDeleteAll method deletes all files in the data/board directory.
+     * @return: boolean indicating success or failure
+     */
+
+    public static final boolean dataDeleteAll() throws Exception {
+        String[] filenames = dataGetFilenames();
+        if (filenames == null) {
+            System.out.println("Debug: No files to delete.");
+            return false;
+        }
+        else {
+            System.out.println("Debug: Files to delete: " + filenames.length);
+            for (String filename : filenames) {
+                try {
+                    dataDelete(filename);
+                } catch (Exception e) {
+                    System.err.println("Error deleting file: " + filename);
+                    e.printStackTrace();
+                    return false; // Indicate failure
+                }
+            }
+            return true; // Indicate success
+        }
+    }
 }
