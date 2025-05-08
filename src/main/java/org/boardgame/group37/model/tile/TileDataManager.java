@@ -27,7 +27,9 @@ public class TileDataManager {
         RuntimeTypeAdapterFactory<Action> actionAdapter =
             RuntimeTypeAdapterFactory.of(Action.class, "type")
                 .registerSubtype(ActionDefault.class, "default")
-                .registerSubtype(ActionTeleport.class, "teleport");
+                .registerSubtype(ActionTeleport.class, "teleport")
+                .registerSubtype(ActionMonopolyStart.class, "monopolyStart")
+                .registerSubtype(ActionMonopolyTile.class, "monopolyTile");
 
         // Create a new GsonBuilder instance
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -102,7 +104,6 @@ public class TileDataManager {
             // Get file path
             String fullFileName = fileName.endsWith(".json") ? fileName : fileName + ".json";
             Path path = java.nio.file.Paths.get("data/board/" + fullFileName);
-
 
 
             // Read file

@@ -112,6 +112,12 @@ public class GameManager {
         // Set state to game
         state = "game";
         System.out.println("\nDebug: Game started.");
+
+        // Set correct player index
+        for (int i = 0; i < playerManager.getPlayers().size(); i++) {
+            playerManager.getPlayers().get(i).setIndex(i);
+            
+        }
     }
 
     /**

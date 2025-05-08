@@ -12,7 +12,7 @@ public class TestAction {
     public void testAction() throws Exception{
         
         // Create player
-        Player player = new Player();
+        Player player = new Player(0);
         
         // Create action types
         Action actionDefault = new ActionDefault();
@@ -24,6 +24,8 @@ public class TestAction {
         assertEquals(player.getPosition(), 1);
         actionTeleport.execute(player);
         assertEquals(player.getPosition(), 5);
+
+
         
     }
 

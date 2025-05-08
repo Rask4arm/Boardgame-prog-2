@@ -43,6 +43,10 @@ public class ActionMonopolyTile implements Action {
      */
     @Override
     public void execute(Player player) {
+        if (player.getIndex() == playerIndexOwner) {
+            System.out.println("Debug: Player " + player.getName() + " is already the owner of the tile.");
+            return;
+        }
         if (playerIndexOwner != null) {
             player.setMoney(player.getMoney() - rent);
             playerManager.getPlayers().get(playerIndexOwner).setMoney(playerManager.getPlayers().get(playerIndexOwner).getMoney() + rent);

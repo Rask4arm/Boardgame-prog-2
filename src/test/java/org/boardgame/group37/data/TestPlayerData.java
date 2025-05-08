@@ -10,7 +10,7 @@ public class TestPlayerData {
 
     @Test
     public void testAdd() throws Exception {
-        Player player = new Player();
+        Player player = new Player(0);
         PlayerDataManager.dataSave(player);
         Player Player1 = PlayerDataManager.dataLoad(player.getName());
         assertEquals(player.getName(), Player1.getName());
@@ -19,9 +19,9 @@ public class TestPlayerData {
     @Test
     public void testDelete() throws Exception {
         Player[] players = {
-            new Player("test1", Color.BLUE), 
-            new Player("test2", Color.RED), 
-            new Player("test3", Color.GREEN)
+            new Player("test1", Color.BLUE, 0), 
+            new Player("test2", Color.RED, 1), 
+            new Player("test3", Color.GREEN, 2)
         };
 
         // Rewrite all data

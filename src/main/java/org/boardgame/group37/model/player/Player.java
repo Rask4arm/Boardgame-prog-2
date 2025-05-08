@@ -22,7 +22,7 @@ public class Player {
      * Constructor
      * Initializes the Player with default values.
      */
-    public Player() {
+    public Player(Integer index) {
         System.out.println("Debug: Empty player created");
     }
 
@@ -32,7 +32,7 @@ public class Player {
      * @param color: Player color
      * @param name: Player name
      */
-    public Player(String name, Color color) {
+    public Player(String name, Color color, Integer index) {
         this.color = color;
         this.name = name;
         System.out.println(String.format("Debug: Player with Color: %s, Name: %s created", color.toString(), name));

@@ -18,6 +18,10 @@ public class ActionSwitch implements Action {
         this.playerManager = playerManager;
     }
 
+    /**
+     * execute method switches the positions of two players.
+     * @param player: Player object
+     */
     @Override
     public void execute(Player player) throws Exception {
         // Switch the positions of the two players
