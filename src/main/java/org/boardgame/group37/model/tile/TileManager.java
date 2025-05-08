@@ -75,9 +75,14 @@ public class TileManager {
                     Action action = null;
 
                     // Set action based on random properties
-                    if (rand < .2) {action = new ActionTeleport(1);
+                    if (rand < .2)  {
+                        int teleportIndex = 1;//Math.clamp(i + (int)(Math.random() * 25 - 12), 1, size - 2);
+                        action = new ActionTeleport(teleportIndex);
+                    } else if (rand < .3) {
+                        action = new ActionSwitch();
+                    } else { 
+                        action = new ActionDefault();
                     }
-                    else action = new ActionDefault();
 
                     // Add tile to tiles
                     tileAdd(new Tile(action));
@@ -90,7 +95,7 @@ public class TileManager {
                 for(int i = 1; i < size; i++) {
 
                     // Add tile to tiles
-                    tileAdd(new Tile(new ActionMonopolyTile((i+4) * 20, null)));
+                    tileAdd(new Tile(new ActionMonopolyTile((i+4) * 20)));
                 }
                 System.out.println(String.format("Debug: Tiles generated successfully. Number of tiles: %d", tiles.size()));
             }

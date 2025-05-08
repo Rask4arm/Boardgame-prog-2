@@ -68,7 +68,7 @@ public class PlayerDataManager {
             // Fetch the player data
             while ((data = reader.readNext()) != null) {
                 if (data[0].equals(playerName)) {
-                    dataReturn = new Player(data[0], Color.web(data[1]));
+                    dataReturn = new Player(data[0], Color.web(data[1]), null);
                     break;
                 }
             }
@@ -81,7 +81,7 @@ public class PlayerDataManager {
                 throw new Exception("Player not found in the file.");
             }
 
-            return new Player(dataReturn.getName(), dataReturn.getColor());
+            return new Player(dataReturn.getName(), dataReturn.getColor(), null);
 
         // Catch exceptions
         } catch (Exception e) {
@@ -107,7 +107,7 @@ public class PlayerDataManager {
 
             // Fetch the player data
             while ((data = reader.readNext()) != null) {
-                dataReturn.add(new Player(data[0], Color.web(data[1])));
+                dataReturn.add(new Player(data[0], Color.web(data[1]), null));
             }
 
             // Close the reader and return the data

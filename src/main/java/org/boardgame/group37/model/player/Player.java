@@ -16,12 +16,13 @@ public class Player {
     private String name = "noname";
     private int position = 0;
     private int money = 1000;
+    private transient Integer index = null; // index of the player in the PlayerManager
 
     /**
      * Constructor
      * Initializes the Player with default values.
      */
-    public Player() {
+    public Player(Integer index) {
         System.out.println("Debug: Empty player created");
     }
 
@@ -31,7 +32,7 @@ public class Player {
      * @param color: Player color
      * @param name: Player name
      */
-    public Player(String name, Color color) {
+    public Player(String name, Color color, Integer index) {
         this.color = color;
         this.name = name;
         System.out.println(String.format("Debug: Player with Color: %s, Name: %s created", color.toString(), name));
@@ -149,5 +150,22 @@ public class Player {
     public void setMoney(int money) {
         this.money = money;
         System.out.println(String.format("Debug: Player %s set money to %d", name, money));
+    }
+
+    /**
+     * getIndex method returns the player's index.
+     * @return player's index
+     */
+    public Integer getIndex() {
+        return index;
+    }
+
+    /**
+     * setIndex method sets the player's index.
+     * @param index: player's index
+     */
+    public void setIndex(Integer index) {
+        this.index = index;
+        System.out.println(String.format("Debug: Player %s set index to %d", name, index));
     }
 }

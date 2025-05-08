@@ -24,4 +24,12 @@ public class TestTileManager {
         assertEquals(tileManager.getTiles().size(), 6);
     }
 
+    @Test
+    public void testTileGenerateMonopoly() {
+        TileManager tileManager = new TileManager(2, 6, BOARDTYPES.MONOPOLY);
+        assertEquals(tileManager.getSize(), tileManager.getSizeRaw());
+        assertEquals(tileManager.getWidth(), 2);
+        assertEquals(tileManager.getTiles().size(), 6);
+    }
+
 }
