@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e72b1210-8ec0-48e9-8382-7eafb1cefc95" name="Changes" comment="test commit for push">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/SnakesAndLaddersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/SnakesAndLaddersPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

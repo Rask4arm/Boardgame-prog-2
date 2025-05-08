@@ -56,7 +56,7 @@ public class SnakesAndLaddersPage {
                         TileManager tileLoad;
                         System.out.println("test1");
                         try {
-                            tileLoad = new TileManager(TileDataManager.dataLoad(filename), BOARDTYPES.SNAKE_AND_LADDERS);
+                            tileLoad = TileDataManager.dataLoad(filename);
                         } catch (Exception ex) {
                             throw new RuntimeException(ex);
                         }
