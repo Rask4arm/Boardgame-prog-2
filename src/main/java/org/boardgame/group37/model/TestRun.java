@@ -5,7 +5,7 @@ import org.boardgame.group37.model.tile.BOARDTYPES;
 
 public class TestRun {
     public static void main(String[] args) throws Exception {
-        GameManager gameManager = new GameManager(5, 25, BOARDTYPES.MONOPOLY);
+        GameManager gameManager = new GameManager(10, 30, BOARDTYPES.MONOPOLY);
 
         gameManager.getPlayerManager().playerAdd();
         gameManager.getPlayerManager().playerAdd();

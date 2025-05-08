@@ -16,6 +16,7 @@ public final class ColorPalette {
     public static final Color BOARD_LIGHT_TILE = Color.rgb(237, 242, 244); // Off-white
     public static final Color BOARD_DARK_TILE = Color.rgb(141, 153, 174);  // Slate blue
     public static final Color BOARD_TELEPORT_TILE = Color.rgb(239, 131, 84); // Coral
+    public static final Color BOARD_MONOPOLY_TILE = Color.rgb(34, 139, 34); // Forest green
     public static final Color BOARD_BORDER = Color.rgb(43, 45, 66);        // Dark navy
     public static final Color BOARD_TEXT = Color.rgb(27, 27, 30);          // Near black
     

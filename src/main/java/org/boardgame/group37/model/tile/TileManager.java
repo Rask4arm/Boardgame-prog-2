@@ -30,7 +30,7 @@ public class TileManager {
      * Generates tiles based on the specified size.
      */
     public TileManager(int width, int size, BOARDTYPES type) {
-        System.out.println(String.format("Debug: TileManager created with width: %d, size: %d", width, size));
+        System.out.println(String.format("Debug: TileManager created with width: %d, size: %d, board type:", width, size) + type);
         this.width = width;
         this.size = size;
         this.boardType = type;
@@ -87,7 +87,7 @@ public class TileManager {
             case MONOPOLY -> {
                 System.out.println("Debug: Generating tiles.");
                 tileAdd(new Tile(new ActionMonopolyStart()));
-                for(int i = 0; i < size; i++) {
+                for(int i = 1; i < size; i++) {
 
                     // Add tile to tiles
                     tileAdd(new Tile(new ActionMonopolyTile((i+4) * 20, null)));

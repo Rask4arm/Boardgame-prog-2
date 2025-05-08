@@ -59,7 +59,7 @@ public class SnakesAndLaddersPage {
                         } catch (Exception ex) {
                             throw new RuntimeException(ex);
                         }
-                        Game.init(root, new BoardGraphic(tileLoad), playerManager);
+                        Game.init(root, new BoardGraphic(tileLoad, BOARDTYPES.SNAKE_AND_LADDERS), playerManager);
                     }
             );
             hBoxFiles.getChildren().add(filebutton);

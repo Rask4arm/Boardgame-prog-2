@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e72b1210-8ec0-48e9-8382-7eafb1cefc95" name="Changes" comment="test commit for push">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/CraftingBoardPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/TestRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/TestRun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionMonopolyTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/action/ActionMonopolyTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/BoardGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/BoardGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/ColorPalette.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/CraftingBoardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/CraftingBoardPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/MonopolyPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/MonopolyPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/SnakesAndLaddersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/SnakesAndLaddersPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,40 +59,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloFX.executor": "Run",
-    "Application.TestRun.executor": "Run",
-    "Application.testJavaFX.executor": "Run",
-    "JUnit.TestBoardData.executor": "Debug",
-    "JUnit.TestBoardData.testBoardData.executor": "Run",
-    "JUnit.TestPlayerData.testAdd.executor": "Debug",
-    "JUnit.TestPlayerData.testDelete.executor": "Run",
-    "JUnit.TestTileManager.testTileAddAndGet.executor": "Run",
-    "Maven.boardgame-engine.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "39-creating-snakes-and-ladders-with-pictures",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.5908046",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloFX.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestRun.executor&quot;: &quot;Run&quot;,
+    &quot;Application.testJavaFX.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestBoardData.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.TestBoardData.testBoardData.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestPlayerData.testAdd.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.TestPlayerData.testDelete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestTileManager.testTileAddAndGet.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.boardgame-engine.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;39-creating-snakes-and-ladders-with-pictures&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.5908046&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveInnerDialog.RECENTS_KEY">
       <recent name="org.boardgame.group37.model.tile" />
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestBoardData.testBoardData">
+  <component name="RunManager" selected="JUnit.TestBoardData">
     <configuration name="TestBoardData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boardgame-engine" />
       <extension name="coverage">
@@ -214,6 +221,7 @@
       <workItem from="1745239464590" duration="21438000" />
       <workItem from="1746266861716" duration="26698000" />
       <workItem from="1746470250351" duration="6679000" />
+      <workItem from="1746707462160" duration="2960000" />
     </task>
     <servers />
   </component>
@@ -259,6 +267,10 @@
           <line>135</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.IllegalFormatConversionException" package="java.util" />
+          <option name="timeStamp" value="18" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

@@ -80,7 +80,7 @@ public class CraftingBoardPage {
             }
 
             TileManager tileManager = new TileManager(width, height * width, BOARDTYPES.SNAKE_AND_LADDERS);
-            Game.init(root, new BoardGraphic(tileManager), playerManager);
+            Game.init(root, new BoardGraphic(tileManager, BOARDTYPES.SNAKE_AND_LADDERS), playerManager);
         });
 
         Button saveBoardButton = new Button("Save Board");

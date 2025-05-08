@@ -58,4 +58,13 @@ public class ActionMonopolyTile implements Action {
     public void setPlayerManager(PlayerManager playerManager) {
         this.playerManager = playerManager;
     }
+
+    /**
+     * toString method returns the name of the action.
+     * @return name of the action
+     */
+    @Override
+    public String toString() {
+        return "ActionMonopolyTile";
+    }
 }
