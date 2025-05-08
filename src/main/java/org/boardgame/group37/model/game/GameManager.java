@@ -34,7 +34,7 @@ public class GameManager {
      * Constructor for GameManager class.
      * Initializes the game with default values.
      */
-    public GameManager(int width, int size, BOARDTYPES boardType) {
+    public GameManager(int width, int size, BOARDTYPES boardType) throws Exception {
         System.out.println("\nDebug: GameManager created.");
         gameReset(true, true, true, width, size, boardType);
         this.boardType = boardType;
@@ -54,7 +54,7 @@ public class GameManager {
      * @param resetDie: Reset die
      */
 
-    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, int width, int size, BOARDTYPES boardType) {
+    public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, int width, int size, BOARDTYPES boardType) throws Exception {
         if (resetTiles) tileManager = new TileManager(width, size, boardType);
         if (resetPlayers) playerManager = new PlayerManager();
         if (resetDie) dieManager = new DieManager();

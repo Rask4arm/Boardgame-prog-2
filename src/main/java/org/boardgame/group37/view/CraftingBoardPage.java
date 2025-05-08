@@ -79,8 +79,12 @@ public class CraftingBoardPage {
                 }
             }
 
+            try {
             TileManager tileManager = new TileManager(width, height * width, BOARDTYPES.SNAKE_AND_LADDERS);
             Game.init(root, new BoardGraphic(tileManager, BOARDTYPES.SNAKE_AND_LADDERS), playerManager);
+            } catch (Exception ex) {
+                System.out.println("Error creating board: " + ex.getMessage());
+            }
         });
 
         Button saveBoardButton = new Button("Save Board");
@@ -101,13 +105,18 @@ public class CraftingBoardPage {
                 }
             }
 
-            TileManager tileManager = new TileManager(width, height * width, BOARDTYPES.SNAKE_AND_LADDERS);
+            try {
+                TileManager tileManager = new TileManager(width, height * width, BOARDTYPES.SNAKE_AND_LADDERS);
 
-            // Save board data
-            TileDataManager.dataSave(tileManager, textFieldName.getText() + ".json");
-            System.out.println("Board saved as: " + textFieldName.getText() + ".json");
-            Label successLabel = new Label("Board saved successfully!");
-            vBox.getChildren().add(successLabel);
+                // Save board data
+                TileDataManager.dataSave(tileManager, textFieldName.getText() + ".json");
+                System.out.println("Board saved as: " + textFieldName.getText() + ".json");
+                Label successLabel = new Label("Board saved successfully!");
+                vBox.getChildren().add(successLabel);
+            } catch (Exception ex) {
+                System.out.println("Error saving board: " + ex.getMessage());
+            }
+
         });
 
         Label label = new Label("Create your own board");

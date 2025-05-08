@@ -9,7 +9,7 @@ public class boardController {
      * This method is responsible for generating the tiles of the board.
      * @param gameManager: GameManager
      */
-    public void buttonGenerateLadders(GameManager gameManager) {
+    public void buttonGenerateLadders(GameManager gameManager) throws Exception {
         gameManager.getTileManager().tilesGenerate(BOARDTYPES.SNAKE_AND_LADDERS);
     }
 

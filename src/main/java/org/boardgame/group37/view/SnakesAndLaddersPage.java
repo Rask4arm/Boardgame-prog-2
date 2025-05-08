@@ -31,12 +31,18 @@ public class SnakesAndLaddersPage {
         borderPane.prefWidthProperty().bind(root.widthProperty());
         borderPane.prefHeightProperty().bind(root.heightProperty());
 
-        TileManager tileManager = new TileManager(10, 100, BOARDTYPES.SNAKE_AND_LADDERS);
-        TileManager tileManager2 = new TileManager(10, 50, BOARDTYPES.SNAKE_AND_LADDERS);
+        try {
+            TileManager tileManager = new TileManager(10, 100, BOARDTYPES.SNAKE_AND_LADDERS);
+            TileManager tileManager2 = new TileManager(10, 50, BOARDTYPES.SNAKE_AND_LADDERS);
+        
 
-        // Save and load board data
-        TileDataManager.dataSave(tileManager, "test_board.json");
-        TileDataManager.dataSave(tileManager2, "test_board2.json");
+            // Save and load board data
+            TileDataManager.dataSave(tileManager, "test_board.json");
+            TileDataManager.dataSave(tileManager2, "test_board2.json");
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         String[] filenames= TileDataManager.dataGetFilenames();
         HBox hBoxFiles = new HBox();

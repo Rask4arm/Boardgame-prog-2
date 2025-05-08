@@ -151,7 +151,11 @@ public class MonopolyPage {
         });
 
         startGameButton.setOnAction(e -> {
-            Game.init(root, new BoardGraphic(new TileManager(10, 40, BOARDTYPES.MONOPOLY), BOARDTYPES.MONOPOLY), playerManager);
+            try {
+                Game.init(root, new BoardGraphic(new TileManager(10, 40, BOARDTYPES.MONOPOLY), BOARDTYPES.MONOPOLY), playerManager);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         });
         borderPane.setBottom(startGameButton);
 
