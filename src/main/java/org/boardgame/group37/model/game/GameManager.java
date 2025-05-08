@@ -57,6 +57,7 @@ public class GameManager {
         if (resetTiles) tileManager = new TileManager(width, size, boardType);
         if (resetPlayers) playerManager = new PlayerManager();
         if (resetDie) dieManager = new DieManager();
+        this.boardType = boardType;
         currentPlayerIndex = 0;
         currentPlayerRolls = 0;
         playerWinner = null;
@@ -67,6 +68,7 @@ public class GameManager {
         if (resetTiles) this.tileManager = tileManager;
         if (resetPlayers) this.playerManager = playerManager;
         if (resetDie) dieManager = new DieManager();
+        this.boardType = boardType;
         currentPlayerIndex = 0;
         currentPlayerRolls = 0;
         playerWinner = null;
@@ -149,7 +151,7 @@ public class GameManager {
 
         // Monopoly check if player passed start tile
         if (boardType == BOARDTYPES.MONOPOLY) {
-            if (currentPlayer.getPosition() >= tileManager.getTiles().size()) {
+            if (currentPlayer.getPosition() > tileManager.getTiles().size()) {
                 currentPlayer.setPosition(currentPlayer.getPosition() - tileManager.getTiles().size());
                 currentPlayer.setMoney(currentPlayer.getMoney() + 200); // Passing start bonus
                 System.out.println(String.format(
@@ -182,9 +184,8 @@ public class GameManager {
                     }
 
                     gameEnd(richestPlayer);
-                    System.out.println(String.format(
-                        "Debug: roundMove() --> gameEnd(player %d) has won.", 
-                        richestPlayer)
+                    System.out.println(
+                        "Debug: roundMove() --> gameEnd " + richestPlayer.getName() + " has won."
                     );
                 }
             }

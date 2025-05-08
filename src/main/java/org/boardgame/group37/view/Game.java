@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.boardgame.group37.model.game.GameManager;
@@ -29,18 +30,32 @@ public class Game {
         PlayerToken[] playerToken = new PlayerToken[numberOfPlayers];
         for (int i = 0; i < numberOfPlayers; i++) {
             playerToken[i] = new PlayerToken(players.get(i).getColor());
+            boardGraphic.updatePlayerPosition(playerToken[i], 1);
         }
 
         GameManager gameManager;
-        gameManager = new GameManager(boardGraphic.getTileManager(), playerManager, BOARDTYPES.SNAKE_AND_LADDERS);
+        gameManager = new GameManager(boardGraphic.getTileManager(), playerManager, boardGraphic.getBoardType());
 
         gameManager.getDieManager().dieAdd();
         gameManager.getDieManager().dieAdd();
-
-        boardGraphic.updatePlayerPosition(playerToken[0], 1);
-        boardGraphic.updatePlayerPosition(playerToken[1], 1);
 
         gameManager.printProperties();
+
+        VBox vbox = new VBox();
+        HBox hbox = new HBox();
+
+        Label currentPlayerLabel = new Label("Current Player: " + players.get(gameManager.getCurrentPlayerIndex()).getName());
+
+        vbox.getChildren().addAll(boardGraphic, currentPlayerLabel);
+
+        if (boardGraphic.getBoardType() == BOARDTYPES.MONOPOLY) {
+            for (int i = 0; i < numberOfPlayers; i++) {
+                Label playerLabel = new Label(players.get(i).getName() + " has " + players.get(i).getMoney() + "Monopoly Dollars");
+                playerLabel.setTextFill(players.get(i).getColor());
+                hbox.getChildren().add(playerLabel);
+            }
+            vbox.getChildren().add(hbox);
+        }
 
         gameManager.gameStart();
         Button diceButton = new Button("Roll dice?");
@@ -56,6 +71,20 @@ public class Game {
                         }
                         boardGraphic.updatePlayerPosition(playerToken[gameManager.getCurrentPlayerIndex()], gameManager.getCurrentPlayerPosition());
                     }
+                    if (gameManager.getCurrentPlayerIndex()+1 >= numberOfPlayers) {
+                        currentPlayerLabel.setText("Current Player: " + players.get(0).getName());
+                    }
+                    else {
+                        currentPlayerLabel.setText("Current Player: " + players.get(gameManager.getCurrentPlayerIndex() + 1).getName());
+                    }
+                    if (boardGraphic.getBoardType() == BOARDTYPES.MONOPOLY) {
+                        hbox.getChildren().clear();
+                        for (int i = 0; i < numberOfPlayers; i++) {
+                            Label playerLabel = new Label(players.get(i).getName() + " has " + players.get(i).getMoney() + "Monopoly Dollars");
+                            playerLabel.setTextFill(players.get(i).getColor());
+                            hbox.getChildren().add(playerLabel);
+                        }
+                    }
                     gameManager.roundEnd();
                     if (gameManager.getState().equals("end")) {
                         String winnerName = gameManager.getPlayerWinner().getName();
@@ -66,12 +95,11 @@ public class Game {
 
         Button quitButton = new Button("Quit");
         quitButton.setOnAction(e -> {
-            SnakesAndLaddersPage.init(root);
+            StartPage.init(root);
         });
 
-
         BorderPane borderPane = new BorderPane();
-        borderPane.setCenter(boardGraphic);
+        borderPane.setCenter(vbox);
         borderPane.setRight(diceButton);
         borderPane.setLeft(quitButton);
         borderPane.prefWidthProperty().bind(root.widthProperty());

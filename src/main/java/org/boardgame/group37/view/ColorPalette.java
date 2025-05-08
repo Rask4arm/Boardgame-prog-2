@@ -16,6 +16,7 @@ public final class ColorPalette {
     public static final Color BOARD_LIGHT_TILE = Color.rgb(237, 242, 244); // Off-white
     public static final Color BOARD_DARK_TILE = Color.rgb(141, 153, 174);  // Slate blue
     public static final Color BOARD_TELEPORT_TILE = Color.rgb(239, 131, 84); // Coral
+    public static final Color BOARD_MONOPOLY_TILE = Color.rgb(34, 139, 34); // Forest green
     public static final Color BOARD_BORDER = Color.rgb(43, 45, 66);        // Dark navy
     public static final Color BOARD_TEXT = Color.rgb(27, 27, 30);          // Near black
     
@@ -26,6 +27,11 @@ public final class ColorPalette {
     public static final Color PLAYER_YELLOW = Color.rgb(241, 196, 15);     // Golden yellow
     public static final Color PLAYER_PURPLE = Color.rgb(155, 89, 182);     // Soft purple
     public static final Color PLAYER_ORANGE = Color.rgb(243, 156, 18);     // Carrot orange
+    public static final Color PLAYER_PINK = Color.rgb(255, 105, 180);      // Hot pink
+
+    public static Color[] getPlayerColors() {
+        return new Color[] {PLAYER_RED, PLAYER_BLUE, PLAYER_GREEN, PLAYER_YELLOW, PLAYER_PURPLE, PLAYER_ORANGE, PLAYER_PINK};
+    }
     
     // UI elements - Clean and accessible
     public static final Color UI_BACKGROUND = Color.rgb(122, 146, 163);    // Snow white

@@ -1,4 +1,5 @@
 package org.boardgame.group37.data;
+import org.boardgame.group37.model.player.PlayerDataManager;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,5 +26,11 @@ public class TestBoardData {
             tileManager.getTiles().size(), tileLoad.getTiles().size(), 
             "The number of tiles should be the same after loading."
         );
+
+        assertEquals(
+            tileManager.getTiles().get(0).getAction().getClass(),
+            tileLoad.getTiles().get(0).getAction().getClass()
+        );
+        TileDataManager.dataDeleteAll();
     }
 }

@@ -6,8 +6,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.Tile;
 import org.boardgame.group37.model.tile.TileManager;
+import org.boardgame.group37.model.tile.action.ActionMonopolyTile;
 import org.boardgame.group37.model.tile.action.ActionTeleport;
 import javafx.scene.paint.Color;
 
@@ -41,6 +43,9 @@ public class BoardGraphic extends GridPane {
             if (tiles.get(tileIndex).getAction() instanceof ActionTeleport) {
                 createTile(ColorPalette.BOARD_TELEPORT_TILE, tileIndex);
             }
+            else if (tiles.get(tileIndex).getAction() instanceof ActionMonopolyTile) {
+                createTile(ColorPalette.BOARD_MONOPOLY_TILE, tileIndex);
+            }
             else {
                 if ((row + col) % 2 == 0) {
                     createTile(ColorPalette.BOARD_DARK_TILE, tileIndex);
@@ -50,7 +55,10 @@ public class BoardGraphic extends GridPane {
             }
         }
         else {
-            if ((row + col) % 2 == 0) {
+            if (tiles.get(29).getAction() instanceof ActionMonopolyTile) {
+                createTile(ColorPalette.BOARD_MONOPOLY_TILE, tileIndex);
+            }
+            else if ((row + col) % 2 == 0) {
                 createTile(ColorPalette.BOARD_DARK_TILE, tileIndex);
             } else {
                 createTile(ColorPalette.BOARD_LIGHT_TILE, tileIndex);
@@ -92,7 +100,7 @@ public class BoardGraphic extends GridPane {
      *
      * Creates a grid of tiles with alternating colors and numbers
      */
-    BoardGraphic(TileManager tileManager) {
+    BoardGraphic(TileManager tileManager, BOARDTYPES boardType) {
         this.tileManager = tileManager;
         this.heigth = tileManager.getSize()/tileManager.getWidth();
         this.width = tileManager.getWidth();
@@ -100,13 +108,12 @@ public class BoardGraphic extends GridPane {
         // Board setup
         ArrayList<Tile> tiles = tileManager.getTiles();
 
-        for (int row = 0; row < heigth; row++) {
-            for (int col = 0; col < width; col++) {
-                createTiles(row, col, tiles);
-            }
+        if (boardType == BOARDTYPES.SNAKE_AND_LADDERS) {
+            createSnakesAndLaddersBoard(tiles, heigth, width);
+        } else if (boardType == BOARDTYPES.MONOPOLY) {
+            createMonopolyBoard(tiles, heigth, width);
         }
-        createLadder(tiles);
-        //getgetChildren();
+
 
         // Add spacing
         setHgap(1);
@@ -182,5 +189,26 @@ public class BoardGraphic extends GridPane {
 
         // Add tile to the board
         add(stack, col, row);
+    }
+
+    public void createSnakesAndLaddersBoard(ArrayList<Tile> tiles, int heigth, int width) {
+        for (int row = 0; row < heigth; row++) {
+            for (int col = 0; col < width; col++) {
+                createTiles(row, col, tiles);
+            }
+        }
+        createLadder(tiles);
+    }
+
+    public void createMonopolyBoard(ArrayList<Tile> tiles, int heigth, int width) {
+        for (int row = 0; row < heigth; row++) {
+            for (int col = 0; col < width; col++) {
+                createTiles(row, col, tiles);
+            }
+        }
+    }
+
+    public BOARDTYPES getBoardType() {
+        return tileManager.getBoardType();
     }
 }
