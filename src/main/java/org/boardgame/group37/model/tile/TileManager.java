@@ -76,7 +76,7 @@ public class TileManager {
 
                     // Set action based on random properties
                     if (rand < .2)  {
-                        int teleportIndex = 1;//Math.clamp(i + (int)(Math.random() * 25 - 12), 1, size - 2);
+                        int teleportIndex = Math.clamp(i + (int)(Math.random() * 25 - 12), 1, size - 2);
                         action = new ActionTeleport(teleportIndex);
                     } else if (rand < .3) {
                         action = new ActionSwitch();

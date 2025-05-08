@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e72b1210-8ec0-48e9-8382-7eafb1cefc95" name="Changes" comment="test commit for push">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/tile/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/SnakesAndLaddersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/SnakesAndLaddersPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +54,7 @@
     "Application.HelloFX.executor": "Run",
     "Application.TestRun.executor": "Run",
     "Application.testJavaFX.executor": "Run",
-    "JUnit.TestBoardData.executor": "Debug",
+    "JUnit.TestBoardData.executor": "Run",
     "JUnit.TestBoardData.testBoardData.executor": "Run",
     "JUnit.TestPlayerData.executor": "Run",
     "JUnit.TestPlayerData.testAdd.executor": "Debug",
@@ -65,7 +63,7 @@
     "Maven.boardgame-engine.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "development",
+    "git-widget-placeholder": "lastdaywork",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -85,7 +83,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestBoardData.testBoardData">
+  <component name="RunManager" selected="JUnit.TestBoardData">
     <configuration name="TestBoardData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boardgame-engine" />
       <extension name="coverage">
@@ -166,11 +164,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestBoardData" />
         <item itemvalue="JUnit.TestBoardData.testBoardData" />
         <item itemvalue="JUnit.TestPlayerData" />
         <item itemvalue="JUnit.TestPlayerData.testDelete" />
         <item itemvalue="JUnit.TestPlayerData.testAdd" />
-        <item itemvalue="JUnit.TestBoardData" />
       </list>
     </recent_temporary>
   </component>
