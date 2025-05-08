@@ -12,7 +12,7 @@ public class TestAction {
     public void testAction() throws Exception{
         
         // Create player
-        Player player = new Player();
+        Player player = new Player(0);
         
         // Create action types
         Action actionDefault = new ActionDefault();

@@ -11,13 +11,13 @@ public class TestPlayer {
 
     @Test
     public void testEmptyPlayer() {
-        Player player = new Player();
+        Player player = new Player(0);
         assertEquals(player.getColor(), Color.BLACK);
         assertEquals(player.getName(), "noname");
     }
 
     @Test void testPredefinedPlayer() {
-        Player player = new Player("test", Color.RED);
+        Player player = new Player("test", Color.RED, 0);
         assertEquals(player.getColor(), Color.RED);
         assertEquals(player.getName(), "test");
     }
@@ -25,7 +25,7 @@ public class TestPlayer {
     @Test void testPlayerGeneral() throws Exception {
 
         // Test executeMove method
-        Player player = new Player();
+        Player player = new Player(0);
         assertEquals(player.getPosition(), 0);
         player.executeMove();
         assertEquals(player.getPosition(), 1);
@@ -34,7 +34,7 @@ public class TestPlayer {
         Tile tile1 = new Tile(new ActionDefault());
         Tile tile2 = new Tile(new ActionTeleport(5));
 
-        player = new Player();
+        player = new Player(0);
         player.executeTile(tile1);
         assertEquals(player.getPosition(), 1);
         player.executeTile(tile2);

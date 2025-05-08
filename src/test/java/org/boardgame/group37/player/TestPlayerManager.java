@@ -13,13 +13,14 @@ public class TestPlayerManager {
         assertEquals(playerManager.getPlayers().size(), 0);
         playerManager.playerAdd();
         assertEquals(playerManager.getPlayers().size(), 1);
-        playerManager.playerAdd(new Player("test1", Color.RED));
+        playerManager.playerAdd(new Player("test1", Color.RED, null));
         assertEquals(playerManager.getPlayers().size(), 2);
-        playerManager.playerAdd("test2", Color.BLUE);
+        playerManager.playerAdd("test3", Color.BLUE);
         assertEquals(playerManager.getPlayers().size(), 3);
+        playerManager.playerRemove();
         playerManager.playerRemove(0);
-        assertEquals(playerManager.getPlayers().size(), 2);
-        assertEquals(playerManager.getPlayers().get(1).getName(), "test1");
+        assertEquals(playerManager.getPlayers().size(), 1);
+        assertEquals(playerManager.getPlayers().get(0).getName(), "test1");
     }
 
 }
