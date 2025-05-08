@@ -13,10 +13,9 @@ public class ActionMonopolyTile implements Action {
     private Integer playerIndexOwner = null;
     private transient PlayerManager playerManager; // transient to avoid serialization issues with saving/loading json.
 
-    public ActionMonopolyTile(int value, Integer playerIndexOwner) {
+    public ActionMonopolyTile(int value) {
         this.value = value;
         this.rent = value / 2;
-        this.playerIndexOwner = playerIndexOwner;
     }
 
     /**

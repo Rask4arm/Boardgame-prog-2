@@ -94,7 +94,7 @@ public class TileManager {
                 for(int i = 1; i < size; i++) {
 
                     // Add tile to tiles
-                    tileAdd(new Tile(new ActionMonopolyTile((i+4) * 20, null)));
+                    tileAdd(new Tile(new ActionMonopolyTile((i+4) * 20)));
                 }
                 System.out.println(String.format("Debug: Tiles generated successfully. Number of tiles: %d", tiles.size()));
             }
