@@ -48,6 +48,11 @@ public class ActionMonopolyTile implements Action {
             throw new GameException("Error: PlayerManager is not set. Cannot execute ActionMonopolyTile.");
         }
 
+        if (player.getIndex() == playerIndexOwner) {
+            System.out.println("Debug: Player " + player.getName() + " is the owner of the tile. No action needed.");
+            return;
+        }
+
         if (playerIndexOwner != null) {
             player.setMoney(player.getMoney() - rent);
             playerManager.getPlayers().get(playerIndexOwner).setMoney(playerManager.getPlayers().get(playerIndexOwner).getMoney() + rent);

@@ -12,8 +12,11 @@ public class TestBoardData {
     @Test
     public void testBoardData() throws Exception {
 
+        System.out.println("Test board data");
+        System.out.flush();
+
         // Create board data
-        TileManager tileManager = new TileManager(10, 100, BOARDTYPES.SNAKE_AND_LADDERS);
+        TileManager tileManager = new TileManager(20, 100, BOARDTYPES.SNAKE_AND_LADDERS);
 
         // Save and load board data
         TileDataManager.dataSave(tileManager, "test_board.json");
