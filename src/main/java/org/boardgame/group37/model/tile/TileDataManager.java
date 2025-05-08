@@ -29,7 +29,8 @@ public class TileDataManager {
                 .registerSubtype(ActionDefault.class, "default")
                 .registerSubtype(ActionTeleport.class, "teleport")
                 .registerSubtype(ActionMonopolyStart.class, "monopolyStart")
-                .registerSubtype(ActionMonopolyTile.class, "monopolyTile");
+                .registerSubtype(ActionMonopolyTile.class, "monopolyTile")
+                .registerSubtype(ActionSwitch.class, "switch");
 
         // Create a new GsonBuilder instance
         GsonBuilder gsonBuilder = new GsonBuilder();

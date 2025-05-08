@@ -35,7 +35,7 @@ public class ActionSwitch implements Action {
         int tempPosition = player.getPosition();
         player.setPosition(otherPlayer.getPosition());
         otherPlayer.setPosition(tempPosition);
-        
+
         System.out.println("Debug: ActionSwitch executed. Players switched positions.");
     }
 
@@ -55,6 +55,15 @@ public class ActionSwitch implements Action {
      */
     @Override
     public javafx.scene.paint.Color getColor() {
-        return Color.LIGHTGRAY;
+        return Color.BLUE;
+    }
+
+    /**
+     * toString method returns the name of the action.
+     * @return name of the action
+     */
+    @Override
+    public String toString() {
+        return "ActionSwitch";
     }
 }

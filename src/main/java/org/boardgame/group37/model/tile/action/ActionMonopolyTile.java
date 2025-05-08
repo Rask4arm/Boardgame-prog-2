@@ -11,10 +11,9 @@ public class ActionMonopolyTile implements Action {
     private Integer playerIndexOwner = null;
     private transient PlayerManager playerManager; // transient to avoid serialization issues with saving/loading json.
 
-    public ActionMonopolyTile(int value, Integer playerIndexOwner) {
+    public ActionMonopolyTile(int value) {
         this.value = value;
         this.rent = value / 2;
-        this.playerIndexOwner = playerIndexOwner;
     }
 
     /**
@@ -30,7 +29,7 @@ public class ActionMonopolyTile implements Action {
     public void purchaseTile(Player player) {
         if (player.getMoney() >= value) {
             player.setMoney(player.getMoney() - value);
-            playerIndexOwner = 1;
+            playerIndexOwner = player.getIndex();
             System.out.println("Debug: Player " + player.getName() + " purchased the tile for " + value);
         } else {
             System.out.println("Debug: Player " + player.getName() + " does not have enough money to purchase the tile.");
@@ -61,6 +60,10 @@ public class ActionMonopolyTile implements Action {
 
     public void setPlayerManager(PlayerManager playerManager) {
         this.playerManager = playerManager;
+    }
+
+    public Integer getPlayerIndexOwner() {
+        return playerIndexOwner;
     }
 
     /**

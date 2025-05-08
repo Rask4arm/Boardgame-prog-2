@@ -31,6 +31,9 @@ public class TestBoardData {
             tileManager.getTiles().get(0).getAction().getClass(),
             tileLoad.getTiles().get(0).getAction().getClass()
         );
+        assertEquals(
+            tileManager.getTiles().size(), tileLoad.getTiles().size()
+        );
         TileDataManager.dataDeleteAll();
     }
 
