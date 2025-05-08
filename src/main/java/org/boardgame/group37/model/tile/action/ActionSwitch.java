@@ -13,10 +13,7 @@ import javafx.scene.paint.Color;
 public class ActionSwitch implements Action {
 
     // Properties
-    private PlayerManager playerManager;
-    ActionSwitch(PlayerManager playerManager) {
-        this.playerManager = playerManager;
-    }
+    private transient PlayerManager playerManager;
 
     /**
      * execute method switches the positions of two players.
@@ -35,7 +32,20 @@ public class ActionSwitch implements Action {
             }
         }
         
+        int tempPosition = player.getPosition();
+        player.setPosition(otherPlayer.getPosition());
+        otherPlayer.setPosition(tempPosition);
+        
         System.out.println("Debug: ActionSwitch executed. Players switched positions.");
+    }
+
+    /**
+     * Sets the PlayerManager instance for this action.
+     *
+     * @param playerManager the PlayerManager to set
+     */
+    public void setPlayerManager(PlayerManager playerManager) {
+        this.playerManager = playerManager;
     }
 
     /**

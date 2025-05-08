@@ -7,6 +7,7 @@ import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.TileManager;
 import org.boardgame.group37.model.tile.action.Action;
 import org.boardgame.group37.model.tile.action.ActionMonopolyTile;
+import org.boardgame.group37.model.tile.action.ActionSwitch;
 import org.boardgame.group37.view.VictoryPage;
 
 /**
@@ -101,6 +102,7 @@ public class GameManager {
             Action action = tileManager.getTiles().get(i).getAction();
             switch (action.getClass().getSimpleName()) {
                 case "ActionMonopolyTile" -> ((ActionMonopolyTile) action).setPlayerManager(playerManager);
+                case "ActionSwitch" -> ((ActionSwitch) action).setPlayerManager(playerManager);
             }
         }
 
@@ -116,7 +118,6 @@ public class GameManager {
         // Set correct player index
         for (int i = 0; i < playerManager.getPlayers().size(); i++) {
             playerManager.getPlayers().get(i).setIndex(i);
-            
         }
     }
 
