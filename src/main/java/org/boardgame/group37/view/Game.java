@@ -71,12 +71,13 @@ public class Game {
                         }
                         boardGraphic.updatePlayerPosition(playerToken[gameManager.getCurrentPlayerIndex()], gameManager.getCurrentPlayerPosition());
                     }
-                    if (gameManager.getCurrentPlayerIndex()+1 >= numberOfPlayers) {
-                        currentPlayerLabel.setText("Current Player: " + players.get(0).getName());
+                    gameManager.roundEnd();
+                    if (gameManager.getState().equals("end")) {
+                        String winnerName = gameManager.getPlayerWinner().getName();
+                        VictoryPage.init(root, winnerName);
                     }
-                    else {
-                        currentPlayerLabel.setText("Current Player: " + players.get(gameManager.getCurrentPlayerIndex() + 1).getName());
-                    }
+                    currentPlayerLabel.setText("Current Player: " + players.get(gameManager.getCurrentPlayerIndex()).getName());
+
                     if (boardGraphic.getBoardType() == BOARDTYPES.MONOPOLY) {
                         hbox.getChildren().clear();
                         for (int i = 0; i < numberOfPlayers; i++) {
@@ -84,11 +85,6 @@ public class Game {
                             playerLabel.setTextFill(players.get(i).getColor());
                             hbox.getChildren().add(playerLabel);
                         }
-                    }
-                    gameManager.roundEnd();
-                    if (gameManager.getState().equals("end")) {
-                        String winnerName = gameManager.getPlayerWinner().getName();
-                        VictoryPage.init(root, winnerName);
                     }
                 }
         );

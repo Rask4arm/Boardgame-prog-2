@@ -17,7 +17,7 @@ public class Tile {
      */
     public Tile() {
         this.action = new ActionDefault();
-        System.out.println(String.format("Debug: Tile created with action: %s", action.toString()));
+        System.out.println(String.format("Debug: Tile created with default action: %s", action.toString()));
     }
 
     /**
