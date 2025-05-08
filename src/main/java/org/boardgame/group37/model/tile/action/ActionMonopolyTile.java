@@ -1,6 +1,8 @@
 package org.boardgame.group37.model.tile.action;
 
 import javafx.scene.paint.Color;
+
+import org.boardgame.group37.exception.GameException;
 import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerManager;
 

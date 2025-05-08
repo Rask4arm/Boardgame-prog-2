@@ -7,6 +7,7 @@ import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.TileManager;
 import org.boardgame.group37.model.tile.action.Action;
 import org.boardgame.group37.model.tile.action.ActionMonopolyTile;
+import org.boardgame.group37.model.tile.action.ActionSwitch;
 import org.boardgame.group37.view.VictoryPage;
 
 /**
@@ -151,7 +152,7 @@ public class GameManager {
 
         // Monopoly check if player passed start tile
         if (boardType == BOARDTYPES.MONOPOLY) {
-            if (currentPlayer.getPosition() > tileManager.getTiles().size()) {
+            if (currentPlayer.getPosition() >= tileManager.getTiles().size()) {
                 currentPlayer.setPosition(currentPlayer.getPosition() - tileManager.getTiles().size());
                 currentPlayer.setMoney(currentPlayer.getMoney() + 200); // Passing start bonus
                 System.out.println(String.format(

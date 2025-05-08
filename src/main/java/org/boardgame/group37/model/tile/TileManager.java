@@ -76,7 +76,7 @@ public class TileManager {
 
                     // Set action based on random properties
                     if (rand < .2) {
-                        action = new ActionTeleport(i + (Math.random() * 10));
+                        action = new ActionTeleport((int)  (i + (Math.random() * 10)));
                     } else if (rand < .3) {
                         action = new ActionSwitch();
                     } else {
