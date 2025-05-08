@@ -70,6 +70,7 @@ public class Game {
                             throw new RuntimeException(ex);
                         }
                         boardGraphic.updatePlayerPosition(playerToken[gameManager.getCurrentPlayerIndex()], gameManager.getCurrentPlayerPosition());
+
                     }
                     gameManager.roundEnd();
                     if (gameManager.getState().equals("end")) {

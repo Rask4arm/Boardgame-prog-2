@@ -10,6 +10,7 @@ import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.Tile;
 import org.boardgame.group37.model.tile.TileManager;
 import org.boardgame.group37.model.tile.action.ActionMonopolyTile;
+import org.boardgame.group37.model.tile.action.ActionSwitch;
 import org.boardgame.group37.model.tile.action.ActionTeleport;
 import javafx.scene.paint.Color;
 
@@ -46,6 +47,9 @@ public class BoardGraphic extends GridPane {
             else if (tiles.get(tileIndex).getAction() instanceof ActionMonopolyTile) {
                 createTile(ColorPalette.BOARD_MONOPOLY_TILE, tileIndex);
             }
+            else if (tiles.get(tileIndex).getAction() instanceof ActionSwitch) {
+                createTile(ColorPalette.BOARD_TEXT , tileIndex);
+            }
             else {
                 if ((row + col) % 2 == 0) {
                     createTile(ColorPalette.BOARD_DARK_TILE, tileIndex);
@@ -55,7 +59,7 @@ public class BoardGraphic extends GridPane {
             }
         }
         else {
-            if (tiles.get(29).getAction() instanceof ActionMonopolyTile) {
+            if (tiles.get(0).getAction() instanceof ActionMonopolyTile) {
                 createTile(ColorPalette.BOARD_MONOPOLY_TILE, tileIndex);
             }
             else if ((row + col) % 2 == 0) {
