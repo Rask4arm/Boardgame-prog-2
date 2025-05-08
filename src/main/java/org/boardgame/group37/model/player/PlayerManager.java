@@ -44,7 +44,7 @@ public class PlayerManager {
      * The player is initialized with default values.
      */
     public void playerAdd() {
-        players.add(new Player());
+        players.add(new Player(players.size()));
         System.out.println(String.format("Debug: Current number of players: %d", players.size()));
     }
 
@@ -55,7 +55,7 @@ public class PlayerManager {
      * @param name: Player name
      */
     public void playerAdd(String name, Color color) {
-        players.add(new Player(name, color));
+        players.add(new Player(name, color, players.size()));
         System.out.println(String.format("Debug: Current number of players: %d", players.size()));
     }
 
@@ -65,6 +65,7 @@ public class PlayerManager {
      * @param player Player object
      */
     public void playerAdd(Player player) {
+        player.setIndex(players.size());
         players.add(player);
         System.out.println(String.format("Debug: Current number of players: %d", players.size()));
     }

@@ -32,7 +32,7 @@ public class ActionMonopolyTile implements Action {
     public void purchaseTile(Player player) {
         if (player.getMoney() >= value) {
             player.setMoney(player.getMoney() - value);
-            playerIndexOwner = 1;
+            playerIndexOwner = player.getIndex();
             System.out.println("Debug: Player " + player.getName() + " purchased the tile for " + value);
         } else {
             System.out.println("Debug: Player " + player.getName() + " does not have enough money to purchase the tile.");
