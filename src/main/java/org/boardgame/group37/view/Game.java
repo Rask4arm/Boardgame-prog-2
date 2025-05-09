@@ -95,8 +95,11 @@ public class Game {
             StartPage.init(root);
         });
 
+        HBox unmovable = new HBox();
+        unmovable.getChildren().add(vbox);
+
         BorderPane borderPane = new BorderPane();
-        borderPane.setCenter(vbox);
+        borderPane.setCenter(unmovable);
         borderPane.setRight(diceButton);
         borderPane.setLeft(quitButton);
         borderPane.prefWidthProperty().bind(root.widthProperty());

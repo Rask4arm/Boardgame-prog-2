@@ -1,5 +1,6 @@
 package org.boardgame.group37.view;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -18,11 +19,13 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class BoardGraphic extends GridPane {
+public class BoardGraphic extends StackPane {
     private int heigth;
     private int width;
     private final int cellSize = 60;
     private TileManager tileManager;
+    private final GridPane gridPane = new GridPane();
+    ArrayList<Arrow> arrows = new ArrayList<>();
 
 
     /**
@@ -74,10 +77,6 @@ public class BoardGraphic extends GridPane {
     private void createLadder(ArrayList<Tile> tiles){
         AtomicInteger tileIndex = new AtomicInteger();
         tiles.stream().filter(tile -> tile.getAction() instanceof ActionTeleport).forEach(tile -> {
-            ImageView ladder = new ImageView("https://www.google.com/url?sa=i&url=https%" +
-                    "3A%2F%2Ffavpng.com%2Fpng_view%2Fstep-snakes-and-ladders-game-word-ladd" +
-                    "er-paper-png%2FGdeaMxvB&psig=AOvVaw1QUsAUV7DEmKnSbkhsSjAM&ust=174543478" +
-                    "5764000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMCPybep7IwDFQAAAAAdAAAAABAK");
 
             tileIndex.set(tiles.indexOf(tile));
             int row = (heigth*width - tileIndex.get()) / width;
@@ -90,8 +89,24 @@ public class BoardGraphic extends GridPane {
 
             ActionTeleport actionTeleport = (ActionTeleport) ((ActionTeleport) tiles.get(tileIndex.get()).getAction());
             int targetIndex = actionTeleport.getTarget();
-            getChildren().remove(lookup("#" + targetIndex));
+            gridPane.getChildren().remove(gridPane.lookup("#" + targetIndex));
             createTile(ColorPalette.UI_SUCCESS, targetIndex);
+
+            // Calculate target row and column
+            int targetRow = (heigth*width - targetIndex) / width;
+            int targetCol = 0;
+            if ((heigth - targetRow - 1) % 2 == 0) {
+                targetCol = width - 1 - ((heigth*width - targetIndex) % width);
+            } else {
+                targetCol = (heigth*width - targetIndex) % width;
+            }
+
+            Arrow arrow = new Arrow();
+            arrow.setStartX(50 + (col * (cellSize + 2)));
+            arrow.setStartY(30 + (row * (cellSize + 2)));
+            arrow.setEndX(50 + (targetCol * (cellSize + 2)));
+            arrow.setEndY(30 + (targetRow * (cellSize + 2)));
+            arrows.add(arrow);
         });
     }
 
@@ -120,8 +135,8 @@ public class BoardGraphic extends GridPane {
 
 
         // Add spacing
-        setHgap(1);
-        setVgap(1);
+        gridPane.setHgap(1);
+        gridPane.setVgap(1);
     }
 
     /**
@@ -143,8 +158,8 @@ public class BoardGraphic extends GridPane {
         }
 
         // Remove player token -> add player token to new position
-        getChildren().remove(playertoken);
-        add(playertoken, col, row);
+        gridPane.getChildren().remove(playertoken);
+        gridPane.add(playertoken, col, row);
     }
 
     public TileManager getTileManager() {
@@ -152,8 +167,8 @@ public class BoardGraphic extends GridPane {
     }
 
     public void getgetChildren(){
-        getChildren().remove(lookup("#61"));
-        System.out.println(getChildren());
+        gridPane.getChildren().remove(gridPane.lookup("#61"));
+        System.out.println(gridPane.getChildren());
     }
 
     public void createTile(Color color, int tileIndex) {
@@ -192,7 +207,7 @@ public class BoardGraphic extends GridPane {
         stack.setId(String.valueOf(tileIndex));
 
         // Add tile to the board
-        add(stack, col, row);
+        gridPane.add(stack, col, row);
     }
 
     public void createSnakesAndLaddersBoard(ArrayList<Tile> tiles, int heigth, int width) {
@@ -202,6 +217,25 @@ public class BoardGraphic extends GridPane {
             }
         }
         createLadder(tiles);
+        getChildren().add(gridPane);
+        for (Arrow arrow : arrows) {
+            setAlignment(arrow, Pos.TOP_LEFT);
+            if (arrow.getStartX() < arrow.getEndX()) {
+                if (arrow.getStartY() < arrow.getEndY()) {
+                    setMargin(arrow, new Insets(arrow.getStartY() , 0, 0, arrow.getStartX()));
+                } else {
+                    setMargin(arrow, new Insets(arrow.getEndY() , 0, 0, arrow.getStartX()));
+                }
+            }
+            else {
+                if (arrow.getStartY() < arrow.getEndY()) {
+                    setMargin(arrow, new Insets(arrow.getStartY() , 0, 0, arrow.getEndX()));
+                } else {
+                    setMargin(arrow, new Insets(arrow.getEndY() , 0, 0, arrow.getEndX()));
+                }
+            }
+            getChildren().add(arrow);
+        }
     }
 
     public void createMonopolyBoard(ArrayList<Tile> tiles, int heigth, int width) {
@@ -210,9 +244,11 @@ public class BoardGraphic extends GridPane {
                 createTiles(row, col, tiles);
             }
         }
+        getChildren().add(gridPane);
     }
 
     public BOARDTYPES getBoardType() {
         return tileManager.getBoardType();
     }
+
 }
