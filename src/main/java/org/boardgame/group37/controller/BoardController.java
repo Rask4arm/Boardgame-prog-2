@@ -3,7 +3,7 @@ import org.boardgame.group37.model.game.GameManager;
 import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.TileDataManager;
 
-public class boardController {
+public class BoardController {
 
     /**
      * This method is responsible for generating the tiles of the board.

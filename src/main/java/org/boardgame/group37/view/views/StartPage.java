@@ -1,23 +1,16 @@
-package org.boardgame.group37.view;
+package org.boardgame.group37.view.views;
 
-import javafx.geometry.Pos;
 import javafx.scene.layout.Pane;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import org.boardgame.group37.model.game.GameManager;
-import org.boardgame.group37.model.tile.BOARDTYPES;
-import org.boardgame.group37.model.tile.Tile;
-import org.boardgame.group37.model.tile.TileDataManager;
-import org.boardgame.group37.model.tile.TileManager;
-
+import org.boardgame.group37.controller.MainController;
+import org.boardgame.group37.view.ColorPalette;
 
 
 public class StartPage{
-    public static void init(Pane root){
+    public static void init(Pane root, MainController mainController){
         root.getChildren().clear();
         root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
 
@@ -29,12 +22,12 @@ public class StartPage{
 
         Button SnakesAndLaddersButton = new Button("Snakes and Ladders");
         SnakesAndLaddersButton.setOnAction(e -> {
-            SnakesAndLaddersPage.init(root);
+            mainController.initSnakesAndLadders(root, mainController);
         });
 
         Button MonopolyButton = new Button("Monopoly");
         MonopolyButton.setOnAction(e -> {
-            MonopolyPage.init(root);
+            mainController.initMonopoly(root, mainController);
         });
 
         borderPane.setLeft(SnakesAndLaddersButton);

@@ -1,7 +1,7 @@
 package org.boardgame.group37.controller;
 import org.boardgame.group37.model.game.GameManager;
  
-public class diceController {
+public class DiceController {
 
     public void buttonRollDie(GameManager gameManager) {
         gameManager.getDieManager().diceThrow();

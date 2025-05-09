@@ -8,7 +8,6 @@ import org.boardgame.group37.model.tile.TileManager;
 import org.boardgame.group37.model.tile.action.Action;
 import org.boardgame.group37.model.tile.action.ActionMonopolyTile;
 import org.boardgame.group37.model.tile.action.ActionSwitch;
-import org.boardgame.group37.view.VictoryPage;
 
 /**
  * GameManager class is responsible for managing the game.

@@ -119,7 +119,7 @@ public class BoardGraphic extends StackPane {
      *
      * Creates a grid of tiles with alternating colors and numbers
      */
-    BoardGraphic(TileManager tileManager, BOARDTYPES boardType) {
+    public BoardGraphic(TileManager tileManager, BOARDTYPES boardType) {
         this.tileManager = tileManager;
         this.heigth = tileManager.getSize()/tileManager.getWidth();
         this.width = tileManager.getWidth();

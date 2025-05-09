@@ -1,50 +1,38 @@
-package org.boardgame.group37.view;
+package org.boardgame.group37.view.views;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import org.boardgame.group37.controller.MainController;
 import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerDataManager;
 import org.boardgame.group37.model.player.PlayerManager;
 import org.boardgame.group37.model.tile.BOARDTYPES;
-import org.boardgame.group37.model.tile.TileDataManager;
 import org.boardgame.group37.model.tile.TileManager;
-import javafx.collections.FXCollections;
-import javafx.scene.paint.Color;
+import org.boardgame.group37.view.BoardGraphic;
 import org.boardgame.group37.view.ColorPalette;
+import org.boardgame.group37.view.LoadedPlayersChoiceBox;
 
 import java.util.ArrayList;
 
-public class SnakesAndLaddersPage {
-    public static void init(Pane root){
+public class MonopolyPage {
+    public static void init(Pane root, MainController mainController){
         root.getChildren().clear();
         root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        Label welcome = new Label("Welcome to our snakes and ladders game");
+        Label welcome = new Label("Welcome to our monopoly game");
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(welcome);
         borderPane.prefWidthProperty().bind(root.widthProperty());
         borderPane.prefHeightProperty().bind(root.heightProperty());
 
-        try {
-            TileManager tileManager = new TileManager(10, 100, BOARDTYPES.SNAKE_AND_LADDERS);
-            TileManager tileManager2 = new TileManager(10, 50, BOARDTYPES.SNAKE_AND_LADDERS);
-        
-
-            // Save and load board data
-            TileDataManager.dataSave(tileManager, "test_board.json");
-            TileDataManager.dataSave(tileManager2, "test_board2.json");
-        }
-        catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        String[] filenames= TileDataManager.dataGetFilenames();
         HBox hBoxFiles = new HBox();
 
         PlayerManager playerManager = new PlayerManager();
@@ -53,33 +41,14 @@ public class SnakesAndLaddersPage {
         playerManager.playerAdd("Player 1", colorP1);
         playerManager.playerAdd("Player 2", colorP2);
 
-        for (int i = 0; i < filenames.length; i++){
-            String filename = filenames[i];
-            Button filebutton = new Button(filename);
-
-            filebutton.setOnAction(e ->
-                    {
-                        TileManager tileLoad;
-                        System.out.println("test1");
-                        try {
-                            tileLoad = TileDataManager.dataLoad(filename);
-                        } catch (Exception ex) {
-                            throw new RuntimeException(ex);
-                        }
-                        Game.init(root, new BoardGraphic(tileLoad, BOARDTYPES.SNAKE_AND_LADDERS), playerManager);
-                    }
-            );
-            hBoxFiles.getChildren().add(filebutton);
-        }
-
         Button backButton = new Button("Back");
         backButton.setOnAction(e -> {
-            StartPage.init(root);
+            mainController.initStartPage(root, mainController);
         });
         borderPane.setLeft(backButton);
 
 
-        Button newBoardButton = new Button("New Board");
+        Button startGameButton = new Button("Start Game");
 
 
         HBox hBoxPlayers = new HBox();
@@ -109,15 +78,9 @@ public class SnakesAndLaddersPage {
         ArrayList<Player> loadedPlayers = PlayerDataManager.dataLoad();
 
         Button savePlayer1Button = new Button("Save Player");
+
         savePlayer1Button.setOnAction(e -> {
-            PlayerDataManager.dataSave(playerManager.getPlayer(0));
-            loadedPlayers.clear();
-            loadedPlayers.addAll(PlayerDataManager.dataLoad());
-
-            ChoiceBox player1ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBoxP1, textFieldPlayer1);
-
-            vBoxPlayer1.getChildren().remove(3);
-            vBoxPlayer1.getChildren().add(player1ChoiceBox);
+            mainController.savePlayerButton(playerManager, vBoxPlayer1, colorChoiceBoxP1, textFieldPlayer1, loadedPlayers);
         });
 
         ChoiceBox player1ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBoxP1, textFieldPlayer1);
@@ -126,14 +89,7 @@ public class SnakesAndLaddersPage {
         hBoxPlayers.getChildren().add(vBoxPlayer1);
 
         textFieldPlayer1.setOnKeyTyped(e -> {
-            String playerName = textFieldPlayer1.getText();
-            player1ChoiceBox.setValue(null);
-            if (!playerName.isEmpty()) {
-                playerManager.changePlayerName(0, playerName);
-            }
-            else {
-                playerManager.changePlayerName(1, "Player 1");
-            }
+            mainController.playerTextfield(textFieldPlayer1, player1ChoiceBox, playerManager, 0);
         });
 
 
@@ -157,14 +113,7 @@ public class SnakesAndLaddersPage {
 
         Button savePlayer2Button = new Button("Save Player");
         savePlayer2Button.setOnAction(e -> {
-            PlayerDataManager.dataSave(playerManager.getPlayer(1));
-            loadedPlayers.clear();
-            loadedPlayers.addAll(PlayerDataManager.dataLoad());
-
-            ChoiceBox player2ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBoxP2, textFieldPlayer2);
-
-            vBoxPlayer2.getChildren().remove(3);
-            vBoxPlayer2.getChildren().add(player2ChoiceBox);
+            mainController.savePlayerButton(playerManager, vBoxPlayer2, colorChoiceBoxP2, textFieldPlayer2, loadedPlayers);
         });
 
         ChoiceBox player2ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBoxP2, textFieldPlayer2);
@@ -173,21 +122,17 @@ public class SnakesAndLaddersPage {
         hBoxPlayers.getChildren().add(vBoxPlayer2);
 
         textFieldPlayer2.setOnKeyTyped(e -> {
-            String playerName = textFieldPlayer2.getText();
-            player2ChoiceBox.setValue(null);
-            if (!playerName.isEmpty()) {
-                playerManager.changePlayerName(1, playerName);
-            }
-            else {
-                playerManager.changePlayerName(1, "Player 2");
-            }
-
+            mainController.playerTextfield(textFieldPlayer2, player2ChoiceBox, playerManager, 1);
         });
 
-        newBoardButton.setOnAction(e -> {
-            CraftingBoardPage.init(root, playerManager);
+        startGameButton.setOnAction(e -> {
+            try {
+                mainController.initGamePage(root, new BoardGraphic(new TileManager(10, 40, BOARDTYPES.MONOPOLY), BOARDTYPES.MONOPOLY), playerManager, mainController);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
         });
-        borderPane.setBottom(newBoardButton);
+        borderPane.setBottom(startGameButton);
 
 
 
@@ -230,27 +175,13 @@ public class SnakesAndLaddersPage {
 
                     Button savePlayerButton = new Button("Save Player");
                     savePlayerButton.setOnAction(e -> {
-                        PlayerDataManager.dataSave(playerManager.getPlayer(finalI));
-                        loadedPlayers.clear();
-                        loadedPlayers.addAll(PlayerDataManager.dataLoad());
-
-                        ChoiceBox playerChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBox, textField);
-
-                        vBoxPlayers.getChildren().remove(3);
-                        vBoxPlayers.getChildren().add(playerChoiceBox);
+                        mainController.savePlayerButton(playerManager, vBoxPlayers, colorChoiceBox, textField, loadedPlayers);
                     });
 
                     ChoiceBox playerChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBox, textField);
 
                     textField.setOnKeyTyped(e -> {
-                        String playerName = textField.getText();
-                        playerChoiceBox.setValue(null);
-                        if (!playerName.isEmpty()) {
-                            playerManager.changePlayerName(finalI, playerName);
-                        }
-                        else {
-                            playerManager.changePlayerName(finalI, "Player " + (finalI + 1));
-                        }
+                        mainController.playerTextfield(textField, playerChoiceBox, playerManager, finalI);
                     });
 
                     vBoxPlayers.getChildren().addAll(textField, colorChoiceBox, savePlayerButton, playerChoiceBox);

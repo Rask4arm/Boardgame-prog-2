@@ -1,28 +1,25 @@
-package org.boardgame.group37.view;
+package org.boardgame.group37.view.views;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import org.boardgame.group37.model.player.Player;
-import org.boardgame.group37.model.player.PlayerDataManager;
+import org.boardgame.group37.controller.MainController;
 import org.boardgame.group37.model.player.PlayerManager;
 import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.model.tile.TileDataManager;
 import org.boardgame.group37.model.tile.TileManager;
-import javafx.collections.FXCollections;
-import javafx.scene.paint.Color;
+import org.boardgame.group37.view.BoardGraphic;
 import org.boardgame.group37.view.ColorPalette;
 
 import java.util.Objects;
 
 
 public class CraftingBoardPage {
-    public static void init(Pane root, PlayerManager playerManager) {
+    public static void init(Pane root, PlayerManager playerManager, MainController mainController) {
         // Initialize the crafting board page
         System.out.println("Crafting board page initialized.");
 
@@ -63,60 +60,12 @@ public class CraftingBoardPage {
 
         Button createBoardButton = new Button("Create Board");
         createBoardButton.setOnAction(e -> {
-            int height = 10;
-            int width = 10;
-
-            if (!Objects.equals(textFieldHeight.getText(), "")) {
-                System.out.println("Height: " + textFieldHeight.getText());
-                if (Integer.parseInt(textFieldHeight.getText()) >= 1 ) {
-                    height = Integer.parseInt(textFieldHeight.getText());
-                }
-            }
-            if (!Objects.equals(textFieldWidth.getText(), "")) {
-                System.out.println("Width: " + textFieldWidth.getText());
-                if (Integer.parseInt(textFieldWidth.getText()) >= 1 ) {
-                    width = Integer.parseInt(textFieldWidth.getText());
-                }
-            }
-
-            try {
-            TileManager tileManager = new TileManager(width, height * width, BOARDTYPES.SNAKE_AND_LADDERS);
-            Game.init(root, new BoardGraphic(tileManager, BOARDTYPES.SNAKE_AND_LADDERS), playerManager);
-            } catch (Exception ex) {
-                System.out.println("Error creating board: " + ex.getMessage());
-            }
+            mainController.createBoardButton(textFieldHeight.getText(), textFieldWidth.getText(), playerManager, mainController, root);
         });
 
         Button saveBoardButton = new Button("Save Board");
         saveBoardButton.setOnAction(e -> {
-            int height = 10;
-            int width = 10;
-
-            if (!Objects.equals(textFieldHeight.getText(), "")) {
-                System.out.println("Height: " + textFieldHeight.getText());
-                if (Integer.parseInt(textFieldHeight.getText()) >= 1 ) {
-                    height = Integer.parseInt(textFieldHeight.getText());
-                }
-            }
-            if (!Objects.equals(textFieldWidth.getText(), "")) {
-                System.out.println("Width: " + textFieldWidth.getText());
-                if (Integer.parseInt(textFieldWidth.getText()) >= 1 ) {
-                    width = Integer.parseInt(textFieldWidth.getText());
-                }
-            }
-
-            try {
-                TileManager tileManager = new TileManager(width, height * width, BOARDTYPES.SNAKE_AND_LADDERS);
-
-                // Save board data
-                TileDataManager.dataSave(tileManager, textFieldName.getText() + ".json");
-                System.out.println("Board saved as: " + textFieldName.getText() + ".json");
-                Label successLabel = new Label("Board saved successfully!");
-                vBox.getChildren().add(successLabel);
-            } catch (Exception ex) {
-                System.out.println("Error saving board: " + ex.getMessage());
-            }
-
+            mainController.saveBoardButton(textFieldName.getText(), textFieldHeight.getText(), textFieldWidth.getText(), vBox);
         });
 
         Label label = new Label("Create your own board");
@@ -141,7 +90,7 @@ public class CraftingBoardPage {
 
         Button backButton = new Button("Back");
         backButton.setOnAction(e -> {
-            SnakesAndLaddersPage.init(root);
+            mainController.initSnakesAndLadders(root, mainController);
         });
         borderPane.setLeft(backButton);
 

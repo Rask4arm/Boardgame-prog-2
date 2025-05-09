@@ -2,7 +2,7 @@ package org.boardgame.group37.controller;
 import org.boardgame.group37.model.player.*;
 import org.boardgame.group37.model.game.*;
 
-public class playerController {
+public class PlayerController {
 
     public void addPlayer(GameManager gameManager, Player player) {
         gameManager.getPlayerManager().playerAdd(player);

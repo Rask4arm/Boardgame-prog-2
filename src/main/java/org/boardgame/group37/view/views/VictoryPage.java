@@ -1,22 +1,16 @@
-package org.boardgame.group37.view;
+package org.boardgame.group37.view.views;
 
-import javafx.geometry.Pos;
 import javafx.scene.layout.Pane;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import org.boardgame.group37.model.game.GameManager;
-import org.boardgame.group37.model.tile.BOARDTYPES;
-import org.boardgame.group37.model.tile.Tile;
-import org.boardgame.group37.model.tile.TileDataManager;
-import org.boardgame.group37.model.tile.TileManager;
+import org.boardgame.group37.controller.MainController;
+import org.boardgame.group37.view.ColorPalette;
 
 public class VictoryPage {
 
-    public static void init(Pane root, String winnerName) {
+    public static void init(Pane root, String winnerName, MainController mainController) {
         root.getChildren().clear();
         root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
 
@@ -28,7 +22,7 @@ public class VictoryPage {
 
         Button backButton = new Button("Back");
         backButton.setOnAction(e -> {
-            StartPage.init(root);
+            mainController.initStartPage(root, mainController);
         });
         borderPane.setLeft(backButton);
 
