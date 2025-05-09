@@ -137,7 +137,6 @@ public class GameManager {
 
         Player currentPlayer = playerManager.getPlayers().get(currentPlayerIndex); // 
         currentPlayerRolls --;
-        System.out.println(tileManager.getTiles().size());
 
         // Execute normal move if player has rolls left
         if (currentPlayerRolls > 0) {

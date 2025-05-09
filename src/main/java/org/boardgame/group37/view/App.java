@@ -1,22 +1,18 @@
 package org.boardgame.group37.view;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class HelloFX extends Application {
+public class App extends Application {
     private Stage stage;
     private Pane root;
 
     @Override
     public void start(Stage stage) {
         this.stage = stage;
-        this.stage.setTitle("Snakes and Ladders");
+        this.stage.setTitle("Snakes and Ladders and Monopoly");
         this.stage.setWidth(800);
         this.stage.setHeight(800);
 

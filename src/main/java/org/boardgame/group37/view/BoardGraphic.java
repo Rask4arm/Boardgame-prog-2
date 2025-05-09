@@ -62,7 +62,7 @@ public class BoardGraphic extends StackPane {
             }
         }
         else {
-            if (tiles.get(0).getAction() instanceof ActionMonopolyTile) {
+            if (tileManager.getBoardType() == BOARDTYPES.MONOPOLY) {
                 createTile(ColorPalette.BOARD_MONOPOLY_TILE, tileIndex);
             }
             else if ((row + col) % 2 == 0) {

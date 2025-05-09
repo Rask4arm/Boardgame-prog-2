@@ -24,7 +24,7 @@ public class MonopolyPage {
         root.getChildren().clear();
         root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        Label welcome = new Label("Welcome to our snakes and ladders game");
+        Label welcome = new Label("Welcome to our monopoly game");
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(welcome);
         borderPane.prefWidthProperty().bind(root.widthProperty());
