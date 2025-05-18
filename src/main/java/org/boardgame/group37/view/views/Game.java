@@ -30,7 +30,8 @@ public class Game {
         }
 
         GameManager gameManager;
-        gameManager = new GameManager(boardGraphic.getTileManager(), playerManager, boardGraphic.getBoardType());
+        mainController.getGameController().setGameManager(new GameManager(boardGraphic.getTileManager(), playerManager, boardGraphic.getBoardType()));
+        gameManager = mainController.getGameController().getGameManager();
 
         gameManager.getDieManager().dieAdd();
         gameManager.getDieManager().dieAdd();
@@ -56,8 +57,12 @@ public class Game {
         gameManager.gameStart();
         Button diceButton = new Button("Roll dice?");
 
+        Label diceRollLabel = new Label("");
+        VBox diceRollBox = new VBox();
+        diceRollBox.getChildren().addAll(diceButton, diceRollLabel);
+
         diceButton.setOnAction(e -> {
-            mainController.diceButton(gameManager, boardGraphic, mainController, players, root, currentPlayerLabel, playerToken, hbox, numberOfPlayers);
+            mainController.diceButton(gameManager, boardGraphic, mainController, players, root, currentPlayerLabel, playerToken, hbox, numberOfPlayers, diceRollBox);
         });
 
         Button quitButton = new Button("Quit");
@@ -70,7 +75,7 @@ public class Game {
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(unmovable);
-        borderPane.setRight(diceButton);
+        borderPane.setRight(diceRollBox);
         borderPane.setLeft(quitButton);
         borderPane.prefWidthProperty().bind(root.widthProperty());
         borderPane.prefHeightProperty().bind(root.heightProperty());

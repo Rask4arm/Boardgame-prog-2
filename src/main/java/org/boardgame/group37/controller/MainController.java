@@ -130,8 +130,12 @@ public class MainController {
         }
     }
 
-    public void diceButton(GameManager gameManager, BoardGraphic boardGraphic, MainController mainController, ArrayList<Player> players , Pane root, Label currentPlayerLabel, PlayerToken[] playerToken, HBox hbox, int numberOfPlayers) {
+    public void diceButton(GameManager gameManager, BoardGraphic boardGraphic, MainController mainController, ArrayList<Player> players , Pane root, Label currentPlayerLabel, PlayerToken[] playerToken, HBox hbox, int numberOfPlayers, VBox diceRollBox) {
         gameManager.roundDie();
+        Label diceRollLabel = new Label("" + gameManager.getCurrentPlayerRolls());
+
+        diceRollBox.getChildren().remove(1);
+        diceRollBox.getChildren().add(diceRollLabel);
 
         while (gameManager.getCurrentPlayerRolls() > 0) {
             if (gameManager.getState().equals("end")) break;

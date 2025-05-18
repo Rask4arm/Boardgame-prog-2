@@ -1,4 +1,4 @@
-package org.boardgame.group37.view;
+package org.boardgame.group37;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

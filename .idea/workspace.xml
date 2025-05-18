@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e72b1210-8ec0-48e9-8382-7eafb1cefc95" name="Changes" comment="test commit for push">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/boardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/diceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/DiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/gameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/playerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/PlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/model/game/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/BoardGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/BoardGraphic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/CraftingBoardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/views/CraftingBoardPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/views/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/MonopolyPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/views/MonopolyPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/SnakesAndLaddersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/views/SnakesAndLaddersPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/StartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/views/StartPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/VictoryPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/views/VictoryPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/views/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/boardgame/group37/view/views/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +85,9 @@
     <key name="MoveInnerDialog.RECENTS_KEY">
       <recent name="org.boardgame.group37.model.tile" />
       <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.boardgame.group37" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.TestBoardData">
@@ -226,7 +219,7 @@
       <workItem from="1746266861716" duration="26698000" />
       <workItem from="1746470250351" duration="6679000" />
       <workItem from="1746707462160" duration="2960000" />
-      <workItem from="1746790148137" duration="14561000" />
+      <workItem from="1746790148137" duration="16374000" />
     </task>
     <servers />
   </component>
