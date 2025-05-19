@@ -9,6 +9,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import org.boardgame.group37.controller.MainController;
+import org.boardgame.group37.model.game.GameManager;
 import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerDataManager;
 import org.boardgame.group37.model.player.PlayerManager;
@@ -48,25 +49,26 @@ public class SnakesAndLaddersPage {
         String[] filenames= TileDataManager.dataGetFilenames();
         HBox hBoxFiles = new HBox();
 
-        PlayerManager playerManager = new PlayerManager();
+        mainController.getPlayerController().setPlayerManager(new PlayerManager());
+
+        mainController.getPlayerController().setStartPlayers();
         Color colorP1 = ColorPalette.PLAYER_RED;
         Color colorP2 = ColorPalette.PLAYER_BLUE;
-        playerManager.playerAdd("Player 1", colorP1);
-        playerManager.playerAdd("Player 2", colorP2);
+
 
         for (int i = 0; i < filenames.length; i++){
             String filename = filenames[i];
             Button filebutton = new Button(filename);
 
             filebutton.setOnAction(e -> {
-                mainController.fileButton(filename, root, playerManager, mainController);
+                mainController.fileButton(filename, root);
             });
             hBoxFiles.getChildren().add(filebutton);
         }
 
         Button backButton = new Button("Back");
         backButton.setOnAction(e -> {
-            mainController.initStartPage(root, mainController);
+            mainController.initStartPage(root);
         });
         borderPane.setLeft(backButton);
 
@@ -93,7 +95,7 @@ public class SnakesAndLaddersPage {
             {
                 // set the text for the label to the selected color
                 Color color = colors[new_value.intValue()];
-                playerManager.changePlayerColor(0, color);
+                mainController.getPlayerController().changePlayerColor(0, color);
                 colorChoiceBoxP1.setStyle("-fx-background-color: #" + colors[new_value.intValue()].toString().substring(2) + ";");
             }
         });
@@ -102,16 +104,16 @@ public class SnakesAndLaddersPage {
 
         Button savePlayer1Button = new Button("Save Player");
         savePlayer1Button.setOnAction(e -> {
-            mainController.savePlayerButton(playerManager, vBoxPlayer1, colorChoiceBoxP1, textFieldPlayer1, loadedPlayers);
+            mainController.savePlayerButton(vBoxPlayer1, colorChoiceBoxP1, textFieldPlayer1, loadedPlayers, 0);
         });
 
-        ChoiceBox player1ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBoxP1, textFieldPlayer1);
+        ChoiceBox player1ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, colorChoiceBoxP1, textFieldPlayer1, mainController);
 
         vBoxPlayer1.getChildren().addAll(textFieldPlayer1, colorChoiceBoxP1, savePlayer1Button, player1ChoiceBox);
         hBoxPlayers.getChildren().add(vBoxPlayer1);
 
         textFieldPlayer1.setOnKeyTyped(e -> {
-            mainController.playerTextfield(textFieldPlayer1, player1ChoiceBox, playerManager, 0);
+            mainController.playerTextfield(textFieldPlayer1, player1ChoiceBox,0);
         });
 
 
@@ -128,27 +130,27 @@ public class SnakesAndLaddersPage {
             {
                 // set the text for the label to the selected color
                 Color color = colors[new_value.intValue()];
-                playerManager.changePlayerColor(1, color);
+                mainController.getPlayerController().changePlayerColor(1, color);
                 colorChoiceBoxP2.setStyle("-fx-background-color: #" + colors[new_value.intValue()].toString().substring(2) + ";");
             }
         });
 
         Button savePlayer2Button = new Button("Save Player");
         savePlayer2Button.setOnAction(e -> {
-            mainController.savePlayerButton(playerManager, vBoxPlayer2, colorChoiceBoxP2, textFieldPlayer2, loadedPlayers);
+            mainController.savePlayerButton(vBoxPlayer2, colorChoiceBoxP2, textFieldPlayer2, loadedPlayers, 1);
         });
 
-        ChoiceBox player2ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBoxP2, textFieldPlayer2);
+        ChoiceBox player2ChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, colorChoiceBoxP2, textFieldPlayer2, mainController);
 
         vBoxPlayer2.getChildren().addAll(textFieldPlayer2, colorChoiceBoxP2, savePlayer2Button, player2ChoiceBox);
         hBoxPlayers.getChildren().add(vBoxPlayer2);
 
         textFieldPlayer2.setOnKeyTyped(e -> {
-            mainController.playerTextfield(textFieldPlayer2, player2ChoiceBox, playerManager, 1);
+            mainController.playerTextfield(textFieldPlayer2, player2ChoiceBox,1);
         });
 
         newBoardButton.setOnAction(e -> {
-            mainController.initCraftingBoard(root, playerManager, mainController);
+            mainController.initCraftingBoard(root, mainController);
         });
         borderPane.setBottom(newBoardButton);
 
@@ -167,7 +169,7 @@ public class SnakesAndLaddersPage {
                 // set the text for the label to the selected item
                 l1.setText((new_value.intValue() + 2) + " selected");
 
-                for (int i = playerManager.getPlayers().size(); i < (new_value.intValue() + 2); i++) {
+                for (int i = mainController.getPlayerController().getNumberOfPlayers(); i < (new_value.intValue() + 2); i++) {
                     TextField textField = new TextField();
                     textField.setPromptText("Player " + (i + 1));
 
@@ -186,29 +188,29 @@ public class SnakesAndLaddersPage {
                         {
                             // set the text for the label to the selected color
                             Color color = colors[new_value.intValue()];
-                            playerManager.changePlayerColor(finalI, color);
+                            mainController.getPlayerController().changePlayerColor(finalI, color);
                             colorChoiceBox.setStyle("-fx-background-color: #" + colors[new_value.intValue()].toString().substring(2) + ";");
                         }
                     });
 
                     Button savePlayerButton = new Button("Save Player");
                     savePlayerButton.setOnAction(e -> {
-                        mainController.savePlayerButton(playerManager, vBoxPlayers, colorChoiceBox, textField, loadedPlayers);
+                        mainController.savePlayerButton(vBoxPlayers, colorChoiceBox, textField, loadedPlayers, finalI);
                     });
 
-                    ChoiceBox playerChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBox, textField);
+                    ChoiceBox playerChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, colorChoiceBox, textField, mainController);
 
                     textField.setOnKeyTyped(e -> {
-                        mainController.playerTextfield(textField, playerChoiceBox, playerManager, finalI);
+                        mainController.playerTextfield(textField, playerChoiceBox, finalI);
                     });
 
                     vBoxPlayers.getChildren().addAll(textField, colorChoiceBox, savePlayerButton, playerChoiceBox);
                     hBoxPlayers.getChildren().add(vBoxPlayers);
 
-                    playerManager.playerAdd("Player " + (i + 1), ColorPalette.getPlayerColors()[i]);
+                    mainController.getPlayerController().addPlayer("Player " + (i + 1), ColorPalette.getPlayerColors()[i]);
                 }
-                for (int i = playerManager.getPlayers().size(); i > (new_value.intValue() + 2); i--) {
-                    playerManager.playerRemove((i-1));
+                for (int i = mainController.getPlayerController().getNumberOfPlayers(); i > (new_value.intValue() + 2); i--) {
+                    mainController.getPlayerController().removePlayer((i-1));
                     hBoxPlayers.getChildren().removeLast();
                 }
             }

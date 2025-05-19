@@ -22,7 +22,7 @@ public class VictoryPage {
 
         Button backButton = new Button("Back");
         backButton.setOnAction(e -> {
-            mainController.initStartPage(root, mainController);
+            mainController.initStartPage(root);
         });
         borderPane.setLeft(backButton);
 

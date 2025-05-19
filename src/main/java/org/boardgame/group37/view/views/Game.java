@@ -17,11 +17,11 @@ import org.boardgame.group37.view.PlayerToken;
 import java.util.ArrayList;
 
 public class Game {
-    public static void init(Pane root, BoardGraphic boardGraphic, PlayerManager playerManager, MainController mainController) {
+    public static void init(Pane root, BoardGraphic boardGraphic, MainController mainController) {
         root.getChildren().clear();
         root.setBackground(new Background(new BackgroundFill(ColorPalette.UI_BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        ArrayList<Player> players = playerManager.getPlayers();
+        ArrayList<Player> players = mainController.getPlayerController().getPlayers();
         int numberOfPlayers = players.size();
         PlayerToken[] playerToken = new PlayerToken[numberOfPlayers];
         for (int i = 0; i < numberOfPlayers; i++) {
@@ -29,19 +29,15 @@ public class Game {
             boardGraphic.updatePlayerPosition(playerToken[i], 1);
         }
 
-        GameManager gameManager;
-        mainController.getGameController().setGameManager(new GameManager(boardGraphic.getTileManager(), playerManager, boardGraphic.getBoardType()));
-        gameManager = mainController.getGameController().getGameManager();
+        mainController.getGameController().setGameManager(new GameManager(boardGraphic.getTileManager(), mainController.getPlayerController().getPlayerManager(), boardGraphic.getBoardType()));
 
-        gameManager.getDieManager().dieAdd();
-        gameManager.getDieManager().dieAdd();
-
-        gameManager.printProperties();
+        mainController.getGameController().addDie();
+        mainController.getGameController().addDie();
 
         VBox vbox = new VBox();
         HBox hbox = new HBox();
 
-        Label currentPlayerLabel = new Label("Current Player: " + players.get(gameManager.getCurrentPlayerIndex()).getName());
+        Label currentPlayerLabel = new Label("Current Player: " + players.get(mainController.getGameController().getCurrentPlayerIndex()).getName());
 
         vbox.getChildren().addAll(boardGraphic, currentPlayerLabel);
 
@@ -54,7 +50,7 @@ public class Game {
             vbox.getChildren().add(hbox);
         }
 
-        gameManager.gameStart();
+        mainController.getGameController().gameStart();
         Button diceButton = new Button("Roll dice?");
 
         Label diceRollLabel = new Label("");
@@ -62,12 +58,12 @@ public class Game {
         diceRollBox.getChildren().addAll(diceButton, diceRollLabel);
 
         diceButton.setOnAction(e -> {
-            mainController.diceButton(gameManager, boardGraphic, mainController, players, root, currentPlayerLabel, playerToken, hbox, numberOfPlayers, diceRollBox);
+            mainController.diceButton(boardGraphic, mainController, players, root, currentPlayerLabel, playerToken, hbox, numberOfPlayers, diceRollBox);
         });
 
         Button quitButton = new Button("Quit");
         quitButton.setOnAction(e -> {
-            mainController.initStartPage(root, mainController);
+            mainController.initStartPage(root);
         });
 
         HBox unmovable = new HBox();

@@ -24,7 +24,6 @@ import java.util.Objects;
 public class MainController {
     private final GameController gameController;
     private final PlayerController playerController;
-    private final DiceController diceController;
     private final BoardController boardController;
 
     public GameController getGameController() {
@@ -35,10 +34,6 @@ public class MainController {
         return playerController;
     }
 
-    public DiceController getDiceController() {
-        return diceController;
-    }
-
     public BoardController getBoardController() {
         return boardController;
     }
@@ -46,7 +41,6 @@ public class MainController {
     public MainController() {
         this.gameController = new GameController();
         this.playerController = new PlayerController();
-        this.diceController = new DiceController();
         this.boardController = new BoardController();
     }
 
@@ -58,24 +52,20 @@ public class MainController {
         SnakesAndLaddersPage.init(root, mainController);
     }
 
-    public void initCraftingBoard(Pane root, PlayerManager playerManager, MainController mainController) {
-        CraftingBoardPage.init(root, playerManager, mainController);
+    public void initCraftingBoard(Pane root, MainController mainController) {
+        CraftingBoardPage.init(root, mainController);
 
     }
 
-    public void initVictoryPage(Pane root, String winnerName, MainController mainController) {
-        VictoryPage.init(root, winnerName, mainController);
+    public void initStartPage(Pane root) {
+        StartPage.init(root, this);
     }
 
-    public void initStartPage(Pane root, MainController mainController) {
-        StartPage.init(root, mainController);
+    public void initGamePage(Pane root, BoardGraphic boardGraphic) {
+        Game.init(root, boardGraphic, this);
     }
 
-    public void initGamePage(Pane root, BoardGraphic boardGraphic, PlayerManager playerManager, MainController mainController) {
-        Game.init(root, boardGraphic, playerManager, mainController);
-    }
-
-    public void createBoardButton(String textFieldHeight, String textFieldWidth, PlayerManager playerManager, MainController mainController, Pane root) {
+    public void createBoardButton(String textFieldHeight, String textFieldWidth, Pane root) {
         int height = 10;
         int width = 10;
 
@@ -94,7 +84,7 @@ public class MainController {
 
         try {
             TileManager tileManager = new TileManager(width, height * width, BOARDTYPES.SNAKE_AND_LADDERS);
-            initGamePage(root, new BoardGraphic(tileManager, BOARDTYPES.SNAKE_AND_LADDERS), playerManager, mainController);
+            initGamePage(root, new BoardGraphic(tileManager, BOARDTYPES.SNAKE_AND_LADDERS));
         } catch (Exception ex) {
             System.out.println("Error creating board: " + ex.getMessage());
         }
@@ -130,29 +120,29 @@ public class MainController {
         }
     }
 
-    public void diceButton(GameManager gameManager, BoardGraphic boardGraphic, MainController mainController, ArrayList<Player> players , Pane root, Label currentPlayerLabel, PlayerToken[] playerToken, HBox hbox, int numberOfPlayers, VBox diceRollBox) {
-        gameManager.roundDie();
-        Label diceRollLabel = new Label("" + gameManager.getCurrentPlayerRolls());
+    public void diceButton(BoardGraphic boardGraphic, MainController mainController, ArrayList<Player> players , Pane root, Label currentPlayerLabel, PlayerToken[] playerToken, HBox hbox, int numberOfPlayers, VBox diceRollBox) {
+        gameController.roundExecuteDie();
+        Label diceRollLabel = new Label("" + gameController.getCurrentPlayerRolls());
 
         diceRollBox.getChildren().remove(1);
         diceRollBox.getChildren().add(diceRollLabel);
 
-        while (gameManager.getCurrentPlayerRolls() > 0) {
-            if (gameManager.getState().equals("end")) break;
+        while (gameController.getCurrentPlayerRolls() > 0) {
+            if (gameController.getState().equals("end")) break;
             try {
-                gameManager.roundMove();
+                gameController.roundExecuteMove();
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
-            boardGraphic.updatePlayerPosition(playerToken[gameManager.getCurrentPlayerIndex()], gameManager.getCurrentPlayerPosition());
+            boardGraphic.updatePlayerPosition(playerToken[gameController.getCurrentPlayerIndex()], gameController.getCurrentPlayerPosition());
 
         }
-        gameManager.roundEnd();
-        if (gameManager.getState().equals("end")) {
-            String winnerName = gameManager.getPlayerWinner().getName();
+        gameController.roundExecuteEnd();
+        if (gameController.getState().equals("end")) {
+            String winnerName = gameController.getPlayerWinner().getName();
             VictoryPage.init(root, winnerName, mainController);
         }
-        currentPlayerLabel.setText("Current Player: " + players.get(gameManager.getCurrentPlayerIndex()).getName());
+        currentPlayerLabel.setText("Current Player: " + players.get(gameController.getCurrentPlayerIndex()).getName());
 
         if (boardGraphic.getBoardType() == BOARDTYPES.MONOPOLY) {
             hbox.getChildren().clear();
@@ -164,36 +154,35 @@ public class MainController {
         }
     }
 
-    public void savePlayerButton(PlayerManager playerManager, VBox vBoxPlayer, ChoiceBox colorChoiceBox, TextField textFieldPlayer, ArrayList<Player> loadedPlayers) {
-        PlayerDataManager.dataSave(playerManager.getPlayer(0));
+    public void savePlayerButton(VBox vBoxPlayer, ChoiceBox colorChoiceBox, TextField textFieldPlayer, ArrayList<Player> loadedPlayers, int index) {
+        PlayerDataManager.dataSave(getPlayerController().getPlayer(index));
         loadedPlayers.clear();
         loadedPlayers.addAll(PlayerDataManager.dataLoad());
-
-        ChoiceBox playerChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, playerManager, colorChoiceBox, textFieldPlayer);
+        ChoiceBox playerChoiceBox = LoadedPlayersChoiceBox.LoadedPlayersChoiceBox(loadedPlayers, colorChoiceBox, textFieldPlayer, this);
 
         vBoxPlayer.getChildren().remove(3);
         vBoxPlayer.getChildren().add(playerChoiceBox);
     }
 
-    public void playerTextfield(TextField textFieldPlayer1, ChoiceBox player1ChoiceBox, PlayerManager playerManager, int index) {
+    public void playerTextfield(TextField textFieldPlayer1, ChoiceBox player1ChoiceBox, int index) {
         String playerName = textFieldPlayer1.getText();
         player1ChoiceBox.setValue(null);
         if (!playerName.isEmpty()) {
-            playerManager.changePlayerName(index, playerName);
+            getPlayerController().getPlayerManager().changePlayerName(index, playerName);
         }
         else {
-            playerManager.changePlayerName(index, "Player 1");
+            getPlayerController().getPlayerManager().changePlayerName(index, "Player 1");
         }
     }
 
-    public void fileButton(String filename, Pane root, PlayerManager playerManager, MainController mainController) {
+    public void fileButton(String filename, Pane root) {
         TileManager tileLoad;
         try {
             tileLoad = TileDataManager.dataLoad(filename);
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
-        initGamePage(root, new BoardGraphic(tileLoad, BOARDTYPES.SNAKE_AND_LADDERS), playerManager, mainController);
+        initGamePage(root, new BoardGraphic(tileLoad, BOARDTYPES.SNAKE_AND_LADDERS));
     }
 
 }

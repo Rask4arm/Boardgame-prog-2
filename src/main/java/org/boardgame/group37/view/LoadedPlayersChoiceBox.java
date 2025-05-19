@@ -5,13 +5,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import org.boardgame.group37.controller.MainController;
 import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerManager;
 
 import java.util.ArrayList;
 
 public class LoadedPlayersChoiceBox {
-    public static ChoiceBox LoadedPlayersChoiceBox(ArrayList<Player> loadedPlayers, PlayerManager playerManager, ChoiceBox colorChoiceBoxP1, TextField textFieldPlayer1) {
+    public static ChoiceBox LoadedPlayersChoiceBox(ArrayList<Player> loadedPlayers, ChoiceBox colorChoiceBoxP1, TextField textFieldPlayer1, MainController mainController) {
         ChoiceBox playerChoiceBox = new ChoiceBox(FXCollections.observableArrayList(loadedPlayers));
 
         playerChoiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
@@ -24,8 +25,8 @@ public class LoadedPlayersChoiceBox {
                     return;
                 }
                 Player player = loadedPlayers.get(new_value.intValue());
-                playerManager.changePlayerName(0, player.getName());
-                playerManager.changePlayerColor(0, player.getColor());
+                mainController.getPlayerController().changePlayerName(0, player.getName());
+                mainController.getPlayerController().changePlayerColor(0, player.getColor());
                 textFieldPlayer1.setText(player.getName());
                 colorChoiceBoxP1.setValue(player.getColor());
             }

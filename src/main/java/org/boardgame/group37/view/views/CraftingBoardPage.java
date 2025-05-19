@@ -19,7 +19,7 @@ import java.util.Objects;
 
 
 public class CraftingBoardPage {
-    public static void init(Pane root, PlayerManager playerManager, MainController mainController) {
+    public static void init(Pane root, MainController mainController) {
         // Initialize the crafting board page
         System.out.println("Crafting board page initialized.");
 
@@ -60,7 +60,7 @@ public class CraftingBoardPage {
 
         Button createBoardButton = new Button("Create Board");
         createBoardButton.setOnAction(e -> {
-            mainController.createBoardButton(textFieldHeight.getText(), textFieldWidth.getText(), playerManager, mainController, root);
+            mainController.createBoardButton(textFieldHeight.getText(), textFieldWidth.getText(), root);
         });
 
         Button saveBoardButton = new Button("Save Board");
