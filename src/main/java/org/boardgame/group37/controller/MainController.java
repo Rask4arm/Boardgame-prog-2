@@ -131,10 +131,11 @@ public class MainController {
             if (gameController.getState().equals("end")) break;
             try {
                 gameController.roundExecuteMove();
+                boardGraphic.updatePlayerPosition(playerToken[gameController.getCurrentPlayerIndex()], gameController.getCurrentPlayerPosition());
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
-            boardGraphic.updatePlayerPosition(playerToken[gameController.getCurrentPlayerIndex()], gameController.getCurrentPlayerPosition());
+
 
         }
         gameController.roundExecuteEnd();
