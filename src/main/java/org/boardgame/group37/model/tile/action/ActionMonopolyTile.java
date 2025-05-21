@@ -58,10 +58,18 @@ public class ActionMonopolyTile implements Action {
         }
     };
 
+    /**
+     * Gives this object the PlayerManager.
+     * @param playerManager the PlayerManager to be set
+     */
     public void setPlayerManager(PlayerManager playerManager) {
         this.playerManager = playerManager;
     }
 
+    /**
+     * Gets the index of the current owner of the tile. (player)
+     * @return the index of the owner
+     */
     public Integer getPlayerIndexOwner() {
         return playerIndexOwner;
     }

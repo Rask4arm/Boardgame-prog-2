@@ -6,6 +6,10 @@ import javafx.scene.Group;
 
 import javafx.scene.shape.Line;
 
+/**
+ * Arrow class
+ * This class is responsible for creating an arrow shape for snake & ladders.
+ */
 public class Arrow extends Group {
 
     private final Line line;
@@ -66,50 +70,100 @@ public class Arrow extends Group {
 
     // start/end properties
 
+    /**
+     * Set the start x coordinate of the arrow.
+     * @param value the x coordinate of the start point
+     */
     public final void setStartX(double value) {
         line.setStartX(value);
     }
 
+    /**
+     * Get the start x coordinate of the arrow.
+     * @return the x coordinate of the start point
+     */
     public final double getStartX() {
         return line.getStartX();
     }
 
+    /**
+     * Get the start x property of the arrow.
+     * @return the x property of the start point
+     */
     public final DoubleProperty startXProperty() {
         return line.startXProperty();
     }
 
+    /**
+     * Set the start y coordinate of the arrow.
+     * @param value the y coordinate of the start point
+     */
     public final void setStartY(double value) {
         line.setStartY(value);
     }
 
+    /**
+     * Get the start y coordinate of the arrow.
+     * @return the y coordinate of the start point
+     */
     public final double getStartY() {
         return line.getStartY();
     }
 
+    /**
+     * Get the start y property of the arrow.
+     * @return the y property of the start point
+     */
     public final DoubleProperty startYProperty() {
         return line.startYProperty();
     }
 
+    // end properties
+
+    /**
+     * Set the end x coordinate of the arrow.
+     * @param value the x coordinate of the end point
+     */
     public final void setEndX(double value) {
         line.setEndX(value);
     }
 
+    /**
+     * Get the end x coordinate of the arrow.
+     * @return the x coordinate of the end point
+     */
     public final double getEndX() {
         return line.getEndX();
     }
 
+    /**
+     * Get the end x property of the arrow.
+     * @return the x property of the end point
+     */
     public final DoubleProperty endXProperty() {
         return line.endXProperty();
     }
 
+    /**
+     * Set the end y coordinate of the arrow.
+     * @param value the y coordinate of the end point
+     */
     public final void setEndY(double value) {
         line.setEndY(value);
     }
 
+    /**
+     * Get the end y coordinate of the arrow.
+     * @return the y coordinate of the end point
+     */
     public final double getEndY() {
         return line.getEndY();
     }
 
+    /**
+     * Get the end y property of the arrow.
+     * @return the y property of the end point
+     */
     public final DoubleProperty endYProperty() {
         return line.endYProperty();
     }

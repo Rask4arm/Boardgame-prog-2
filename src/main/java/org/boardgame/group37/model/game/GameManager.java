@@ -52,7 +52,6 @@ public class GameManager {
      * @param resetTiles: Reset tiles
      * @param resetDie: Reset die
      */
-
     public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, int width, int size, BOARDTYPES boardType) throws Exception {
         if (resetTiles) tileManager = new TileManager(width, size, boardType);
         if (resetPlayers) playerManager = new PlayerManager();
@@ -64,6 +63,15 @@ public class GameManager {
         state = "menu";
     }
 
+    /**
+     * gameReset method resets the game to default values.
+     * @param resetPlayers: Reset players
+     * @param resetTiles: Reset tiles
+     * @param resetDie: Reset die
+     * @param tileManager: TileManager object
+     * @param playerManager: PlayerManager object
+     * @param boardType: Board type
+     */
     public void gameReset(boolean resetPlayers, boolean resetTiles, boolean resetDie, TileManager tileManager, PlayerManager playerManager, BOARDTYPES boardType) {
         if (resetTiles) this.tileManager = tileManager;
         if (resetPlayers) this.playerManager = playerManager;
@@ -195,8 +203,6 @@ public class GameManager {
                 }
             }
         }
-
-
     }
 
 
@@ -286,6 +292,10 @@ public class GameManager {
         return state;
     }
 
+    /**
+     * Gets the current player position index
+     * @return the current player position
+     */
     public int getCurrentPlayerPosition() {
         return playerManager.getPlayers().get(currentPlayerIndex).getPosition();
     }

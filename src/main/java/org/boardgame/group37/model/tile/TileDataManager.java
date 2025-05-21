@@ -6,7 +6,6 @@ import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 import java.nio.file.*;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 import org.boardgame.group37.model.tile.action.*;
 

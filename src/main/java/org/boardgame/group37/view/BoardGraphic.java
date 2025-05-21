@@ -2,7 +2,6 @@ package org.boardgame.group37.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
@@ -18,7 +17,10 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
+/**
+ * BoardGraphic class
+ * This class is responsible for creating the board graphic.
+ */
 public class BoardGraphic extends StackPane {
     private int heigth;
     private int width;

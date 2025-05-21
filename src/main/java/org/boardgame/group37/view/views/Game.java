@@ -8,7 +8,6 @@ import javafx.scene.layout.*;
 import org.boardgame.group37.controller.MainController;
 import org.boardgame.group37.model.game.GameManager;
 import org.boardgame.group37.model.player.Player;
-import org.boardgame.group37.model.player.PlayerManager;
 import org.boardgame.group37.model.tile.BOARDTYPES;
 import org.boardgame.group37.view.BoardGraphic;
 import org.boardgame.group37.view.ColorPalette;
@@ -16,6 +15,10 @@ import org.boardgame.group37.view.PlayerToken;
 
 import java.util.ArrayList;
 
+/**
+ * Game class
+ * This class is responsible for creating the game page.
+ */
 public class Game {
     public static void init(Pane root, BoardGraphic boardGraphic, MainController mainController) {
         root.getChildren().clear();

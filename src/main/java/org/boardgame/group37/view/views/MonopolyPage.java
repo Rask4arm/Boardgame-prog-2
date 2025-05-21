@@ -22,6 +22,10 @@ import org.boardgame.group37.view.LoadedPlayersChoiceBox;
 
 import java.util.ArrayList;
 
+/**
+ * MonopolyPage class
+ * This class is responsible for creating the monopoly page.
+ */
 public class MonopolyPage {
     public static void init(Pane root, MainController mainController){
         root.getChildren().clear();

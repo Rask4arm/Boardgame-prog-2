@@ -9,7 +9,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import org.boardgame.group37.controller.MainController;
-import org.boardgame.group37.model.game.GameManager;
 import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerDataManager;
 import org.boardgame.group37.model.player.PlayerManager;
@@ -22,6 +21,10 @@ import org.boardgame.group37.view.*;
 
 import java.util.ArrayList;
 
+/**
+ * SnakesAndLaddersPage class
+ * This class is responsible for creating the snakes and ladders page.
+ */
 public class SnakesAndLaddersPage {
     public static void init(Pane root, MainController mainController){
         root.getChildren().clear();

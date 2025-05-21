@@ -8,6 +8,10 @@ import javafx.scene.layout.*;
 import org.boardgame.group37.controller.MainController;
 import org.boardgame.group37.view.ColorPalette;
 
+/**
+ * VictoryPage class
+ * This class is responsible for creating the victory page.
+ */
 public class VictoryPage {
 
     public static void init(Pane root, String winnerName, MainController mainController) {

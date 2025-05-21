@@ -7,10 +7,13 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import org.boardgame.group37.controller.MainController;
 import org.boardgame.group37.model.player.Player;
-import org.boardgame.group37.model.player.PlayerManager;
 
 import java.util.ArrayList;
 
+/**
+ * LoadedPlayersChoiceBox class
+ * This class is responsible for creating a choice box for loaded players.
+ */
 public class LoadedPlayersChoiceBox {
     public static ChoiceBox LoadedPlayersChoiceBox(ArrayList<Player> loadedPlayers, ChoiceBox colorChoiceBoxP1, TextField textFieldPlayer1, MainController mainController) {
         ChoiceBox playerChoiceBox = new ChoiceBox(FXCollections.observableArrayList(loadedPlayers));

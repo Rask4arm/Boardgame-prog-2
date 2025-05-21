@@ -3,6 +3,12 @@ package org.boardgame.group37.model;
 import org.boardgame.group37.model.game.GameManager;
 import org.boardgame.group37.model.tile.BOARDTYPES;
 
+/**
+ * TestRun class
+ * This class tests a full backend run of the game.
+ * It includes debugging information and prints the game as it progresses.
+ * It is not intended for production use.
+ */
 public class TestRun {
     public static void main(String[] args) throws Exception {
         GameManager gameManager = new GameManager(10, 30, BOARDTYPES.MONOPOLY);
