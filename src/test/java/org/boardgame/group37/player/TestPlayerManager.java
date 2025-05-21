@@ -22,4 +22,13 @@ public class TestPlayerManager {
         assertEquals(playerManager.getPlayers().get(1).getName(), "test2");
     }
 
+    @Test
+    public void testRemovePlayerOutOfBoundsThrowsException() {
+        PlayerManager playerManager = new PlayerManager();
+        playerManager.playerAdd("A", Color.RED);
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            playerManager.playerRemove(5);
+        });
+    }
+
 }

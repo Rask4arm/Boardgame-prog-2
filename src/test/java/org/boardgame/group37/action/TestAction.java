@@ -2,7 +2,6 @@ package org.boardgame.group37.action;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import javafx.scene.paint.Color;
 
 import org.boardgame.group37.model.player.*;
 import org.boardgame.group37.model.tile.action.*;

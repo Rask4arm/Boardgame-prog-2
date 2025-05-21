@@ -1,10 +1,8 @@
 package org.boardgame.group37.data;
-import org.boardgame.group37.model.player.PlayerDataManager;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.boardgame.group37.model.tile.*;
-import org.boardgame.group37.model.tile.action.*;
 
 
 public class TestBoardData {

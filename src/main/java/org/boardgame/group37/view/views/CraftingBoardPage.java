@@ -8,16 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import org.boardgame.group37.controller.MainController;
-import org.boardgame.group37.model.player.PlayerManager;
-import org.boardgame.group37.model.tile.BOARDTYPES;
-import org.boardgame.group37.model.tile.TileDataManager;
-import org.boardgame.group37.model.tile.TileManager;
-import org.boardgame.group37.view.BoardGraphic;
 import org.boardgame.group37.view.ColorPalette;
 
-import java.util.Objects;
-
-
+/**
+ * CraftingBoardPage class
+ * This class is responsible for creating the crafting board page.
+ */
 public class CraftingBoardPage {
     public static void init(Pane root, MainController mainController) {
         // Initialize the crafting board page

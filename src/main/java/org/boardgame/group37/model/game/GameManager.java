@@ -1,5 +1,6 @@
 package org.boardgame.group37.model.game;
 
+import org.boardgame.group37.exception.GameException;
 import org.boardgame.group37.model.die.DieManager;
 import org.boardgame.group37.model.player.Player;
 import org.boardgame.group37.model.player.PlayerManager;
@@ -193,7 +194,7 @@ public class GameManager {
                         .orElse(null);
 
                     if (richestPlayer == null) {
-                        throw new Exception("No winning players found.");
+                        throw new GameException("No winning players found.");
                     }
 
                     gameEnd(richestPlayer);
