@@ -2,7 +2,6 @@ package org.boardgame.group37.model.tile;
 import java.util.ArrayList;
 
 import org.boardgame.group37.model.tile.action.*;
-import org.boardgame.group37.model.player.PlayerManager;
 
 /**
  * TileManager class is responsible for storing and generating tiles.
