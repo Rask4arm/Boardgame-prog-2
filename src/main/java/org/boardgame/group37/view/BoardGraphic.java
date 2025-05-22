@@ -22,6 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * This class is responsible for creating the board graphic.
  */
 public class BoardGraphic extends StackPane {
+
     private int heigth;
     private int width;
     private final int cellSize = 60;
@@ -75,7 +76,10 @@ public class BoardGraphic extends StackPane {
         }
     }
 
-
+    /**
+     * Creates ladders on the board
+     * @param tiles tiles
+     */
     private void createLadder(ArrayList<Tile> tiles){
         AtomicInteger tileIndex = new AtomicInteger();
         tiles.stream().filter(tile -> tile.getAction() instanceof ActionTeleport).forEach(tile -> {
@@ -164,15 +168,20 @@ public class BoardGraphic extends StackPane {
         gridPane.add(playertoken, col, row);
     }
 
+    /**
+     * Returns the tile manager
+     * @return tileManager
+     * @see TileManager
+     */
     public TileManager getTileManager() {
         return tileManager;
     }
 
-    public void getgetChildren(){
-        gridPane.getChildren().remove(gridPane.lookup("#61"));
-        System.out.println(gridPane.getChildren());
-    }
-
+    /**
+     * Creates a tile with a number on it
+     * @param color color of the tile
+     * @param tileIndex index of the tile
+     */
     public void createTile(Color color, int tileIndex) {
 
         Rectangle tile = new Rectangle(cellSize, cellSize);
@@ -212,6 +221,12 @@ public class BoardGraphic extends StackPane {
         gridPane.add(stack, col, row);
     }
 
+    /**
+     * Creates a snakes and ladders board
+     * @param tiles tiles
+     * @param heigth height of the board
+     * @param width width of the board
+     */
     public void createSnakesAndLaddersBoard(ArrayList<Tile> tiles, int heigth, int width) {
         for (int row = 0; row < heigth; row++) {
             for (int col = 0; col < width; col++) {
@@ -240,6 +255,12 @@ public class BoardGraphic extends StackPane {
         }
     }
 
+    /**
+     * Creates a monopoly board
+     * @param tiles tiles
+     * @param heigth height of the board
+     * @param width width of the board
+     */
     public void createMonopolyBoard(ArrayList<Tile> tiles, int heigth, int width) {
         for (int row = 0; row < heigth; row++) {
             for (int col = 0; col < width; col++) {
@@ -249,6 +270,11 @@ public class BoardGraphic extends StackPane {
         getChildren().add(gridPane);
     }
 
+    /**
+     * Gets the board type
+     * @return board type
+     * @see BOARDTYPES
+     */
     public BOARDTYPES getBoardType() {
         return tileManager.getBoardType();
     }
