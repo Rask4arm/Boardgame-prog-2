@@ -22,8 +22,8 @@ This project is a board game engine that supports multiple board games, includin
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repo/boardgame-engine.git
-   cd boardgame-engine
+   git clone https://github.com/Rask4arm/Boardgame-prog-2.git
+   cd boardgame-prog-2
    ```
 
 2. Build the project using Maven:
